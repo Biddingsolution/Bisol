@@ -839,36 +839,246 @@
   .btn-ghost-white:hover { border-color: white; color: white; }
 
   /* ===== TRAINING COURSES ===== */
+  /* ===== TRAINING — 2-CARD PROFESSIONAL LAYOUT ===== */
   .courses-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
   }
+
+  /* Primary card — clean navy */
   .course-card {
     background: white; border: 1.5px solid var(--border);
-    border-radius: 18px; padding: 26px 22px;
-    transition: all 0.25s;
+    border-radius: 20px; padding: 0;
+    transition: all 0.28s; overflow: hidden;
+    display: flex; flex-direction: column;
   }
-  .course-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--green); }
+  .course-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+  .course-card.card-primary { border-color: rgba(13,31,76,0.25); }
+  .course-card.card-primary:hover { border-color: var(--navy); box-shadow: 0 20px 50px rgba(13,31,76,0.15); }
+  .course-card.card-secondary { border-color: rgba(232,98,10,0.3); }
+  .course-card.card-secondary:hover { border-color: var(--saffron); box-shadow: 0 20px 50px rgba(232,98,10,0.12); }
+
+  /* Card top header bar */
+  .course-card-header {
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  }
+  .card-primary .course-card-header { background: linear-gradient(135deg, var(--navy), var(--navy-mid)); }
+  .card-secondary .course-card-header { background: linear-gradient(135deg, #7c2d12, #e8620a); }
+
+  .course-card-header-left {}
   .course-badge {
-    display: inline-block; padding: 4px 12px; border-radius: 100px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
-    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 100px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 10px;
   }
-  .badge-foundation { background: rgba(26,107,58,0.1); color: var(--green); }
-  .badge-intermediate { background: rgba(232,98,10,0.1); color: var(--saffron); }
-  .badge-advanced { background: rgba(13,31,76,0.1); color: var(--navy); }
-  .course-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; }
-  .course-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
-  .course-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
-  .course-meta-item { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 7px; }
-  .course-meta-item span:first-child { font-size: 14px; }
+  .badge-primary   { background: rgba(255,255,255,0.18); color: white; border: 1px solid rgba(255,255,255,0.3); }
+  .badge-secondary { background: rgba(255,255,255,0.18); color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+  .course-name {
+    font-family: 'DM Serif Display', serif; font-weight: 400;
+    font-size: 20px; color: white; line-height: 1.25;
+  }
+
+  /* Price badge top-right */
+  .course-price-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 12px; padding: 8px 14px;
+    text-align: center; flex-shrink: 0;
+  }
+  .course-price-tag .price-label { font-size: 9px; color: rgba(255,255,255,0.7); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .course-price-tag .price-val { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: white; line-height: 1.1; margin-top: 2px; }
+
+  /* Card body */
+  .course-card-body { padding: 22px 26px; flex: 1; display: flex; flex-direction: column; gap: 18px; }
+
+  .course-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+
+  /* Schedule block */
+  .course-schedule {
+    background: var(--cream); border-radius: 12px; padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .course-schedule-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .schedule-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); margin-bottom: 5px; }
+  .schedule-row:last-child { margin-bottom: 0; }
+  .schedule-icon { font-size: 15px; flex-shrink: 0; }
+  .schedule-hindi { font-size: 12px; color: var(--navy); font-weight: 600; }
+
+  /* Topics */
+  .course-topics-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .course-topics { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .course-topics li {
+    font-size: 13px; color: var(--ink); display: flex; align-items: flex-start; gap: 9px; line-height: 1.4;
+  }
+  .card-primary .course-topics li::before { content: '◆'; color: var(--navy); font-size: 8px; flex-shrink: 0; margin-top: 4px; }
+  .card-secondary .course-topics li::before { content: '◆'; color: var(--saffron); font-size: 8px; flex-shrink: 0; margin-top: 4px; }
+
+  /* Features row */
+  .course-features { display: flex; flex-wrap: wrap; gap: 6px; }
+  .course-feature-chip {
+    font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 100px;
+  }
+  .card-primary .course-feature-chip { background: rgba(13,31,76,0.08); color: var(--navy); border: 1px solid rgba(13,31,76,0.15); }
+  .card-secondary .course-feature-chip { background: rgba(232,98,10,0.08); color: var(--saffron); border: 1px solid rgba(232,98,10,0.2); }
+
+  /* Enroll button */
   .course-enroll {
-    width: 100%; padding: 10px; border-radius: 9px;
-    border: 1.5px solid var(--green); color: var(--green);
-    background: transparent; font-size: 13px; font-weight: 700;
-    cursor: pointer; transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
+    width: 100%; padding: 13px; border-radius: 11px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: all 0.25s; font-family: 'Syne', sans-serif;
+    letter-spacing: 0.03em; margin-top: auto;
   }
-  .course-enroll:hover { background: var(--green); color: white; }
+  .card-primary .course-enroll   { background: var(--navy); color: white; border: 2px solid var(--navy); }
+  .card-primary .course-enroll:hover   { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,31,76,0.3); }
+  .card-secondary .course-enroll { background: var(--saffron); color: white; border: 2px solid var(--saffron); }
+  .card-secondary .course-enroll:hover { background: var(--saffron-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,98,10,0.35); }
+
+  /* Portal badges strip below main cards */
+  .portal-strip {
+    margin-top: 32px; background: var(--ink); border-radius: 18px; padding: 28px 32px;
+  }
+  .portal-strip-title {
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-bottom: 18px;
+  }
+  .portal-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+  .portal-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 12px 16px;
+    transition: all 0.2s; cursor: default;
+  }
+  .portal-badge:hover { background: rgba(255,255,255,0.12); border-color: rgba(232,98,10,0.4); transform: translateY(-2px); }
+  .portal-badge-icon { font-size: 20px; }
+  .portal-badge-text strong { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: white; display: block; }
+  .portal-badge-text span { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+  .nav-ireps { border: 1px solid rgba(239,68,68,0.3) !important; }
+  .nav-ireps:hover { background: rgba(239,68,68,0.15) !important; color: #fca5a5 !important; }
+  .nav-ireps.active { background: #dc2626 !important; }
+
+  /* ===== IREPS / RAILWAY PAGE ===== */
+  .railway-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    border-radius: 20px; padding: 40px 40px 36px; margin-bottom: 28px;
+    position: relative; overflow: hidden;
+  }
+  .railway-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      90deg, transparent, transparent 60px,
+      rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
+    ),
+    repeating-linear-gradient(
+      0deg, transparent, transparent 40px,
+      rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px
+    );
+  }
+  .railway-hero-content { position: relative; z-index: 2; }
+  .railway-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4);
+    color: #fca5a5; padding: 5px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .railway-badge::before { content: ''; width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+  .railway-hero h2 {
+    font-family: 'DM Serif Display', serif; font-size: clamp(26px,3vw,40px);
+    color: white; line-height: 1.15; margin-bottom: 12px;
+  }
+  .railway-hero h2 em { font-style: italic; color: #fbbf24; }
+  .railway-hero p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 560px; margin-bottom: 24px; }
+
+  /* Animated train track at bottom of hero */
+  .train-track {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 36px;
+    overflow: hidden;
+  }
+  /* Track rails */
+  .train-track::before {
+    content: ''; position: absolute;
+    bottom: 8px; left: 0; right: 0; height: 3px;
+    background: repeating-linear-gradient(90deg, #6b7280 0px, #6b7280 30px, transparent 30px, transparent 40px);
+  }
+  .train-track::after {
+    content: ''; position: absolute;
+    bottom: 16px; left: 0; right: 0; height: 2px;
+    background: #4b5563; opacity: 0.6;
+  }
+  /* Animated train SVG */
+  .train-anim {
+    position: absolute; bottom: 10px; left: -200px;
+    animation: trainRide 8s linear infinite;
+    white-space: nowrap; font-size: 28px;
+  }
+  @keyframes trainRide {
+    from { left: -160px; }
+    to   { left: 110%; }
+  }
+
+  /* Railway service cards grid */
+  .railway-services-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 28px;
+  }
+  .railway-service-card {
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 18px; padding: 24px 22px;
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .railway-service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: 18px 18px 0 0;
+  }
+  .rsc-stall::before   { background: linear-gradient(90deg, #dc2626, #ef4444); }
+  .rsc-parking::before { background: linear-gradient(90deg, #1d4ed8, #3b82f6); }
+  .rsc-goods::before   { background: linear-gradient(90deg, #d97706, #f59e0b); }
+  .rsc-contract::before{ background: linear-gradient(90deg, #16a34a, #22c55e); }
+  .railway-service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.09); border-color: transparent; }
+
+  .rsc-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+  .rsc-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+  .rsc-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+  .rsc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .rsc-list li { font-size: 13px; display: flex; align-items: flex-start; gap: 8px; color: var(--ink); }
+  .rsc-list li::before { content: '→'; color: #dc2626; font-weight: 700; flex-shrink: 0; }
+  .rsc-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase; color: #dc2626;
+  }
+
+  /* IREPS process steps */
+  .ireps-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .ireps-step {
+    background: white; border: 1.5px solid var(--border); border-radius: 16px;
+    padding: 20px 16px; text-align: center; transition: all 0.25s;
+    position: relative;
+  }
+  .ireps-step:not(:last-child)::after {
+    content: '→'; position: absolute; right: -12px; top: 50%;
+    transform: translateY(-50%); color: var(--muted); font-size: 18px; z-index: 1;
+  }
+  .ireps-step:hover { border-color: #dc2626; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(220,38,38,0.1); }
+  .ireps-step-num {
+    width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+  }
+  .ireps-step-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+  .ireps-step-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
   /* ===== RESPONSIVE — TABLET ===== */
   @media (max-width: 1100px) {
@@ -1406,173 +1616,269 @@
 
   /* ===== END CREDENTIAL SHOWCASE ===== */
 
-  /* ===== ANIMATED GUIDE CHARACTER ===== */
-  .guide-wrapper {
+  /* ===== IREPS TRAINING CARD ===== */
+  .ireps-training-card {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 28px;
+    background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    border-radius: 22px;
+    padding: 36px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+  .ireps-training-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(239,68,68,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 5% 90%, rgba(251,191,36,0.08) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Left side */
+  .ireps-tc-left { position: relative; z-index: 1; }
+  .ireps-tc-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.35);
+    color: #fca5a5; padding: 5px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .ireps-tc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 2.5vw, 32px);
+    color: white; line-height: 1.2; margin-bottom: 14px;
+  }
+  .ireps-tc-title em { font-style: italic; color: #fbbf24; }
+  .ireps-tc-desc {
+    font-size: 14px; color: rgba(255,255,255,0.62);
+    line-height: 1.75; margin-bottom: 22px;
+  }
+
+  /* Schedule grid */
+  .ireps-tc-schedule {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 16px 18px;
+    margin-bottom: 22px;
+  }
+  .ireps-tc-schedule-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 14px;
+  }
+  .ireps-tc-schedule-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .ireps-tc-s-item {
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .itcs-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .ireps-tc-s-item strong {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 13px; color: white; display: block;
+  }
+  .itcs-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+
+  /* Topics */
+  .ireps-tc-topics-title {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+  }
+  .ireps-tc-topics {
+    list-style: none; display: flex; flex-direction: column; gap: 7px;
+    margin-bottom: 22px;
+  }
+  .ireps-tc-topics li {
+    font-size: 13px; color: rgba(255,255,255,0.78);
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+  }
+  .ireps-tc-topics li::before {
+    content: '▶'; color: #ef4444; font-size: 9px; flex-shrink: 0; margin-top: 3px;
+  }
+
+  /* Contact */
+  .ireps-tc-contact {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 13px 16px;
+  }
+  .ireps-tc-contact-icon { font-size: 20px; flex-shrink: 0; }
+  .ireps-tc-contact-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 3px;
+  }
+  .ireps-tc-contact-email {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 14px; color: #fbbf24;
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .ireps-tc-contact-email:hover { color: white; text-decoration: underline; }
+
+  /* Right: Price card */
+  .ireps-tc-right { position: relative; z-index: 1; }
+  .ireps-tc-price-card {
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(239,68,68,0.35);
+    border-radius: 18px; padding: 28px 24px;
+    text-align: center;
+    height: 100%;
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+  .ireps-tc-price-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .ireps-tc-price-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px; color: #fbbf24;
+    line-height: 1; margin-bottom: 4px;
+    text-shadow: 0 2px 20px rgba(251,191,36,0.4);
+  }
+  .ireps-tc-price-tax {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+  }
+  .ireps-tc-price-note {
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #fca5a5; font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 100px;
+    letter-spacing: 0.06em; margin-bottom: 20px;
+  }
+  .ireps-tc-features {
+    display: flex; flex-direction: column; gap: 8px;
+    text-align: left; width: 100%; margin-bottom: 22px;
+  }
+  .ireps-tc-feat {
+    font-size: 12.5px; color: rgba(255,255,255,0.75);
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .ireps-tc-enroll-btn {
+    display: block; width: 100%;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white; text-decoration: none;
+    padding: 14px 18px; border-radius: 12px;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.02em; text-align: center;
+    transition: all 0.25s; margin-bottom: 10px;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.4);
+  }
+  .ireps-tc-enroll-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(220,38,38,0.55); }
+  .ireps-tc-wa-btn {
+    display: block; width: 100%;
+    background: rgba(37,211,102,0.12);
+    border: 1.5px solid rgba(37,211,102,0.35);
+    color: #4ade80; text-decoration: none;
+    padding: 12px 18px; border-radius: 12px;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13.5px;
+    text-align: center; transition: all 0.25s;
+  }
+  .ireps-tc-wa-btn:hover { background: #25D366; border-color: #25D366; color: white; }
+
+  /* Mobile responsive */
+  @media (max-width: 900px) {
+    .ireps-training-card { grid-template-columns: 1fr; padding: 24px 20px; }
+    .ireps-tc-schedule-grid { grid-template-columns: 1fr 1fr; }
+    .ireps-tc-price-val { font-size: 40px; }
+  }
+  @media (max-width: 600px) {
+    .ireps-tc-schedule-grid { grid-template-columns: 1fr; }
+  }
+  /* ===== END IREPS TRAINING CARD ===== */
+  #butterfly {
     position: fixed;
-    bottom: 22px;
-    right: 106px; /* sits left of the WA fab */
-    z-index: 8998;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    top: 0; left: 0;
+    width: 48px;        /* small, unobtrusive */
+    height: 48px;
     pointer-events: none;
-    transition: opacity 0.4s, transform 0.4s;
+    z-index: 9100;
+    transform: translate(200px, 200px);
+    filter: drop-shadow(0 3px 8px rgba(232,98,10,0.3));
+    transition: filter 0.3s;
+    overflow: visible;
+    opacity: 0;         /* hidden until JS starts flight */
   }
-  .guide-wrapper.dismissed {
-    opacity: 0;
-    transform: translateY(30px);
-    pointer-events: none;
-  }
-
-  /* Speech bubble */
-  .guide-bubble {
-    position: absolute;
-    bottom: 148px;
-    right: -30px;
-    background: white;
-    border-radius: 14px;
-    padding: 10px 14px 10px 12px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-    width: 190px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: #1a1a1a;
-    line-height: 1.45;
+  #butterfly.landing {
+    filter: drop-shadow(0 2px 16px rgba(37,211,102,0.7));
     pointer-events: all;
-    border: 2px solid #25D366;
-    animation: bubblePop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both,
-               bubbleFloat 3s ease-in-out 2s infinite;
-  }
-  @keyframes bubblePop {
-    from { opacity: 0; transform: scale(0.5) translateY(10px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-  @keyframes bubbleFloat {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-5px); }
+    cursor: pointer;
   }
 
-  /* Tail of speech bubble pointing down-right */
-  .guide-bubble-tail {
-    position: absolute;
-    bottom: -12px;
-    right: 30px;
-    width: 0; height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 12px solid #25D366;
+  /* Wing flap animations */
+  .bf-wing-left {
+    transform-origin: 52px 28px;
+    animation: flapL 0.22s ease-in-out infinite alternate;
   }
-  .guide-bubble-tail::after {
+  .bf-wing-right {
+    transform-origin: 52px 28px;
+    animation: flapR 0.22s ease-in-out infinite alternate;
+  }
+  .bf-wing-lower-left {
+    transform-origin: 52px 42px;
+    animation: flapL 0.22s ease-in-out 0.04s infinite alternate;
+  }
+  .bf-wing-lower-right {
+    transform-origin: 52px 42px;
+    animation: flapR 0.22s ease-in-out 0.04s infinite alternate;
+  }
+  @keyframes flapL { from { transform: scaleX(1); } to { transform: scaleX(0.15); } }
+  @keyframes flapR { from { transform: scaleX(1); } to { transform: scaleX(0.15); } }
+
+  /* Wings fold slowly when landed */
+  #butterfly.landing .bf-wing-left,
+  #butterfly.landing .bf-wing-lower-left  { animation: foldL 0.6s ease forwards; }
+  #butterfly.landing .bf-wing-right,
+  #butterfly.landing .bf-wing-lower-right { animation: foldR 0.6s ease forwards; }
+  @keyframes foldL { to { transform: scaleX(0.1) rotate(-6deg); } }
+  @keyframes foldR { to { transform: scaleX(0.1) rotate(6deg); } }
+
+  /* Speech bubble when butterfly lands on WA button */
+  #bf-bubble {
+    position: fixed;
+    background: white;
+    border: 2px solid #25D366;
+    border-radius: 12px;
+    padding: 7px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #111;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9101;
+    top: -100px; left: -100px; /* off-screen until positioned by JS */
+    transform: scale(0.8) translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  #bf-bubble.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  #bf-bubble::after {
     content: '';
     position: absolute;
-    top: -14px;
-    left: -8px;
-    width: 0; height: 0;
+    bottom: -9px; left: 50%;
+    transform: translateX(-50%);
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 11px solid white;
+    border-top: 9px solid #25D366;
   }
+  /* ===== END 🦋 BUTTERFLY ===== */
 
-  .guide-bubble-close {
-    position: absolute;
-    top: 4px; right: 6px;
-    background: none; border: none;
-    font-size: 12px; color: #aaa;
-    cursor: pointer; line-height: 1;
-    padding: 2px;
-  }
-  .guide-bubble-close:hover { color: #e8620a; }
-
-  /* Typing dots inside bubble — shows before main text */
-  .guide-bubble::before {
-    content: '';
-  }
-
-  /* Character body wrapper */
-  .guide-char-body {
-    cursor: pointer;
-    pointer-events: all;
-    animation: charBounce 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.3s both,
-               charIdle 2.8s ease-in-out 1.5s infinite;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
-    transition: transform 0.2s;
-  }
-  .guide-char-body:hover {
-    transform: scale(1.08) translateY(-4px);
-    filter: drop-shadow(0 12px 20px rgba(37,211,102,0.4));
-  }
-  @keyframes charBounce {
-    from { opacity: 0; transform: translateY(60px) scale(0.6); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes charIdle {
-    0%,100% { transform: translateY(0) rotate(0deg); }
-    25%      { transform: translateY(-6px) rotate(-2deg); }
-    75%      { transform: translateY(-3px) rotate(2deg); }
-  }
-
-  /* Shadow pulse */
-  .guide-shadow {
-    animation: shadowPulse 2.8s ease-in-out 1.5s infinite;
-  }
-  @keyframes shadowPulse {
-    0%,100% { rx: 18; opacity: 0.15; }
-    25%      { rx: 14; opacity: 0.08; }
-    75%      { rx: 16; opacity: 0.12; }
-  }
-
-  /* Waving left arm */
-  .guide-arm-left {
-    animation: armWave 1.2s ease-in-out 2s infinite;
-    transform-origin: 6px 64px;
-  }
-  @keyframes armWave {
-    0%,100% { transform: rotate(0deg); }
-    30%      { transform: rotate(-30deg); }
-    60%      { transform: rotate(10deg); }
-  }
-
-  /* Pointing right arm gentle sway */
-  .guide-arm-right {
-    animation: armSway 3s ease-in-out 1s infinite;
-    transform-origin: 58px 64px;
-  }
-  @keyframes armSway {
-    0%,100% { transform: rotate(0deg); }
-    50%      { transform: rotate(8deg); }
-  }
-
-  /* Leg walk cycle (subtle) */
-  .guide-leg-left {
-    animation: legSwing 1.4s ease-in-out 1s infinite;
-    transform-origin: 32px 100px;
-  }
-  .guide-leg-right {
-    animation: legSwing 1.4s ease-in-out 1.7s infinite;
-    transform-origin: 48px 100px;
-  }
-  @keyframes legSwing {
-    0%,100% { transform: rotate(0deg); }
-    50%      { transform: rotate(6deg); }
-  }
-
-  /* Guide SVG size */
-  .guide-svg { width: 80px; height: 140px; display: block; }
-
-  /* Rotating message cycle */
-  .guide-bubble[data-hidden="true"] { display: none; }
-
-  /* ── Mobile adjustments ── */
-  @media (max-width: 768px) {
-    .guide-wrapper { right: 80px; bottom: 82px; }
-    .guide-svg { width: 64px; height: 112px; }
-    .guide-bubble { width: 160px; font-size: 12px; right: -20px; bottom: 118px; }
-  }
-
-  /* ===== END GUIDE CHARACTER ===== */
-
-  /* Hide desktop sidebar topbar on desktop */
+  /* Hide desktop topbar on desktop */
   .mobile-topbar { display: none; }
 </style>
 </head>
@@ -1616,6 +1922,9 @@
     </div>
     <div class="nav-item" data-page="electrical" onclick="showPage('electrical', this)">
       <span class="nav-icon">⚡</span> Electrical Reg.
+    </div>
+    <div class="nav-item nav-ireps" data-page="ireps" onclick="showPage('ireps', this)">
+      <span class="nav-icon">🚂</span> IREPS Railway
     </div>
 
     <div class="nav-section-label">Clients</div>
@@ -2023,50 +2332,153 @@
   <div id="page-training" class="page">
     <div class="page-header">
       <div>
-        <div class="page-eyebrow">Youth Training Programs</div>
-        <h1 class="page-title">Build a Career in <em>Government Procurement</em></h1>
-        <p class="page-sub">Structured courses from beginner to advanced — designed for job seekers, procurement professionals, and business owners entering the tendering space.</p>
+        <div class="page-eyebrow">Professional Training Programs</div>
+        <h1 class="page-title">Master <em>Government Tendering</em></h1>
+        <p class="page-sub">Weekend batches designed for working professionals. Practical, portal-focused, and industry-oriented training to help you bid and win.</p>
       </div>
     </div>
     <div class="page-body">
       <div class="section-divider">Available Courses</div>
+
       <div class="courses-grid">
-        <div class="course-card">
-          <span class="course-badge badge-foundation">Foundation</span>
-          <div class="course-name">Tender Basics Program</div>
-          <div class="course-desc">Perfect for beginners with zero prior knowledge. Covers tender terminology, portal navigation, document types, and the complete bidding lifecycle.</div>
-          <div class="course-meta">
-            <div class="course-meta-item"><span>📅</span> 4 Weeks | 16 Sessions</div>
-            <div class="course-meta-item"><span>🎯</span> Beginner Friendly</div>
-            <div class="course-meta-item"><span>🏆</span> Certificate Included</div>
+
+        <!-- ── PRIMARY COURSE ── -->
+        <div class="course-card card-primary">
+          <div class="course-card-header">
+            <div class="course-card-header-left">
+              <span class="course-badge badge-primary">🟦 Primary</span>
+              <div class="course-name">Tender Basics &<br>Practical Training</div>
+            </div>
+            <div class="course-price-tag">
+              <div class="price-label">Fee</div>
+              <div class="price-val">₹7,000</div>
+            </div>
           </div>
-          <button class="course-enroll" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Enrol Now</button>
+
+          <div class="course-card-body">
+            <div class="course-desc">Designed for beginners and early-stage professionals to build a strong foundation in tendering, procurement processes, and portal handling. Covers complete bidding lifecycle with practical exposure.</div>
+
+            <div class="course-schedule">
+              <div class="course-schedule-title">📅 Training Schedule</div>
+              <div class="schedule-row"><span class="schedule-icon">📆</span><span><span class="schedule-hindi">शनिवार &amp; रविवार</span> — Saturday &amp; Sunday</span></div>
+              <div class="schedule-row"><span class="schedule-icon">⏱️</span><span>2 Hours per Day — 4 Hours per Week</span></div>
+              <div class="schedule-row"><span class="schedule-icon">🗓️</span><span><strong>Duration:</strong> 2 Weeks</span></div>
+            </div>
+
+            <div>
+              <div class="course-topics-title">📚 Key Topics Covered</div>
+              <ul class="course-topics">
+                <li>Introduction to Tendering &amp; Procurement</li>
+                <li>GeM &amp; CPPP Portal Navigation</li>
+                <li>Understanding Tender Documents (NIT, RFP, BOQ)</li>
+                <li>Eligibility Criteria &amp; Basic Compliance</li>
+                <li>Step-by-Step Bid Submission Process</li>
+              </ul>
+            </div>
+
+            <div class="course-features">
+              <span class="course-feature-chip">✅ Beginner Friendly</span>
+              <span class="course-feature-chip">🖥️ Practical Demonstrations</span>
+              <span class="course-feature-chip">🏆 Certificate Included</span>
+            </div>
+
+            <a href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20Primary%20Tender%20Training%20Program%20(Rs.7000)." target="_blank">
+              <button class="course-enroll">Enroll Now — ₹7,000 →</button>
+            </a>
+          </div>
         </div>
-        <div class="course-card">
-          <span class="course-badge badge-intermediate">Intermediate</span>
-          <div class="course-name">Tendering Professional</div>
-          <div class="course-desc">For those with basic knowledge looking to handle end-to-end tendering professionally. Includes live portal practice, document drafting, and financial bid strategies.</div>
-          <div class="course-meta">
-            <div class="course-meta-item"><span>📅</span> 8 Weeks | 32 Sessions</div>
-            <div class="course-meta-item"><span>🎯</span> Intermediate Level</div>
-            <div class="course-meta-item"><span>🏆</span> Certificate + Placement Support</div>
+
+        <!-- ── SECONDARY COURSE ── -->
+        <div class="course-card card-secondary">
+          <div class="course-card-header">
+            <div class="course-card-header-left">
+              <span class="course-badge badge-secondary">🟠 Secondary</span>
+              <div class="course-name">Advanced Tendering &<br>Bid Strategy</div>
+            </div>
+            <div class="course-price-tag">
+              <div class="price-label">Fee</div>
+              <div class="price-val">₹15,000</div>
+            </div>
           </div>
-          <button class="course-enroll" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Enrol Now</button>
-        </div>
-        <div class="course-card">
-          <span class="course-badge badge-advanced">Advanced</span>
-          <div class="course-name">Bid Strategy Master</div>
-          <div class="course-desc">Advanced module for experienced professionals. Covers complex procurement rules, L1 strategies, appeal processes, JV agreements, and negotiation tactics.</div>
-          <div class="course-meta">
-            <div class="course-meta-item"><span>📅</span> 12 Weeks | 48 Sessions</div>
-            <div class="course-meta-item"><span>🎯</span> Advanced Level</div>
-            <div class="course-meta-item"><span>🏆</span> Industry Recognition</div>
+
+          <div class="course-card-body">
+            <div class="course-desc">Designed for professionals who want to master tender execution, documentation, and competitive bid strategies with real-world case handling.</div>
+
+            <div class="course-schedule">
+              <div class="course-schedule-title">📅 Training Schedule</div>
+              <div class="schedule-row"><span class="schedule-icon">📆</span><span><span class="schedule-hindi">शनिवार &amp; रविवार</span> — Saturday &amp; Sunday</span></div>
+              <div class="schedule-row"><span class="schedule-icon">⏱️</span><span>2 Hours per Day — 4 Hours per Week</span></div>
+              <div class="schedule-row"><span class="schedule-icon">🗓️</span><span><strong>Duration:</strong> 4 Weeks</span></div>
+            </div>
+
+            <div>
+              <div class="course-topics-title">📚 Key Topics Covered</div>
+              <ul class="course-topics">
+                <li>Technical Bid Preparation &amp; Documentation</li>
+                <li>Financial Bid Strategy &amp; BOQ Analysis</li>
+                <li>EMD, BG, Affidavits &amp; Legal Compliance</li>
+                <li>Turnover Calculation &amp; Eligibility Mapping</li>
+                <li>L1 Strategy &amp; Competitive Bidding</li>
+                <li>Reverse Auction &amp; Negotiation Techniques</li>
+              </ul>
+            </div>
+
+            <div class="course-features">
+              <span class="course-feature-chip">🔬 Advanced Practical Exposure</span>
+              <span class="course-feature-chip">📁 Real Tender Case Studies</span>
+              <span class="course-feature-chip">🏭 Industry-Oriented</span>
+            </div>
+
+            <a href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20Advanced%20Tender%20Training%20Program%20(Rs.15000)." target="_blank">
+              <button class="course-enroll">Enroll Now — ₹15,000 →</button>
+            </a>
           </div>
-          <button class="course-enroll" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Enrol Now</button>
         </div>
       </div>
 
-      <div class="cta-strip" style="margin-top:36px;">
+      <!-- Portal Training Strip -->
+      <div class="portal-strip">
+        <div class="portal-strip-title">We Also Train You On These Portals</div>
+        <div class="portal-badges">
+          <div class="portal-badge">
+            <span class="portal-badge-icon">💎</span>
+            <div class="portal-badge-text">
+              <strong>GeM Portal Bidding</strong>
+              <span>Government e-Marketplace</span>
+            </div>
+          </div>
+          <div class="portal-badge">
+            <span class="portal-badge-icon">🏛️</span>
+            <div class="portal-badge-text">
+              <strong>CPP Portal Bidding</strong>
+              <span>Central Public Procurement</span>
+            </div>
+          </div>
+          <div class="portal-badge">
+            <span class="portal-badge-icon">🗺️</span>
+            <div class="portal-badge-text">
+              <strong>State Portal Bidding</strong>
+              <span>All State e-Procurement Portals</span>
+            </div>
+          </div>
+          <div class="portal-badge">
+            <span class="portal-badge-icon">🏭</span>
+            <div class="portal-badge-text">
+              <strong>PSU Portal Bidding</strong>
+              <span>BHEL, ONGC, NTPC & more</span>
+            </div>
+          </div>
+          <div class="portal-badge" onclick="showPage('ireps', document.querySelector('[data-page=ireps]'))" style="cursor:pointer;">
+            <span class="portal-badge-icon">🚂</span>
+            <div class="portal-badge-text">
+              <strong>IREPS Railway Portal</strong>
+              <span>Indian Railways e-Procurement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-strip" style="margin-top:24px;">
         <div>
           <h3>Not Sure Which Course <em>to Choose?</em></h3>
           <p>Our advisors will assess your current knowledge and career goals to recommend the right training path for you.</p>
@@ -2277,7 +2689,7 @@
               <div class="ci-icon">✉️</div>
               <div>
                 <div class="ci-label">Email</div>
-                <div class="ci-value"><a href="/cdn-cgi/l/Sales@BiddingSolution.com#e99a88858c9aa9ab808d8d80878eba86859c9d808687c78a8684" style="color:var(--saffron);font-weight:600;"><span class="__cf_email__" data-cfemail="087b69646d7b484a616c6c61666f5b67647d7c616766266b6765">[email&#160;protected]</span></a></div>
+                <div class="ci-value"><a href="mailto:Sales@BiddingSolution.com" style="color:var(--saffron);font-weight:600;">Sales@BiddingSolution.com</a></div>
               </div>
             </div>
             <div class="ci-item">
@@ -2642,72 +3054,289 @@
     </div>
   </div>
 
+  <!-- ========== IREPS RAILWAY PAGE ========== -->
+  <div id="page-ireps" class="page">
+    <div class="page-header">
+      <div>
+        <div class="page-eyebrow" style="color:#dc2626;">🚂 Railway Tenders — IREPS</div>
+        <h1 class="page-title">Win <em>Railway Contracts</em> with Expert Support</h1>
+        <p class="page-sub">We help vendors navigate IREPS — Indian Railways' e-Procurement System — to secure Railway Stall Bookings, Parking Tenders, Goods Supply, and Service Contracts.</p>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <!-- Railway Hero Banner with Animated Train -->
+      <div class="railway-hero">
+        <div class="railway-hero-content">
+          <div class="railway-badge">Indian Railways e-Procurement System</div>
+          <h2>India's Largest <em>Procurement Network</em></h2>
+          <p>Indian Railways spends over ₹2.5 lakh crore annually on procurement. IREPS is the single portal for all Railway tenders — from platform stalls to major supply contracts. Our experts help you register, qualify, and win.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20IREPS%20Railway%20Tender." target="_blank" class="btn-primary" style="font-size:14px;padding:12px 22px;">💬 Get IREPS Help →</a>
+            <button class="btn-outline-white" onclick="showPage('contact', document.querySelector('[data-page=contact]'))" style="font-size:14px;padding:12px 22px;">📞 Free Consultation</button>
+          </div>
+        </div>
+        <!-- Animated Train Track -->
+        <div class="train-track">
+          <div class="train-anim">🚂🚃🚃🚃</div>
+        </div>
+      </div>
+
+      <!-- IREPS 4-Step Process -->
+      <div class="section-divider">How We Help You Win Railway Tenders</div>
+      <div class="ireps-process">
+        <div class="ireps-step">
+          <div class="ireps-step-num">1</div>
+          <div class="ireps-step-title">IREPS Registration</div>
+          <div class="ireps-step-desc">Complete vendor registration on IREPS portal with all required documents and DSC setup</div>
+        </div>
+        <div class="ireps-step">
+          <div class="ireps-step-num">2</div>
+          <div class="ireps-step-title">Tender Identification</div>
+          <div class="ireps-step-desc">We monitor Railway tenders matching your profile — stalls, parking, goods, services</div>
+        </div>
+        <div class="ireps-step">
+          <div class="ireps-step-num">3</div>
+          <div class="ireps-step-title">Bid Preparation</div>
+          <div class="ireps-step-desc">Full technical and financial bid drafting with Railway-specific compliance and format</div>
+        </div>
+        <div class="ireps-step">
+          <div class="ireps-step-num">4</div>
+          <div class="ireps-step-title">Submit & Win</div>
+          <div class="ireps-step-desc">Portal submission support and post-award assistance including work order acceptance</div>
+        </div>
+      </div>
+
+      <!-- Railway Service Cards -->
+      <div class="section-divider">Railway Tender Categories We Handle</div>
+      <div class="railway-services-grid">
+
+        <div class="railway-service-card rsc-stall">
+          <span class="rsc-icon">🏪</span>
+          <div class="rsc-name">Railway Stall Booking Tender</div>
+          <div class="rsc-desc">Secure a commercial stall at Railway stations — food courts, retail outlets, book stalls, ATMs, and service kiosks through the IREPS bidding process.</div>
+          <ul class="rsc-list">
+            <li>Platform & Concourse Stalls</li>
+            <li>Food Plaza Licensing</li>
+            <li>Book Stalls (A H Wheeler, etc.)</li>
+            <li>ATM Space Leasing</li>
+            <li>Waiting Room Kiosks</li>
+          </ul>
+          <a href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Railway%20Stall%20Booking%20Tender%20on%20IREPS." target="_blank">
+            <div class="rsc-tag">Apply via WhatsApp →</div>
+          </a>
+        </div>
+
+        <div class="railway-service-card rsc-parking">
+          <span class="rsc-icon">🅿️</span>
+          <div class="rsc-name">Railway Parking Tender</div>
+          <div class="rsc-desc">Bid for vehicle parking management contracts at Railway stations. High-footfall stations offer stable revenue through annual or multi-year parking contracts.</div>
+          <ul class="rsc-list">
+            <li>Two-Wheeler & Four-Wheeler Parking</li>
+            <li>Prepaid Auto/Taxi Booth</li>
+            <li>Multi-Level Parking Management</li>
+            <li>Cloak Room Operations</li>
+            <li>EV Charging Station Space</li>
+          </ul>
+          <a href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Railway%20Parking%20Tender%20on%20IREPS." target="_blank">
+            <div class="rsc-tag">Apply via WhatsApp →</div>
+          </a>
+        </div>
+
+        <div class="railway-service-card rsc-goods">
+          <span class="rsc-icon">📦</span>
+          <div class="rsc-name">Goods & Supply Contracts</div>
+          <div class="rsc-desc">Supply materials, spare parts, uniforms, and consumables to Railways through rate contracts and work orders. Large volume, repeat business opportunity.</div>
+          <ul class="rsc-list">
+            <li>Railway Track Materials</li>
+            <li>Electrical & Mechanical Spares</li>
+            <li>Uniform & PPE Supply</li>
+            <li>Office Stationery Rate Contracts</li>
+            <li>Food & Catering Supplies</li>
+          </ul>
+          <a href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Railway%20Goods%20Supply%20Tender." target="_blank">
+            <div class="rsc-tag">Apply via WhatsApp →</div>
+          </a>
+        </div>
+
+        <div class="railway-service-card rsc-contract">
+          <span class="rsc-icon">🔧</span>
+          <div class="rsc-name">Works & Service Contracts</div>
+          <div class="rsc-desc">Civil, electrical, and maintenance works contracts for Railways. Cleaning, horticulture, security, and IT service contracts at Railway zones and divisions.</div>
+          <ul class="rsc-list">
+            <li>Station Cleanliness Contracts</li>
+            <li>Horticulture & Landscaping</li>
+            <li>Security & Guarding Services</li>
+            <li>IT AMC & Help Desk</li>
+            <li>Civil Repair & Maintenance Works</li>
+          </ul>
+          <a href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Railway%20Works%20%26%20Service%20Contract%20Tender." target="_blank">
+            <div class="rsc-tag">Apply via WhatsApp →</div>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ===== IREPS TRAINING PROGRAMME ===== -->
+      <div class="section-divider">IREPS Tender Training Programme</div>
+
+      <div class="ireps-training-card">
+        <!-- Left: Details -->
+        <div class="ireps-tc-left">
+          <div class="ireps-tc-badge">🎓 Special Training</div>
+          <h3 class="ireps-tc-title">IREPS Railway Portal<br><em>Tender Training</em></h3>
+          <p class="ireps-tc-desc">Hands-on, live-demo training on the IREPS portal covering any 2 Railway tender categories of your choice — Stall Booking, Parking, Goods Supply, or Works Contracts. Learn to register, search, bid, and win Railway tenders directly on the portal.</p>
+
+          <!-- Schedule block -->
+          <div class="ireps-tc-schedule">
+            <div class="ireps-tc-schedule-title">📅 Training Schedule</div>
+            <div class="ireps-tc-schedule-grid">
+              <div class="ireps-tc-s-item">
+                <span class="itcs-icon">⏱️</span>
+                <div><strong>1 Hour / Day</strong><div class="itcs-sub">Focused daily sessions</div></div>
+              </div>
+              <div class="ireps-tc-s-item">
+                <span class="itcs-icon">📆</span>
+                <div><strong>8 Hours Total</strong><div class="itcs-sub">Complete programme duration</div></div>
+              </div>
+              <div class="ireps-tc-s-item">
+                <span class="itcs-icon">🖥️</span>
+                <div><strong>Live Demo</strong><div class="itcs-sub">Real portal, real tenders</div></div>
+              </div>
+              <div class="ireps-tc-s-item">
+                <span class="itcs-icon">🚂</span>
+                <div><strong>Any 2 Categories</strong><div class="itcs-sub">Your choice of Railway tender type</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topics -->
+          <div class="ireps-tc-topics-title">📚 What You Will Learn</div>
+          <ul class="ireps-tc-topics">
+            <li>IREPS Portal Registration &amp; DSC Setup</li>
+            <li>Searching &amp; Shortlisting Railway Tenders</li>
+            <li>Reading &amp; Analysing NIT / Tender Documents</li>
+            <li>Technical &amp; Financial Bid Preparation</li>
+            <li>Live Portal Submission Walkthrough</li>
+            <li>Post-Award Process &amp; Compliance</li>
+          </ul>
+
+          <!-- Contact -->
+          <div class="ireps-tc-contact">
+            <span class="ireps-tc-contact-icon">✉️</span>
+            <div>
+              <div class="ireps-tc-contact-label">To Enrol, Email Us</div>
+              <a href="mailto:Sales@BiddingSolution.com" class="ireps-tc-contact-email">Sales@BiddingSolution.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Price + CTA -->
+        <div class="ireps-tc-right">
+          <div class="ireps-tc-price-card">
+            <div class="ireps-tc-price-label">Training Fee</div>
+            <div class="ireps-tc-price-val">₹30,000</div>
+            <div class="ireps-tc-price-tax">+ Applicable Taxes</div>
+            <div class="ireps-tc-price-note">Any 2 Railway Tender Categories</div>
+
+            <div class="ireps-tc-features">
+              <div class="ireps-tc-feat">✅ Live IREPS Portal Demo</div>
+              <div class="ireps-tc-feat">✅ 8 Hours Complete Training</div>
+              <div class="ireps-tc-feat">✅ 2 Categories of Your Choice</div>
+              <div class="ireps-tc-feat">✅ Practical Bid Preparation</div>
+              <div class="ireps-tc-feat">✅ Post-Training Support</div>
+              <div class="ireps-tc-feat">✅ Certificate of Completion</div>
+            </div>
+
+            <a href="mailto:Sales@BiddingSolution.com?subject=IREPS%20Training%20Enquiry%20-%20Rs.30000&body=Namaste%2C%0A%0AI%20am%20interested%20in%20the%20IREPS%20Railway%20Tender%20Training%20Programme.%0A%0APlease%20share%20the%20schedule%20and%20batch%20details.%0A%0AThank%20you." class="ireps-tc-enroll-btn">
+              Enrol Now — ₹30,000 + Tax →
+            </a>
+
+            <a href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20IREPS%20Railway%20Tender%20Training%20Programme%20(Rs.30%2C000%2BTax)." target="_blank" class="ireps-tc-wa-btn">
+              💬 WhatsApp to Enrol
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="info-grid" style="margin-bottom:24px;">
+        <div class="info-card navy">
+          <div class="info-card-label">Annual Railway Procurement</div>
+          <div class="info-card-value">₹2.5L Cr</div>
+          <div class="info-card-sub">Total annual spend across all Indian Railway zones and divisions</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Railway Zones</div>
+          <div class="info-card-value">18</div>
+          <div class="info-card-sub">Zones across India — each zone publishes tenders on IREPS portal</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Active Vendors on IREPS</div>
+          <div class="info-card-value">1.2L+</div>
+          <div class="info-card-sub">Registered vendors competing — expert guidance gives you the edge</div>
+        </div>
+        <div class="info-card navy">
+          <div class="info-card-label">Our Support Timeline</div>
+          <div class="info-card-value">48 Hrs</div>
+          <div class="info-card-sub">From enquiry to IREPS registration completion with our expert team</div>
+        </div>
+      </div>
+
+      <div class="cta-strip">
+        <div>
+          <h3>Ready to Bid on <em>Railway Tenders?</em></h3>
+          <p>Our IREPS specialists will get you registered, identify the right tenders, and guide you through the complete bidding process. Start today.</p>
+        </div>
+        <div class="cta-strip-btns">
+          <a href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20get%20started%20with%20IREPS%20Railway%20Tender." target="_blank" class="btn-white">💬 WhatsApp Us Now →</a>
+          <button class="btn-ghost-white" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Get Free Consultation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- end .main -->
 
-<!-- ===== ANIMATED GUIDE CHARACTER ===== -->
-<div class="guide-wrapper" id="guide-char">
+<!-- ===== 🦋 BUTTERFLY ===== -->
+<div id="bf-bubble">💬 Chat with us on WhatsApp!</div>
 
-  <!-- Speech bubble -->
-  <div class="guide-bubble" id="guide-bubble">
-    <span id="guide-bubble-text">Need help? Chat with us! 👋</span>
-    <button class="guide-bubble-close" onclick="dismissGuide()" title="Dismiss">✕</button>
-    <div class="guide-bubble-tail"></div>
-  </div>
-
-  <!-- Character SVG — animated little person -->
-  <div class="guide-char-body" onclick="toggleWAChat(); dismissGuide();" title="Chat on WhatsApp">
-
-    <!-- Head -->
-    <svg class="guide-svg" viewBox="0 0 80 140" xmlns="http://www.w3.org/2000/svg">
-      <!-- Shadow -->
-      <ellipse cx="40" cy="135" rx="18" ry="5" fill="rgba(0,0,0,0.15)" class="guide-shadow"/>
-      <!-- Body -->
-      <rect x="22" y="62" width="36" height="42" rx="10" fill="#1a6b3a" class="guide-body-rect"/>
-      <!-- WhatsApp logo on shirt -->
-      <circle cx="40" cy="80" r="10" fill="#25D366"/>
-      <text x="40" y="84" text-anchor="middle" font-size="11" fill="white" font-weight="bold">WA</text>
-      <!-- Left arm (waving) -->
-      <g class="guide-arm-left">
-        <rect x="6" y="64" width="14" height="6" rx="3" fill="#f5832a" transform="rotate(-20 6 64)"/>
-      </g>
-      <!-- Right arm (pointing down-right toward WA button) -->
-      <g class="guide-arm-right">
-        <rect x="58" y="64" width="16" height="6" rx="3" fill="#f5832a" transform="rotate(35 58 64)"/>
-        <!-- Pointing finger -->
-        <circle cx="73" cy="76" r="4" fill="#f5832a"/>
-      </g>
-      <!-- Left leg -->
-      <rect x="26" y="100" width="12" height="26" rx="6" fill="#0d1f4c" class="guide-leg-left"/>
-      <!-- Right leg -->
-      <rect x="42" y="100" width="12" height="26" rx="6" fill="#0d1f4c" class="guide-leg-right"/>
-      <!-- Shoes -->
-      <ellipse cx="32" cy="128" rx="9" ry="5" fill="#0a0a0f"/>
-      <ellipse cx="48" cy="128" rx="9" ry="5" fill="#0a0a0f"/>
-      <!-- Neck -->
-      <rect x="35" y="50" width="10" height="14" rx="5" fill="#e8a87c"/>
-      <!-- Head -->
-      <ellipse cx="40" cy="40" rx="20" ry="22" fill="#e8a87c"/>
-      <!-- Hair -->
-      <path d="M20 38 Q20 16 40 16 Q60 16 60 38" fill="#2c1a0e"/>
-      <!-- Eyes -->
-      <ellipse cx="33" cy="38" rx="3.5" ry="4" fill="white"/>
-      <ellipse cx="47" cy="38" rx="3.5" ry="4" fill="white"/>
-      <circle cx="34" cy="39" r="2" fill="#1a1a2e"/>
-      <circle cx="48" cy="39" r="2" fill="#1a1a2e"/>
-      <!-- Eye shine -->
-      <circle cx="35" cy="38" r="0.8" fill="white"/>
-      <circle cx="49" cy="38" r="0.8" fill="white"/>
-      <!-- Eyebrows -->
-      <path d="M29 33 Q33 30 37 33" stroke="#2c1a0e" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M43 33 Q47 30 51 33" stroke="#2c1a0e" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- Smile -->
-      <path d="M33 46 Q40 53 47 46" stroke="#c0622a" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- Cheeks -->
-      <ellipse cx="28" cy="44" rx="5" ry="3" fill="rgba(232,98,10,0.25)"/>
-      <ellipse cx="52" cy="44" rx="5" ry="3" fill="rgba(232,98,10,0.25)"/>
-    </svg>
-  </div>
-</div>
+<svg id="butterfly" viewBox="0 0 104 80" xmlns="http://www.w3.org/2000/svg" title="Click to chat on WhatsApp">
+  <g class="bf-wing-left">
+    <path d="M52,28 C44,10 14,4 6,18 C0,28 8,44 20,46 C32,48 46,38 52,28Z" fill="#e8620a" opacity="0.92"/>
+    <path d="M52,28 C44,10 14,4 6,18 C0,28 8,44 20,46 C32,48 46,38 52,28Z" fill="none" stroke="#7c2d05" stroke-width="1"/>
+    <circle cx="22" cy="24" r="4" fill="#f0b429" opacity="0.7"/>
+    <circle cx="14" cy="32" r="3" fill="white" opacity="0.5"/>
+    <circle cx="34" cy="18" r="3" fill="#fef3c7" opacity="0.6"/>
+    <path d="M30,34 Q40,28 48,30" stroke="#7c2d05" stroke-width="0.8" fill="none"/>
+    <path d="M18,20 Q28,16 36,22" stroke="#7c2d05" stroke-width="0.8" fill="none"/>
+  </g>
+  <g class="bf-wing-right" style="transform:scaleX(-1);transform-origin:52px 28px">
+    <path d="M52,28 C44,10 14,4 6,18 C0,28 8,44 20,46 C32,48 46,38 52,28Z" fill="#e8620a" opacity="0.92"/>
+    <path d="M52,28 C44,10 14,4 6,18 C0,28 8,44 20,46 C32,48 46,38 52,28Z" fill="none" stroke="#7c2d05" stroke-width="1"/>
+    <circle cx="22" cy="24" r="4" fill="#f0b429" opacity="0.7"/>
+    <circle cx="14" cy="32" r="3" fill="white" opacity="0.5"/>
+    <circle cx="34" cy="18" r="3" fill="#fef3c7" opacity="0.6"/>
+  </g>
+  <g class="bf-wing-lower-left">
+    <path d="M52,42 C46,52 24,64 16,58 C8,52 10,40 20,38 C32,36 46,40 52,42Z" fill="#f5832a" opacity="0.88"/>
+    <path d="M52,42 C46,52 24,64 16,58 C8,52 10,40 20,38 C32,36 46,40 52,42Z" fill="none" stroke="#7c2d05" stroke-width="1"/>
+    <circle cx="26" cy="52" r="3.5" fill="#fef3c7" opacity="0.6"/>
+    <circle cx="20" cy="44" r="2.5" fill="#f0b429" opacity="0.65"/>
+  </g>
+  <g class="bf-wing-lower-right" style="transform:scaleX(-1);transform-origin:52px 42px">
+    <path d="M52,42 C46,52 24,64 16,58 C8,52 10,40 20,38 C32,36 46,40 52,42Z" fill="#f5832a" opacity="0.88"/>
+    <circle cx="26" cy="52" r="3.5" fill="#fef3c7" opacity="0.6"/>
+  </g>
+  <ellipse cx="52" cy="36" rx="3.5" ry="16" fill="#1a0a00"/>
+  <circle cx="52" cy="19" r="5" fill="#1a0a00"/>
+  <line x1="52" y1="14" x2="44" y2="4" stroke="#1a0a00" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="52" y1="14" x2="60" y2="4" stroke="#1a0a00" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="44" cy="4" r="2.2" fill="#e8620a"/>
+  <circle cx="60" cy="4" r="2.2" fill="#e8620a"/>
+  <circle cx="49.5" cy="18" r="1.5" fill="#f0b429"/>
+  <circle cx="54.5" cy="18" r="1.5" fill="#f0b429"/>
+</svg>
 
 <!-- ===== WHATSAPP CHATBOT ===== -->
 <button class="wa-chatbot-fab" onclick="toggleWAChat()" title="Chat with us on WhatsApp" aria-label="WhatsApp Chat">
@@ -2727,190 +3356,71 @@
     <button class="wac-close" onclick="toggleWAChat()">✕</button>
   </div>
   <div class="wac-scroll-area">
-  <div class="wac-body">
-    <div class="wac-bubble">
-      <strong>Namaste! 🙏</strong><br>
-      Welcome to BiddingSolution LLP — India's trusted tender &amp; procurement partner.<br><br>
-      How can we help you today? Select a service below to start a WhatsApp conversation instantly.
-      <div class="wac-time">Today</div>
+    <div class="wac-body">
+      <div class="wac-bubble">
+        <strong>Namaste! 🙏</strong><br>
+        Welcome to BiddingSolution LLP — India's trusted tender &amp; procurement partner.<br><br>
+        How can we help you today? Select a service below.
+        <div class="wac-time">Today</div>
+      </div>
+    </div>
+    <div class="wac-services">
+      <div class="wac-services-label">Choose a Service to Chat About</div>
+      <div class="wac-service-btns">
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Tender%20Filing%20%26%20Bidding%20Support." target="_blank"><span class="wsb-icon">📋</span> Tender Filing &amp; Bidding</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20know%20about%20ISO%20Certification." target="_blank"><span class="wsb-icon">🏅</span> ISO Certification</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20Tender%20Training%20Program." target="_blank"><span class="wsb-icon">🎓</span> Training Programs</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20DPIIT%20Startup%20Recognition%20%26%20GeM%20Registration." target="_blank"><span class="wsb-icon">🚀</span> Startup &amp; GeM Registration</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20apply%20for%20Electrical%20Contractor%20Registration%20in%20Delhi." target="_blank"><span class="wsb-icon">⚡</span> Electrical Contractor Reg.</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20IREPS%20Railway%20Tender." target="_blank"><span class="wsb-icon">🚂</span> IREPS Railway Tender</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20NSIC%20Registration%20for%20my%20business." target="_blank"><span class="wsb-icon">📑</span> NSIC Registration</a>
+        <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20have%20a%20general%20query%20about%20your%20services." target="_blank"><span class="wsb-icon">💬</span> General Enquiry</a>
+      </div>
     </div>
   </div>
-  <div class="wac-services">
-    <div class="wac-services-label">Choose a Service to Chat About</div>
-    <div class="wac-service-btns">
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Tender%20Filing%20%26%20Bidding%20Support." target="_blank"><span class="wsb-icon">📋</span> Tender Filing & Bidding</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20know%20about%20ISO%20Certification." target="_blank"><span class="wsb-icon">🏅</span> ISO Certification</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20Tender%20Training%20Program." target="_blank"><span class="wsb-icon">🎓</span> Training Programs</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20DPIIT%20Startup%20Recognition%20%26%20GeM%20Registration." target="_blank"><span class="wsb-icon">🚀</span> Startup & GeM Registration</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20apply%20for%20Electrical%20Contractor%20Registration%20in%20Delhi." target="_blank"><span class="wsb-icon">⚡</span> Electrical Contractor Reg.</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20NSIC%20Registration%20for%20my%20business." target="_blank"><span class="wsb-icon">📑</span> NSIC Registration</a>
-      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20have%20a%20general%20query%20about%20your%20services." target="_blank"><span class="wsb-icon">💬</span> General Enquiry</a>
-    </div>
-  </div>
-  </div><!-- end wac-scroll-area -->
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ===== WHATSAPP CHATBOT =====
+<!-- ===== MOBILE BOTTOM NAV ===== -->
+<nav class="mobile-bottom-nav">
+  <button class="mbn-item active" data-page="home" onclick="showPage('home',this);closeDrawer()"><span class="mbn-icon">🏠</span>Home</button>
+  <button class="mbn-item" data-page="services" onclick="showPage('services',this);closeDrawer()"><span class="mbn-icon">📋</span>Services</button>
+  <button class="mbn-item" data-page="contact" onclick="showPage('contact',this);closeDrawer()"><span class="mbn-icon">✉️</span>Contact</button>
+  <button class="mbn-item" data-page="payment" onclick="showPage('payment',this);closeDrawer()"><span class="mbn-icon">💳</span>Pay</button>
+  <button class="mbn-item" id="more-btn" onclick="toggleDrawer()"><span class="mbn-icon">☰</span>More</button>
+</nav>
+
+<!-- ===== MORE DRAWER ===== -->
+<div class="more-drawer" id="more-drawer">
+  <div class="more-drawer-item" data-page="about" onclick="showPage('about',this);closeDrawer()"><span class="mdi">🏢</span> About Us</div>
+  <div class="more-drawer-item" data-page="tender" onclick="showPage('tender',this);closeDrawer()"><span class="mdi">🔖</span> Tender Filing</div>
+  <div class="more-drawer-item" data-page="training" onclick="showPage('training',this);closeDrawer()"><span class="mdi">🎓</span> Training</div>
+  <div class="more-drawer-item" data-page="startup" onclick="showPage('startup',this);closeDrawer()"><span class="mdi">🚀</span> Startup &amp; GeM</div>
+  <div class="more-drawer-item" data-page="electrical" onclick="showPage('electrical',this);closeDrawer()"><span class="mdi">⚡</span> Electrical Reg.</div>
+  <div class="more-drawer-item" data-page="ireps" onclick="showPage('ireps',this);closeDrawer()"><span class="mdi">🚂</span> IREPS Railway</div>
+  <div class="more-drawer-item" data-page="testimonials" onclick="showPage('testimonials',this);closeDrawer()"><span class="mdi">⭐</span> Testimonials</div>
+</div>
+
+<script>
+  // ===== ALL JS — SINGLE BLOCK =====
+
+  // Page navigation
+  function showPage(id, navEl) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item,.mbn-item,.more-drawer-item').forEach(n => n.classList.remove('active'));
+    const page = document.getElementById('page-' + id);
+    if (page) { page.classList.add('active'); page.scrollTop = 0; window.scrollTo(0,0); }
+    const s = document.querySelector('.nav-item[data-page="'+id+'"]'); if(s) s.classList.add('active');
+    const m = document.querySelector('.mbn-item[data-page="'+id+'"]'); if(m) m.classList.add('active');
+    const d = document.querySelector('.more-drawer-item[data-page="'+id+'"]'); if(d) d.classList.add('active');
+  }
+
+  // WhatsApp chatbot
   function toggleWAChat() {
     const panel = document.getElementById('wa-panel');
-    panel.classList.toggle('open');
+    if (panel) panel.classList.toggle('open');
   }
 
-  // ===== GUIDE CHARACTER =====
-  const guideMessages = [
-    "Need help? Chat with us! 👋",
-    "Ask about Tender Filing 📋",
-    "ISO Certification queries? 🏅",
-    "GeM Registration help? 💎",
-    "⚡ Electrical Contractor Reg.",
-    "Free consultation! Tap here 🙌",
-    "We reply in minutes! ⚡",
-    "Start your govt journey 🚀",
-  ];
-  let guideMsgIndex = 0;
-  let guideHidden = false;
-
-  function rotateGuideMessage() {
-    if (guideHidden) return;
-    guideMsgIndex = (guideMsgIndex + 1) % guideMessages.length;
-    const el = document.getElementById('guide-bubble-text');
-    const bubble = document.querySelector('.guide-bubble');
-    if (el && bubble) {
-      bubble.style.opacity = '0';
-      bubble.style.transform = 'translateY(-8px) scale(0.95)';
-      bubble.style.transition = 'opacity 0.3s, transform 0.3s';
-      setTimeout(() => {
-        el.textContent = guideMessages[guideMsgIndex];
-        bubble.style.opacity = '1';
-        bubble.style.transform = 'translateY(0) scale(1)';
-      }, 320);
-    }
-  }
-
-  function dismissGuide() {
-    guideHidden = true;
-    const w = document.getElementById('guide-char');
-    if (w) w.classList.add('dismissed');
-    // Re-show after 30 seconds
-    setTimeout(() => {
-      guideHidden = false;
-      if (w) w.classList.remove('dismissed');
-    }, 30000);
-  }
-
-  // Start rotating messages every 3.5 seconds after 3s delay
-  setTimeout(() => {
-    setInterval(rotateGuideMessage, 3500);
-  }, 3000);
-  // Close panel when clicking outside
-  document.addEventListener('click', function(e) {
-    const panel = document.getElementById('wa-panel');
-    const fab = document.querySelector('.wa-chatbot-fab');
-    if (panel && panel.classList.contains('open')) {
-      if (!panel.contains(e.target) && !fab.contains(e.target)) {
-        panel.classList.remove('open');
-      }
-    }
-  });
-  // ===== PAGE NAVIGATION =====
-  function showPage(id, navEl) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Remove active from all nav items
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-
-    // Show target page
-    const page = document.getElementById('page-' + id);
-    if (page) {
-      page.classList.add('active');
-      page.scrollTop = 0;
-    }
-
-    // Mark nav item active
-    if (navEl) {
-      navEl.classList.add('active');
-    } else {
-      // Find by data-page attribute
-      const navMatch = document.querySelector('[data-page="' + id + '"]');
-      if (navMatch) navMatch.classList.add('active');
-    }
-  }
-
-  // ===== COPY TO CLIPBOARD =====
-  function copyText(text, btn) {
-    navigator.clipboard.writeText(text).then(() => {
-      const orig = btn.innerHTML;
-      btn.innerHTML = '✅ Copied!';
-      btn.classList.add('copy-success');
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.classList.remove('copy-success');
-      }, 2000);
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      const orig = btn.innerHTML;
-      btn.innerHTML = '✅ Copied!';
-      btn.classList.add('copy-success');
-      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copy-success'); }, 2000);
-    });
-  }
-
-  // ===== CONTACT FORM =====
-  function handleContactSubmit(e) {
-    const name = document.getElementById('cf-name').value.trim();
-    const phone = document.getElementById('cf-phone').value.trim();
-    const service = document.getElementById('cf-service').value;
-    const btn = e.target;
-
-    if (!name || !phone || !service) {
-      btn.textContent = '⚠️ Please fill all required fields';
-      btn.style.background = '#c0392b';
-      setTimeout(() => {
-        btn.textContent = 'Submit — Get Free Consultation →';
-        btn.style.background = '';
-      }, 2500);
-      return;
-    }
-
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-
-    const data = {
-      name,
-      phone,
-      email: document.getElementById('cf-email').value,
-      company: document.getElementById('cf-company').value,
-      service,
-      message: document.getElementById('cf-message').value,
-      _replyto: document.getElementById('cf-email').value || 'sales@BiddingSolution.com',
-      _subject: `New Lead from BiddingSolution Website — ${service}`,
-      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      source: 'Contact Form — sales@BiddingSolution.com'
-    };
-
-    const FORMSPREE_ID = 'mqeyybdn';
-    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
-      btn.textContent = "✅ Submitted! We'll call you within 2 hours.";
-      btn.style.background = 'var(--green)';
-    })
-    .catch(() => {
-      btn.textContent = "✅ Submitted! We'll call you within 2 hours.";
-      btn.style.background = 'var(--green)';
-    });
-  }
-
-  // ===== MOBILE DRAWER =====
+  // Mobile drawer
   function toggleDrawer() {
     const drawer = document.getElementById('more-drawer');
     const btn = document.getElementById('more-btn');
@@ -2923,48 +3433,172 @@
     if (drawer) drawer.classList.remove('open');
     if (btn) btn.classList.remove('active');
   }
+
+  // Copy to clipboard
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerHTML; btn.innerHTML = '✅ Copied!'; btn.classList.add('copy-success');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copy-success'); }, 2000);
+    }).catch(() => {
+      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      const orig = btn.innerHTML; btn.innerHTML = '✅ Copied!'; btn.classList.add('copy-success');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copy-success'); }, 2000);
+    });
+  }
+
+  // Contact form
+  function handleContactSubmit(e) {
+    const name = document.getElementById('cf-name').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const service = document.getElementById('cf-service').value;
+    const btn = e.target;
+    if (!name || !phone || !service) {
+      btn.textContent = '⚠️ Please fill all required fields'; btn.style.background = '#c0392b';
+      setTimeout(() => { btn.textContent = 'Submit — Get Free Consultation →'; btn.style.background = ''; }, 2500);
+      return;
+    }
+    btn.textContent = 'Submitting...'; btn.disabled = true;
+    const data = { name, phone, email: document.getElementById('cf-email').value,
+      company: document.getElementById('cf-company').value, service,
+      message: document.getElementById('cf-message').value,
+      _replyto: document.getElementById('cf-email').value || 'sales@BiddingSolution.com',
+      _subject: 'New Lead — BiddingSolution Website — ' + service,
+      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) };
+    fetch('https://formspree.io/f/mqeyybdn', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(() => { btn.textContent = "✅ Submitted! We'll call you within 2 hours."; btn.style.background = 'var(--green)'; })
+    .catch(() => { btn.textContent = "✅ Submitted! We'll call you within 2 hours."; btn.style.background = 'var(--green)'; });
+  }
+
+  // Click-outside close handlers
   document.addEventListener('click', function(e) {
+    const panel = document.getElementById('wa-panel');
+    const fab = document.querySelector('.wa-chatbot-fab');
+    if (panel && panel.classList.contains('open') && !panel.contains(e.target) && fab && !fab.contains(e.target)) panel.classList.remove('open');
     const drawer = document.getElementById('more-drawer');
     const moreBtn = document.getElementById('more-btn');
-    if (drawer && drawer.classList.contains('open')) {
-      if (!drawer.contains(e.target) && moreBtn && !moreBtn.contains(e.target)) {
-        closeDrawer();
-      }
-    }
+    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && moreBtn && !moreBtn.contains(e.target)) closeDrawer();
   });
+
+  // ===== 🦋 BUTTERFLY FLIGHT ENGINE =====
+  (function() {
+    const bf = document.getElementById('butterfly');
+    const bubble = document.getElementById('bf-bubble');
+    if (!bf || !bubble) return;
+
+    let bx = 300, by = 200, angle = 0;
+    let isLanding = false, isLanded = false;
+    let landTimer = null, roamTimer = null, frameId = null;
+    let waypoints = [], wpIndex = 0, progress = 0;
+    let cp1Cur = null, cp2Cur = null;
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function getWACenter() {
+      const fab = document.querySelector('.wa-chatbot-fab');
+      if (!fab) return { x: window.innerWidth - 55, y: window.innerHeight - 55 };
+      const r = fab.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    }
+
+    function makeWaypoints(n) {
+      const pts = [], m = 80;
+      for (let i = 0; i < n; i++) pts.push({ x: rand(m, window.innerWidth-m), y: rand(m, window.innerHeight-m) });
+      return pts;
+    }
+
+    function bezier(p0, p1, p2, p3, t) {
+      const u = 1-t;
+      return { x: u*u*u*p0.x+3*u*u*t*p1.x+3*u*t*t*p2.x+t*t*t*p3.x, y: u*u*u*p0.y+3*u*u*t*p1.y+3*u*t*t*p2.y+t*t*t*p3.y };
+    }
+
+    function ctrl(a, b, off) {
+      return { x: (a.x+b.x)/2+rand(-off,off), y: (a.y+b.y)/2+rand(-off,off) };
+    }
+
+    function place(cx, cy, heading) {
+      const sx = Math.cos(heading) < 0 ? -1 : 1;
+      bf.style.transform = `translate(${cx-26}px,${cy-26}px) rotate(${heading*180/Math.PI}deg) scaleX(${sx})`;
+    }
+
+    function showBubble() {
+      const wa = getWACenter();
+      bubble.style.left = (wa.x - 95) + 'px';
+      bubble.style.top  = (wa.y - 58) + 'px';
+      bubble.classList.add('show');
+    }
+
+    function landOnWA() {
+      if (isLanded) return;
+      isLanding = true;
+      cancelAnimationFrame(frameId);
+      const wa = getWACenter();
+      const start = { x: bx, y: by };
+      const end   = { x: wa.x, y: wa.y - 28 };
+      const c1 = ctrl(start, end, 120), c2 = ctrl(end, start, 80);
+      let t = 0;
+      function flyIn() {
+        t += 0.018; if (t > 1) t = 1;
+        const pt = bezier(start, c1, c2, end, t);
+        angle = Math.atan2(pt.y - by, pt.x - bx);
+        bx = pt.x; by = pt.y; place(bx, by, angle);
+        if (t < 1) { frameId = requestAnimationFrame(flyIn); return; }
+        isLanded = true; isLanding = false;
+        bf.classList.add('landing');
+        const fab = document.querySelector('.wa-chatbot-fab');
+        if (fab) fab.style.boxShadow = '0 0 0 8px rgba(37,211,102,0.3),0 6px 24px rgba(37,211,102,0.6)';
+        showBubble();
+        bf.onclick = () => { toggleWAChat(); takeOff(); };
+        landTimer = setTimeout(takeOff, 4000);
+      }
+      frameId = requestAnimationFrame(flyIn);
+    }
+
+    function takeOff() {
+      clearTimeout(landTimer);
+      bf.classList.remove('landing'); bf.onclick = null;
+      bubble.classList.remove('show');
+      isLanded = false; isLanding = false;
+      const fab = document.querySelector('.wa-chatbot-fab');
+      if (fab) fab.style.boxShadow = '';
+      startRoaming();
+    }
+
+    function startRoaming() {
+      clearTimeout(roamTimer);
+      waypoints = makeWaypoints(6); wpIndex = 0; progress = 0; cp1Cur = null; cp2Cur = null;
+      roamLoop();
+      roamTimer = setTimeout(landOnWA, rand(9000, 14000));
+    }
+
+    function roamLoop() {
+      if (isLanding || isLanded) return;
+      const from = wpIndex === 0 ? { x: bx, y: by } : waypoints[wpIndex-1];
+      const to = waypoints[wpIndex];
+      if (!cp1Cur) { cp1Cur = ctrl(from, to, 150); cp2Cur = ctrl(to, from, 150); }
+      progress += 0.008;
+      if (progress >= 1) {
+        progress = 0; cp1Cur = null; cp2Cur = null;
+        wpIndex = (wpIndex+1) % waypoints.length;
+        if (wpIndex === 0) waypoints = makeWaypoints(6);
+      }
+      const pt = bezier(from, cp1Cur||from, cp2Cur||to, to, Math.min(progress,1));
+      const dx = pt.x-bx, dy = pt.y-by;
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) angle = Math.atan2(dy, dx);
+      bx = pt.x; by = pt.y; place(bx, by, angle);
+      frameId = requestAnimationFrame(roamLoop);
+    }
+
+    setTimeout(() => {
+      bx = rand(100, window.innerWidth-200); by = rand(100, 300);
+      bf.style.opacity = '1';           /* fade in when flight begins */
+      bf.style.transition = 'opacity 0.8s, filter 0.3s';
+      startRoaming();
+    }, 1200);
+
+    window.addEventListener('resize', () => { clearTimeout(roamTimer); if (!isLanded) startRoaming(); });
+  })();
 </script>
-
-<!-- ===== MOBILE BOTTOM NAV ===== -->
-<nav class="mobile-bottom-nav">
-  <button class="mbn-item active" data-page="home" onclick="showPage('home',this);closeDrawer()">
-    <span class="mbn-icon">🏠</span>Home
-  </button>
-  <button class="mbn-item" data-page="services" onclick="showPage('services',this);closeDrawer()">
-    <span class="mbn-icon">📋</span>Services
-  </button>
-  <button class="mbn-item" data-page="contact" onclick="showPage('contact',this);closeDrawer()">
-    <span class="mbn-icon">✉️</span>Contact
-  </button>
-  <button class="mbn-item" data-page="payment" onclick="showPage('payment',this);closeDrawer()">
-    <span class="mbn-icon">💳</span>Pay
-  </button>
-  <button class="mbn-item" id="more-btn" onclick="toggleDrawer()">
-    <span class="mbn-icon">☰</span>More
-  </button>
-</nav>
-
-<!-- ===== MORE DRAWER ===== -->
-<div class="more-drawer" id="more-drawer">
-  <div class="more-drawer-item" data-page="about" onclick="showPage('about',this);closeDrawer()">
-    <span class="mdi">🏢</span> About Us
-  </div>
-  <div class="more-drawer-item" data-page="tender" onclick="showPage('tender',this);closeDrawer()">
-    <span class="mdi">🔖</span> Tender Filing
-  </div>
-  <div class="more-drawer-item" data-page="training" onclick="showPage('training',this);closeDrawer()">
-    <span class="mdi">🎓</span> Training
-  </div>
-  <div class="more-drawer-item" data-page="startup" onclick="showPage('startup',this);closeDrawer()">
-    <span class="mdi">🚀</span> Startup & GeM
-  </div>
-  <div class="more-drawer-item" data-page="electrical" onclick="showPage('electrical',this);closeDrawe
+</body>
+</html>
