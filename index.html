@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BiddingSolution LLP — India's Premier Tender & Procurement Partner</title>
+<title>BiddingSolution LLP — Bid and Win | India's Premier Tender & Procurement Partner</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -60,11 +60,13 @@
     line-height: 1.2;
   }
   .sidebar-logo-tag {
-    font-size: 10.5px;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.05em;
+    font-size: 11px;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-top: 3px;
+    margin-top: 4px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
   }
   .sidebar-logo-badge {
     display: inline-flex;
@@ -333,13 +335,18 @@
   .stat-label { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 3px; }
 
   .hero-credentials {
-    position: absolute; right: 56px; bottom: 56px;
-    background: rgba(255,255,255,0.06);
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.07);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
     padding: 20px 22px;
-    animation: fadeUp 0.8s ease 0.5s both;
+    min-width: 220px;
+    max-width: 240px;
+    z-index: 3;
   }
   .hero-cred-label {
     font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
@@ -390,6 +397,7 @@
   .sc-startup::before { background: var(--navy-mid); }
   .sc-gem::before { background: #8b5cf6; }
   .sc-nsic::before { background: #0891b2; }
+  .sc-electrical::before { background: #eab308; }
 
   .service-icon {
     width: 50px; height: 50px; border-radius: 13px;
@@ -877,6 +885,11 @@
     display: none;
   }
 
+  /* More drawer — hidden on desktop always */
+  .more-drawer {
+    display: none !important;
+  }
+
   /* ===== RESPONSIVE — MOBILE ===== */
   @media (max-width: 768px) {
     /* Hide sidebar completely on mobile */
@@ -931,6 +944,7 @@
     .stat-num { font-size: 26px; }
     .stat-label { font-size: 11px; }
     .hero-credentials { display: none; }
+    .hero-address-mobile { display: flex; }
 
     /* Grids → single column on mobile */
     .services-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -942,6 +956,10 @@
     .testo-grid { grid-template-columns: 1fr; gap: 14px; }
     .about-layout { grid-template-columns: 1fr; gap: 28px; }
     .stats-2x2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    /* cred-cards-grid is already flex column — no change needed on mobile */
+    .cred-card { padding: 10px 12px; gap: 10px; }
+    .cred-card-value { font-size: 12px; }
+    .cred-card-icon { width: 34px; height: 34px; font-size: 18px; }
     .legal-grid { grid-template-columns: 1fr 1fr; }
 
     /* Service cards */
@@ -1031,7 +1049,7 @@
 
     /* "More" drawer overlay */
     .more-drawer {
-      display: none;
+      display: none !important; /* hidden by default on mobile too */
       position: fixed;
       bottom: 64px; left: 0; right: 0;
       background: var(--navy);
@@ -1042,7 +1060,7 @@
       gap: 8px;
       animation: slideUp 0.25s ease both;
     }
-    .more-drawer.open { display: flex; }
+    .more-drawer.open { display: flex !important; } /* only show when JS adds .open */
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -1063,6 +1081,14 @@
     .more-drawer-item:hover,
     .more-drawer-item.active { background: var(--saffron); color: white; border-color: var(--saffron); }
     .more-drawer-item .mdi { font-size: 17px; }
+
+    /* Move WA chatbot fab above bottom nav on mobile */
+    .wa-chatbot-fab { bottom: 80px; right: 16px; width: 52px; height: 52px; }
+    .wa-chatbot-panel {
+      bottom: 148px; right: 12px;
+      width: calc(100vw - 24px); max-width: 360px;
+      max-height: calc(100vh - 200px); /* tighter on mobile */
+    }
 
     /* Mobile top bar */
     .mobile-topbar {
@@ -1090,6 +1116,462 @@
     }
   }
 
+  .hero-address-block {
+    display: flex; align-items: flex-start; gap: 8px;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .hero-address-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .hero-address-line1 {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 13px; color: #fff; letter-spacing: 0.02em;
+  }
+  .hero-address-line2 {
+    font-size: 12px; color: var(--gold-light); font-weight: 600; margin-top: 2px;
+  }
+  .hero-address-city {
+    font-size: 13px; color: var(--saffron); font-weight: 800;
+    font-family: 'Syne', sans-serif; letter-spacing: 0.04em; margin-top: 2px;
+  }
+
+  /* Also add vibrant address in hero sub-area for mobile */
+  .hero-address-mobile {
+    display: none; /* hidden on desktop, shown on mobile via media query */
+    margin-top: 24px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(232,98,10,0.3);
+    border-radius: 12px;
+    padding: 14px 16px;
+    align-items: center; gap: 10px;
+  }
+  .hero-address-mobile .addr-icon { font-size: 20px; flex-shrink: 0; }
+  .hero-address-mobile .addr-text-top {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 13px; color: white;
+  }
+  .hero-address-mobile .addr-text-bot {
+    font-size: 12px; color: var(--gold-light); margin-top: 2px;
+  }
+  .hero-address-mobile .addr-city {
+    font-size: 13px; color: var(--saffron); font-weight: 800;
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* ===== WHATSAPP CHATBOT ===== */
+  .wa-chatbot-fab {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none;
+    transition: all 0.3s;
+    animation: waPulse 2.5s ease-in-out infinite;
+  }
+  .wa-chatbot-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.65); }
+  @keyframes waPulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.15); }
+  }
+  .wa-chatbot-fab svg { width: 32px; height: 32px; }
+
+  .wa-chatbot-panel {
+    position: fixed;
+    bottom: 100px; right: 28px; z-index: 8999;
+    width: 320px;
+    /* KEY FIX: constrain height to viewport so it never overflows at any zoom */
+    max-height: calc(100vh - 140px);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: none;
+    flex-direction: column; /* stack header / body / services vertically */
+    animation: panelSlideUp 0.3s ease both;
+  }
+  .wa-chatbot-panel.open { display: flex; }
+  @keyframes panelSlideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .wac-header {
+    background: linear-gradient(135deg, #128C7E, #25D366);
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+    flex-shrink: 0; /* never compress the header */
+  }
+  .wac-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .wac-header-text strong { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: white; display: block; }
+  .wac-header-text span { font-size: 11px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 5px; }
+  .wac-online-dot { width: 7px; height: 7px; background: #7FFF00; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  .wac-close { margin-left: auto; background: none; border: none; color: rgba(255,255,255,0.7); font-size: 20px; cursor: pointer; padding: 4px; line-height: 1; flex-shrink: 0; }
+
+  /* Scrollable middle section */
+  .wac-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0; /* critical for flex overflow to work */
+  }
+  .wac-body {
+    padding: 14px;
+    background: #ECE5DD;
+  }
+  .wac-bubble {
+    background: white;
+    border-radius: 0 12px 12px 12px;
+    padding: 11px 13px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 8px;
+    max-width: 92%;
+  }
+  .wac-bubble strong { color: #128C7E; font-family: 'Syne', sans-serif; }
+  .wac-time { font-size: 10px; color: #999; text-align: right; margin-top: 4px; }
+
+  .wac-services {
+    padding: 10px 14px 14px;
+    background: white;
+    border-top: 1px solid #f0f0f0;
+  }
+  .wac-services-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+  .wac-service-btns {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .wac-service-btn {
+    display: flex; align-items: center; gap: 9px;
+    background: #f7f7f7;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 9px; padding: 8px 11px;
+    font-size: 12.5px; font-weight: 500; color: #222;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wac-service-btn:hover { background: #25D366; color: white; border-color: #25D366; }
+  .wac-service-btn .wsb-icon { font-size: 15px; flex-shrink: 0; }
+
+  /* ===== VIBRANT CREDENTIAL SHOWCASE ===== */
+  .cred-showcase {
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #060d24 0%, #0d1f4c 60%, #0f1635 100%);
+    padding: 22px 20px;
+    position: relative;
+  }
+  .cred-showcase::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 10%, rgba(232,98,10,0.18) 0%, transparent 45%),
+                radial-gradient(circle at 5% 90%, rgba(201,148,26,0.12) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .cred-showcase-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 13px;
+    color: white; margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 8px;
+    text-transform: uppercase;
+  }
+
+  /* ── NEW: horizontal rows layout ── */
+  .cred-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative; z-index: 1;
+    margin-bottom: 14px;
+  }
+
+  .cred-card {
+    position: relative;
+    border-radius: 12px;
+    padding: 12px 16px;
+    overflow: hidden;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: credFadeIn 0.5s ease calc(var(--delay, 0s)) both;
+    transition: transform 0.22s, box-shadow 0.22s;
+  }
+  .cred-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+    z-index: 2;
+  }
+  @keyframes credFadeIn {
+    from { opacity: 0; transform: translateX(-14px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Shine sweep */
+  .cred-shine {
+    position: absolute; top: 0; left: -100%;
+    width: 55%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+  }
+  .cred-card:hover .cred-shine {
+    left: 160%;
+    transition: left 0.45s ease;
+  }
+
+  /* Individual card colours */
+  .cred-llp  { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); border: 1px solid rgba(96,165,250,0.35); }
+  .cred-pan  { background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%); border: 1px solid rgba(251,146,60,0.35); }
+  .cred-gst  { background: linear-gradient(135deg, #14532d 0%, #16a34a 100%); border: 1px solid rgba(74,222,128,0.35); }
+  .cred-dpiit{ background: linear-gradient(135deg, #581c87 0%, #9333ea 100%); border: 1px solid rgba(196,181,253,0.35); }
+  .cred-gem  { background: linear-gradient(135deg, #78350f 0%, #d97706 100%); border: 1px solid rgba(252,211,77,0.35); }
+  .cred-msme { background: linear-gradient(135deg, #164e63 0%, #0891b2 100%); border: 1px solid rgba(103,232,249,0.35); }
+
+  .cred-card-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    animation: iconBob 3s ease-in-out infinite;
+  }
+  @keyframes iconBob {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-2px) scale(1.05); }
+  }
+
+  .cred-card-text { flex: 1; min-width: 0; }
+  .cred-card-label {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cred-card-value {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-weight: 700;
+    font-size: 16px; color: white;
+    letter-spacing: 0.04em; line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  }
+  .cred-card-sub {
+    font-size: 9.5px; color: rgba(255,255,255,0.48);
+    margin-top: 3px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Badge on the right */
+  .cred-card-badge {
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: white;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .cred-address-bar {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    display: flex; align-items: center; gap: 8px;
+    position: relative; z-index: 1;
+    line-height: 1.5;
+  }
+
+  /* ===== END CREDENTIAL SHOWCASE ===== */
+
+  /* ===== ANIMATED GUIDE CHARACTER ===== */
+  .guide-wrapper {
+    position: fixed;
+    bottom: 22px;
+    right: 106px; /* sits left of the WA fab */
+    z-index: 8998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .guide-wrapper.dismissed {
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+  }
+
+  /* Speech bubble */
+  .guide-bubble {
+    position: absolute;
+    bottom: 148px;
+    right: -30px;
+    background: white;
+    border-radius: 14px;
+    padding: 10px 14px 10px 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    width: 190px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.45;
+    pointer-events: all;
+    border: 2px solid #25D366;
+    animation: bubblePop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both,
+               bubbleFloat 3s ease-in-out 2s infinite;
+  }
+  @keyframes bubblePop {
+    from { opacity: 0; transform: scale(0.5) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes bubbleFloat {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+
+  /* Tail of speech bubble pointing down-right */
+  .guide-bubble-tail {
+    position: absolute;
+    bottom: -12px;
+    right: 30px;
+    width: 0; height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid #25D366;
+  }
+  .guide-bubble-tail::after {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -8px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 11px solid white;
+  }
+
+  .guide-bubble-close {
+    position: absolute;
+    top: 4px; right: 6px;
+    background: none; border: none;
+    font-size: 12px; color: #aaa;
+    cursor: pointer; line-height: 1;
+    padding: 2px;
+  }
+  .guide-bubble-close:hover { color: #e8620a; }
+
+  /* Typing dots inside bubble — shows before main text */
+  .guide-bubble::before {
+    content: '';
+  }
+
+  /* Character body wrapper */
+  .guide-char-body {
+    cursor: pointer;
+    pointer-events: all;
+    animation: charBounce 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.3s both,
+               charIdle 2.8s ease-in-out 1.5s infinite;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    transition: transform 0.2s;
+  }
+  .guide-char-body:hover {
+    transform: scale(1.08) translateY(-4px);
+    filter: drop-shadow(0 12px 20px rgba(37,211,102,0.4));
+  }
+  @keyframes charBounce {
+    from { opacity: 0; transform: translateY(60px) scale(0.6); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes charIdle {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-6px) rotate(-2deg); }
+    75%      { transform: translateY(-3px) rotate(2deg); }
+  }
+
+  /* Shadow pulse */
+  .guide-shadow {
+    animation: shadowPulse 2.8s ease-in-out 1.5s infinite;
+  }
+  @keyframes shadowPulse {
+    0%,100% { rx: 18; opacity: 0.15; }
+    25%      { rx: 14; opacity: 0.08; }
+    75%      { rx: 16; opacity: 0.12; }
+  }
+
+  /* Waving left arm */
+  .guide-arm-left {
+    animation: armWave 1.2s ease-in-out 2s infinite;
+    transform-origin: 6px 64px;
+  }
+  @keyframes armWave {
+    0%,100% { transform: rotate(0deg); }
+    30%      { transform: rotate(-30deg); }
+    60%      { transform: rotate(10deg); }
+  }
+
+  /* Pointing right arm gentle sway */
+  .guide-arm-right {
+    animation: armSway 3s ease-in-out 1s infinite;
+    transform-origin: 58px 64px;
+  }
+  @keyframes armSway {
+    0%,100% { transform: rotate(0deg); }
+    50%      { transform: rotate(8deg); }
+  }
+
+  /* Leg walk cycle (subtle) */
+  .guide-leg-left {
+    animation: legSwing 1.4s ease-in-out 1s infinite;
+    transform-origin: 32px 100px;
+  }
+  .guide-leg-right {
+    animation: legSwing 1.4s ease-in-out 1.7s infinite;
+    transform-origin: 48px 100px;
+  }
+  @keyframes legSwing {
+    0%,100% { transform: rotate(0deg); }
+    50%      { transform: rotate(6deg); }
+  }
+
+  /* Guide SVG size */
+  .guide-svg { width: 80px; height: 140px; display: block; }
+
+  /* Rotating message cycle */
+  .guide-bubble[data-hidden="true"] { display: none; }
+
+  /* ── Mobile adjustments ── */
+  @media (max-width: 768px) {
+    .guide-wrapper { right: 80px; bottom: 82px; }
+    .guide-svg { width: 64px; height: 112px; }
+    .guide-bubble { width: 160px; font-size: 12px; right: -20px; bottom: 118px; }
+  }
+
+  /* ===== END GUIDE CHARACTER ===== */
+
   /* Hide desktop sidebar topbar on desktop */
   .mobile-topbar { display: none; }
 </style>
@@ -1098,7 +1580,7 @@
 
 <!-- ===== MOBILE TOP BAR ===== -->
 <div class="mobile-topbar">
-  <div class="mobile-topbar-logo">Bidding<span>Solution</span> LLP</div>
+  <div class="mobile-topbar-logo">Bidding<span>Solution</span> LLP &nbsp;<small style="font-size:10px;opacity:0.6;font-weight:400;">Bid and Win</small></div>
   <button class="mobile-topbar-cta" onclick="showPage('contact', null)">📞 Free Consult</button>
 </div>
 
@@ -1106,7 +1588,7 @@
 <nav class="sidebar">
   <div class="sidebar-logo">
     <div class="sidebar-logo-name">BiddingSolution LLP</div>
-    <div class="sidebar-logo-tag">Tender & Procurement Partner</div>
+    <div class="sidebar-logo-tag">Bid and Win</div>
     <div class="sidebar-logo-badge">Live since 2018</div>
   </div>
 
@@ -1131,6 +1613,9 @@
     </div>
     <div class="nav-item" data-page="startup" onclick="showPage('startup', this)">
       <span class="nav-icon">🚀</span> Startup & GeM
+    </div>
+    <div class="nav-item" data-page="electrical" onclick="showPage('electrical', this)">
+      <span class="nav-icon">⚡</span> Electrical Reg.
     </div>
 
     <div class="nav-section-label">Clients</div>
@@ -1166,12 +1651,22 @@
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
-        <div class="hero-eyebrow">India's #1 Tender Consultancy</div>
+        <div class="hero-eyebrow">Bid and Win — India's #1 Tender Consultancy</div>
         <h1 class="hero-title">Win Government<br>Contracts with<br><em>Expert Support</em></h1>
         <p class="hero-sub">BiddingSolution LLP helps startups, MSMEs, and enterprises navigate India's ₹40 lakh crore government procurement market — from tender filing to ISO certification and GeM registration.</p>
         <div class="hero-btns">
           <button class="btn-primary" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Get Free Consultation →</button>
           <button class="btn-outline-white" onclick="showPage('services', document.querySelector('[data-page=services]'))">Explore Services</button>
+        </div>
+
+        <!-- Vibrant address on mobile (shown inside hero) -->
+        <div class="hero-address-mobile">
+          <span class="addr-icon">📍</span>
+          <div>
+            <div class="addr-text-top">309/4, 2nd Floor, Street No-4</div>
+            <div class="addr-text-bot">Govindpuri, Kalkaji</div>
+            <div class="addr-city">New Delhi – 110019</div>
+          </div>
         </div>
         <div class="hero-stats">
           <div>
@@ -1201,6 +1696,14 @@
           <div class="hero-cred-item">DPIIT: DIPP230814</div>
           <div class="hero-cred-item">GeM Seller Verified</div>
           <div class="hero-cred-item">ISO Certified Partner</div>
+        </div>
+        <div class="hero-address-block">
+          <div class="hero-address-icon">📍</div>
+          <div>
+            <div class="hero-address-line1">309/4, 2nd Floor, Street No-4</div>
+            <div class="hero-address-line2">Govindpuri, Kalkaji</div>
+            <div class="hero-address-city">New Delhi – 110019</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1269,36 +1772,81 @@
             </div>
           </div>
 
-          <div class="legal-card">
-            <div class="legal-card-title">🏢 Registered Legal Entity</div>
-            <div class="legal-grid">
-              <div>
-                <div class="legal-item-label">Entity Name</div>
-                <div class="legal-item-value">Bidding Solution LLP</div>
+          <!-- ===== VIBRANT ANIMATED CREDENTIALS ===== -->
+          <div class="cred-showcase">
+            <div class="cred-showcase-title">🏢 Verified Company Credentials</div>
+            <div class="cred-cards-grid">
+
+              <div class="cred-card cred-llp" style="--delay:0s">
+                <div class="cred-card-icon">🏛️</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">LLP Registration No.</div>
+                  <div class="cred-card-value">ACS-3562</div>
+                  <div class="cred-card-sub">Ministry of Corporate Affairs</div>
+                </div>
+                <div class="cred-card-badge">MCA</div>
+                <div class="cred-shine"></div>
               </div>
-              <div>
-                <div class="legal-item-label">LLP No.</div>
-                <div class="legal-item-value">ACS-3562</div>
+
+              <div class="cred-card cred-pan" style="--delay:0.07s">
+                <div class="cred-card-icon">📄</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">PAN Number</div>
+                  <div class="cred-card-value">ABFFB8034R</div>
+                  <div class="cred-card-sub">Income Tax Dept., GOI</div>
+                </div>
+                <div class="cred-card-badge">PAN</div>
+                <div class="cred-shine"></div>
               </div>
-              <div>
-                <div class="legal-item-label">PAN</div>
-                <div class="legal-item-value">ABFFB8034R</div>
+
+              <div class="cred-card cred-gst" style="--delay:0.14s">
+                <div class="cred-card-icon">🧾</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">GST Number</div>
+                  <div class="cred-card-value">07ABFFB8034R1ZX</div>
+                  <div class="cred-card-sub">GSTN — Delhi (07)</div>
+                </div>
+                <div class="cred-card-badge">GST</div>
+                <div class="cred-shine"></div>
               </div>
-              <div>
-                <div class="legal-item-label">GST No.</div>
-                <div class="legal-item-value">07ABFFB8034R1ZX</div>
+
+              <div class="cred-card cred-dpiit" style="--delay:0.21s">
+                <div class="cred-card-icon">🚀</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">DPIIT Startup India</div>
+                  <div class="cred-card-value">DIPP230814</div>
+                  <div class="cred-card-sub">Dept. for Promotion of Industry</div>
+                </div>
+                <div class="cred-card-badge">DPIIT</div>
+                <div class="cred-shine"></div>
               </div>
-              <div>
-                <div class="legal-item-label">DPIIT</div>
-                <div class="legal-item-value">DIPP230814</div>
+
+              <div class="cred-card cred-gem" style="--delay:0.28s">
+                <div class="cred-card-icon">💎</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">GeM Seller ID</div>
+                  <div class="cred-card-value">HLT1250013803750</div>
+                  <div class="cred-card-sub">Government e-Marketplace</div>
+                </div>
+                <div class="cred-card-badge">GeM</div>
+                <div class="cred-shine"></div>
               </div>
-              <div>
-                <div class="legal-item-label">GeM Seller ID</div>
-                <div class="legal-item-value" style="color:var(--gold-light);">HLT1250013803750</div>
+
+              <div class="cred-card cred-msme" style="--delay:0.35s">
+                <div class="cred-card-icon">🏅</div>
+                <div class="cred-card-text">
+                  <div class="cred-card-label">MSME / Udyam</div>
+                  <div class="cred-card-value">Registered Entity</div>
+                  <div class="cred-card-sub">Ministry of MSME, GOI</div>
+                </div>
+                <div class="cred-card-badge">MSME</div>
+                <div class="cred-shine"></div>
               </div>
+
             </div>
-            <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:rgba(255,255,255,0.4);">
-              📍 309/4, 2nd Floor, Street No-4, Govindpuri, Kalkaji, New Delhi – 110019
+            <div class="cred-address-bar">
+              <span style="font-size:16px;">📍</span>
+              <span>309/4, 2nd Floor, Street No-4, <strong style="color:white;">Govindpuri, Kalkaji</strong>, <span style="color:var(--saffron);font-weight:700;">New Delhi – 110019</span></span>
             </div>
           </div>
         </div>
@@ -1352,6 +1900,12 @@
           <div class="service-name">NSIC Registration</div>
           <div class="service-desc">Obtain NSIC (Single Point Registration Scheme) to access MSE purchase preference in government tenders — get up to 25% price preference and EMD exemption up to ₹25L.</div>
           <div class="service-tag">MSME Advantage →</div>
+        </div>
+        <div class="service-card sc-electrical" onclick="showPage('electrical', document.querySelector('[data-page=electrical]'))">
+          <div class="service-icon" style="background:rgba(234,179,8,0.12);">⚡</div>
+          <div class="service-name">Electrical Contractor Registration</div>
+          <div class="service-desc">Get your Electrical Contractor Licence from Delhi Electrical Inspectorate. Mandatory for all electrical works in government & private projects in Delhi. For Companies & Proprietorships.</div>
+          <div class="service-tag" style="color:#b45309;">₹20,000 — Delhi Registration →</div>
         </div>
       </div>
 
@@ -1552,8 +2106,8 @@
         </div>
         <div class="info-card navy">
           <div class="info-card-label">Turn-around Time</div>
-          <div class="info-card-value">21 Days</div>
-          <div class="info-card-sub">Average time to complete DPIIT recognition + GeM registration with our expert team handling the paperwork.</div>
+          <div class="info-card-value">7 Days</div>
+          <div class="info-card-sub">Average time to complete DPIIT recognition + GeM registration with our expert team handling all paperwork.</div>
         </div>
       </div>
 
@@ -1591,7 +2145,7 @@
 
       <div class="cta-strip">
         <div>
-          <h3>Get Recognised in <em>21 Days</em></h3>
+          <h3>Get Recognised in <em>7 Days</em></h3>
           <p>Our team handles your DPIIT application, GeM profile setup, and initial category listing — so you can start bidding fast.</p>
         </div>
         <div class="cta-strip-btns">
@@ -1723,7 +2277,7 @@
               <div class="ci-icon">✉️</div>
               <div>
                 <div class="ci-label">Email</div>
-                <div class="ci-value"><a href="mailto:Biddingsolutionllp@gmail.com">Biddingsolutionllp@gmail.com</a></div>
+                <div class="ci-value"><a href="/cdn-cgi/l/email-protection#e99a88858c9aa9ab808d8d80878eba86859c9d808687c78a8684" style="color:var(--saffron);font-weight:600;"><span class="__cf_email__" data-cfemail="087b69646d7b484a616c6c61666f5b67647d7c616766266b6765">[email&#160;protected]</span></a></div>
               </div>
             </div>
             <div class="ci-item">
@@ -1785,6 +2339,7 @@
                 <option>Startup DPIIT Recognition</option>
                 <option>GeM Registration</option>
                 <option>NSIC Registration</option>
+                <option>Electrical Contractor Registration — Delhi</option>
                 <option>Multiple Services / Not Sure</option>
               </select>
             </div>
@@ -1866,28 +2421,43 @@
         <div>
           <div class="upi-card">
             <div class="upi-title">📱 UPI / QR Payment</div>
-            <div class="upi-sub">Scan using GPay, PhonePe, Paytm, or BHIM</div>
-            <div class="qr-box">
-              <svg viewBox="0 0 160 160" width="150" height="150" xmlns="http://www.w3.org/2000/svg">
-                <rect width="160" height="160" fill="white"/>
-                <rect x="10" y="10" width="40" height="40" rx="4" fill="#0d1f4c"/><rect x="18" y="18" width="24" height="24" rx="2" fill="white"/><rect x="24" y="24" width="12" height="12" rx="1" fill="#0d1f4c"/>
-                <rect x="110" y="10" width="40" height="40" rx="4" fill="#0d1f4c"/><rect x="118" y="18" width="24" height="24" rx="2" fill="white"/><rect x="124" y="24" width="12" height="12" rx="1" fill="#0d1f4c"/>
-                <rect x="10" y="110" width="40" height="40" rx="4" fill="#0d1f4c"/><rect x="18" y="118" width="24" height="24" rx="2" fill="white"/><rect x="24" y="124" width="12" height="12" rx="1" fill="#0d1f4c"/>
-                <rect x="60" y="10" width="6" height="6" fill="#0d1f4c"/><rect x="72" y="10" width="6" height="6" fill="#0d1f4c"/><rect x="84" y="10" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="60" y="22" width="6" height="6" fill="#0d1f4c"/><rect x="78" y="22" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="66" y="34" width="6" height="6" fill="#0d1f4c"/><rect x="84" y="34" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="60" y="60" width="6" height="6" fill="#e8620a"/><rect x="72" y="60" width="6" height="6" fill="#e8620a"/><rect x="84" y="60" width="6" height="6" fill="#e8620a"/>
-                <rect x="60" y="72" width="6" height="6" fill="#e8620a"/><rect x="78" y="72" width="12" height="12" rx="2" fill="#e8620a"/>
-                <rect x="60" y="84" width="6" height="6" fill="#e8620a"/><rect x="72" y="84" width="6" height="6" fill="#e8620a"/>
-                <rect x="96" y="72" width="6" height="6" fill="#0d1f4c"/><rect x="108" y="72" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="96" y="84" width="6" height="6" fill="#0d1f4c"/><rect x="114" y="84" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="96" y="96" width="6" height="6" fill="#0d1f4c"/><rect x="108" y="96" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="10" y="96" width="6" height="6" fill="#0d1f4c"/><rect x="28" y="96" width="6" height="6" fill="#0d1f4c"/><rect x="44" y="96" width="6" height="6" fill="#0d1f4c"/>
-                <rect x="68" y="68" width="24" height="24" rx="4" fill="white" stroke="#e8620a" stroke-width="1.5"/>
-                <text x="80" y="83" font-size="12" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#e8620a">BS</text>
-              </svg>
+            <div class="upi-sub">Scan using GPay, PhonePe, Paytm, BHIM or any UPI app</div>
+            <!-- Real QR Code using UPI link — generates actual scannable QR -->
+            <div class="qr-box" style="width:190px;height:190px;padding:8px;background:white;border:3px solid #eab308;border-radius:16px;">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3D9810690816m%40pnb%26pn%3DBIDDING%2BSOLUTION%26mc%3D0000%26mode%3D02%26purpose%3D00"
+                alt="UPI QR Code — Scan to Pay BiddingSolution LLP"
+                width="174" height="174"
+                style="border-radius:8px;display:block;"
+                onerror="this.style.display='none';document.getElementById('qr-fallback').style.display='flex';"
+              />
+              <div id="qr-fallback" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:160px;color:var(--muted);font-size:13px;text-align:center;gap:8px;">
+                <span style="font-size:36px;">📱</span>
+                <span>UPI ID:<br><strong style="color:var(--saffron);">9810690816m@pnb</strong></span>
+              </div>
             </div>
-            <div class="upi-note"><strong>Note:</strong> Replace with your actual UPI QR code linked to A/c 1155102100001620</div>
+            <!-- UPI Details -->
+            <div style="margin-top:14px;background:rgba(234,179,8,0.08);border:1.5px solid #fde68a;border-radius:12px;padding:12px 16px;text-align:left;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#b45309;margin-bottom:6px;">UPI Details</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                <div>
+                  <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">UPI ID</div>
+                  <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:0.02em;">9810690816m@pnb</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('9810690816m@pnb', this)" style="flex-shrink:0;">📋 Copy</button>
+              </div>
+              <div style="margin-top:8px;font-size:12px;color:var(--muted);">
+                Merchant: <strong style="color:var(--ink);">BIDDING SOLUTION</strong> · Bank: <strong>PNB</strong>
+              </div>
+            </div>
+            <!-- App logos row -->
+            <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap;">
+              <span style="font-size:11px;color:var(--muted);background:var(--cream);padding:4px 10px;border-radius:100px;border:1px solid var(--border);">GPay</span>
+              <span style="font-size:11px;color:var(--muted);background:var(--cream);padding:4px 10px;border-radius:100px;border:1px solid var(--border);">PhonePe</span>
+              <span style="font-size:11px;color:var(--muted);background:var(--cream);padding:4px 10px;border-radius:100px;border:1px solid var(--border);">Paytm</span>
+              <span style="font-size:11px;color:var(--muted);background:var(--cream);padding:4px 10px;border-radius:100px;border:1px solid var(--border);">BHIM</span>
+              <span style="font-size:11px;color:var(--muted);background:var(--cream);padding:4px 10px;border-radius:100px;border:1px solid var(--border);">Amazon Pay</span>
+            </div>
           </div>
 
           <div class="how-to-pay">
@@ -1924,77 +2494,346 @@
     </div>
   </div>
 
+  <!-- ========== ELECTRICAL CONTRACTOR PAGE ========== -->
+  <div id="page-electrical" class="page">
+    <div class="page-header">
+      <div>
+        <div class="page-eyebrow">New Service — Delhi</div>
+        <h1 class="page-title">⚡ Electrical Contractor <em>Registration</em></h1>
+        <p class="page-sub">Get your Electrical Contractor Licence from the Delhi Electrical Inspectorate. Mandatory for government and private electrical work in Delhi NCR.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,#eab308,#f59e0b);color:white;border-radius:14px;padding:16px 24px;text-align:center;flex-shrink:0;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;opacity:0.85;margin-bottom:4px;">ALL-INCLUSIVE FEE</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:36px;line-height:1;">₹20,000</div>
+        <div style="font-size:12px;opacity:0.85;margin-top:4px;">Complete Registration</div>
+      </div>
+    </div>
+    <div class="page-body">
+
+      <!-- What is it -->
+      <div style="background:white;border:1.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:24px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+          <span style="background:rgba(234,179,8,0.12);border-radius:10px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">⚡</span>
+          What is Electrical Contractor Registration?
+        </div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:12px;">The Electrical Contractor Licence is issued by the <strong style="color:var(--ink);">Delhi Electrical Inspectorate, GNCT of Delhi</strong> under the Indian Electricity Act. It is <strong style="color:var(--saffron);">mandatory</strong> for any entity that undertakes electrical installation, maintenance, or repair work in Delhi — whether for government tenders or private projects.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.8;">Without this licence, you cannot legally bid for any electrical work tender, and ongoing projects can be stopped by the inspectorate. Our team handles the complete application, documentation, and follow-up process.</p>
+      </div>
+
+      <!-- Benefits split by entity type -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+
+        <!-- Company Benefits -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:18px;padding:28px;color:white;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+            <span style="font-size:24px;">🏢</span>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:17px;">Company</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.07em;">Pvt. Ltd. / LLP / OPC</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.85);">
+              <span style="color:var(--gold-light);font-weight:700;flex-shrink:0;">✦</span>
+              Bid for high-value government electrical tenders on GeM, CPPP & state portals
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.85);">
+              <span style="color:var(--gold-light);font-weight:700;flex-shrink:0;">✦</span>
+              Legal authority to undertake electrical installations in commercial & government buildings
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.85);">
+              <span style="color:var(--gold-light);font-weight:700;flex-shrink:0;">✦</span>
+              Enhanced credibility for large infrastructure and smart city projects
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.85);">
+              <span style="color:var(--gold-light);font-weight:700;flex-shrink:0;">✦</span>
+              Mandatory for DPIIT / ISO-certified companies bidding for CPWD electrical tenders
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.85);">
+              <span style="color:var(--gold-light);font-weight:700;flex-shrink:0;">✦</span>
+              Renewable licence valid for 3–5 years with compliance support included
+            </div>
+          </div>
+        </div>
+
+        <!-- Proprietorship Benefits -->
+        <div style="background:white;border:1.5px solid #fde68a;border-radius:18px;padding:28px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+            <span style="font-size:24px;">👤</span>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:var(--ink);">Proprietorship</div>
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;">Individual / Sole Proprietor</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink);">
+              <span style="color:#b45309;font-weight:700;flex-shrink:0;">✦</span>
+              Legally authorised to carry out electrical works independently in Delhi
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink);">
+              <span style="color:#b45309;font-weight:700;flex-shrink:0;">✦</span>
+              Qualify for smaller government tenders reserved for individual contractors
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink);">
+              <span style="color:#b45309;font-weight:700;flex-shrink:0;">✦</span>
+              Take on residential & commercial wiring projects with official documentation
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink);">
+              <span style="color:#b45309;font-weight:700;flex-shrink:0;">✦</span>
+              Step towards converting to a company with existing licence credibility
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink);">
+              <span style="color:#b45309;font-weight:700;flex-shrink:0;">✦</span>
+              Avoid legal penalties — unregistered electrical work can attract fines up to ₹50,000
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What's included in ₹20,000 -->
+      <div style="background:linear-gradient(135deg,rgba(234,179,8,0.08),rgba(234,179,8,0.02));border:1.5px solid #fde68a;border-radius:18px;padding:28px;margin-bottom:24px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:18px;display:flex;align-items:center;gap:8px;">
+          <span>💼</span> What's Included in ₹20,000
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">📄</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Document Preparation</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">All forms, declarations, and supporting documents drafted and verified</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">🏛️</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Inspectorate Filing</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Complete application submission to Delhi Electrical Inspectorate</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">🔍</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Follow-up & Tracking</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Regular follow-up until licence is issued, status updates provided</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">🧑‍💼</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Qualified Supervisor</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Guidance on required qualified electrical supervisor as per rules</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">📋</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Compliance Checklist</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Detailed checklist of ongoing compliance requirements post-registration</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:16px 14px;border:1px solid #fde68a;">
+            <div style="font-size:20px;margin-bottom:8px;">📞</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:4px;">Dedicated Support</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Direct access to our expert team throughout the process</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-strip">
+        <div>
+          <h3>Start Your Electrical Contractor <em>Registration Today</em></h3>
+          <p>All-inclusive fee of ₹20,000. Our team handles everything from document preparation to licence delivery. Call or WhatsApp us to get started immediately.</p>
+        </div>
+        <div class="cta-strip-btns">
+          <a href="https://wa.me/919810690816?text=Namaste%20BiddingSolution%20LLP!%20I%20want%20to%20apply%20for%20Electrical%20Contractor%20Registration%20in%20Delhi." target="_blank" class="btn-white">💬 WhatsApp to Apply →</a>
+          <button class="btn-ghost-white" onclick="showPage('contact', document.querySelector('[data-page=contact]'))">Call Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- end .main -->
 
-<!-- ===== MOBILE BOTTOM NAV ===== -->
-<nav class="mobile-bottom-nav">
-  <button class="mbn-item active" data-page="home" onclick="showPage('home',this);closeDrawer()">
-    <span class="mbn-icon">🏠</span>Home
-  </button>
-  <button class="mbn-item" data-page="services" onclick="showPage('services',this);closeDrawer()">
-    <span class="mbn-icon">📋</span>Services
-  </button>
-  <button class="mbn-item" data-page="contact" onclick="showPage('contact',this);closeDrawer()">
-    <span class="mbn-icon">✉️</span>Contact
-  </button>
-  <button class="mbn-item" data-page="payment" onclick="showPage('payment',this);closeDrawer()">
-    <span class="mbn-icon">💳</span>Pay
-  </button>
-  <button class="mbn-item" id="more-btn" onclick="toggleDrawer()">
-    <span class="mbn-icon">☰</span>More
-  </button>
-</nav>
+<!-- ===== ANIMATED GUIDE CHARACTER ===== -->
+<div class="guide-wrapper" id="guide-char">
 
-<!-- ===== MORE DRAWER ===== -->
-<div class="more-drawer" id="more-drawer">
-  <div class="more-drawer-item" data-page="about" onclick="showPage('about',this);closeDrawer()">
-    <span class="mdi">🏢</span> About Us
+  <!-- Speech bubble -->
+  <div class="guide-bubble" id="guide-bubble">
+    <span id="guide-bubble-text">Need help? Chat with us! 👋</span>
+    <button class="guide-bubble-close" onclick="dismissGuide()" title="Dismiss">✕</button>
+    <div class="guide-bubble-tail"></div>
   </div>
-  <div class="more-drawer-item" data-page="tender" onclick="showPage('tender',this);closeDrawer()">
-    <span class="mdi">🔖</span> Tender Filing
-  </div>
-  <div class="more-drawer-item" data-page="training" onclick="showPage('training',this);closeDrawer()">
-    <span class="mdi">🎓</span> Training
-  </div>
-  <div class="more-drawer-item" data-page="startup" onclick="showPage('startup',this);closeDrawer()">
-    <span class="mdi">🚀</span> Startup & GeM
-  </div>
-  <div class="more-drawer-item" data-page="testimonials" onclick="showPage('testimonials',this);closeDrawer()">
-    <span class="mdi">⭐</span> Testimonials
+
+  <!-- Character SVG — animated little person -->
+  <div class="guide-char-body" onclick="toggleWAChat(); dismissGuide();" title="Chat on WhatsApp">
+
+    <!-- Head -->
+    <svg class="guide-svg" viewBox="0 0 80 140" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shadow -->
+      <ellipse cx="40" cy="135" rx="18" ry="5" fill="rgba(0,0,0,0.15)" class="guide-shadow"/>
+      <!-- Body -->
+      <rect x="22" y="62" width="36" height="42" rx="10" fill="#1a6b3a" class="guide-body-rect"/>
+      <!-- WhatsApp logo on shirt -->
+      <circle cx="40" cy="80" r="10" fill="#25D366"/>
+      <text x="40" y="84" text-anchor="middle" font-size="11" fill="white" font-weight="bold">WA</text>
+      <!-- Left arm (waving) -->
+      <g class="guide-arm-left">
+        <rect x="6" y="64" width="14" height="6" rx="3" fill="#f5832a" transform="rotate(-20 6 64)"/>
+      </g>
+      <!-- Right arm (pointing down-right toward WA button) -->
+      <g class="guide-arm-right">
+        <rect x="58" y="64" width="16" height="6" rx="3" fill="#f5832a" transform="rotate(35 58 64)"/>
+        <!-- Pointing finger -->
+        <circle cx="73" cy="76" r="4" fill="#f5832a"/>
+      </g>
+      <!-- Left leg -->
+      <rect x="26" y="100" width="12" height="26" rx="6" fill="#0d1f4c" class="guide-leg-left"/>
+      <!-- Right leg -->
+      <rect x="42" y="100" width="12" height="26" rx="6" fill="#0d1f4c" class="guide-leg-right"/>
+      <!-- Shoes -->
+      <ellipse cx="32" cy="128" rx="9" ry="5" fill="#0a0a0f"/>
+      <ellipse cx="48" cy="128" rx="9" ry="5" fill="#0a0a0f"/>
+      <!-- Neck -->
+      <rect x="35" y="50" width="10" height="14" rx="5" fill="#e8a87c"/>
+      <!-- Head -->
+      <ellipse cx="40" cy="40" rx="20" ry="22" fill="#e8a87c"/>
+      <!-- Hair -->
+      <path d="M20 38 Q20 16 40 16 Q60 16 60 38" fill="#2c1a0e"/>
+      <!-- Eyes -->
+      <ellipse cx="33" cy="38" rx="3.5" ry="4" fill="white"/>
+      <ellipse cx="47" cy="38" rx="3.5" ry="4" fill="white"/>
+      <circle cx="34" cy="39" r="2" fill="#1a1a2e"/>
+      <circle cx="48" cy="39" r="2" fill="#1a1a2e"/>
+      <!-- Eye shine -->
+      <circle cx="35" cy="38" r="0.8" fill="white"/>
+      <circle cx="49" cy="38" r="0.8" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M29 33 Q33 30 37 33" stroke="#2c1a0e" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M43 33 Q47 30 51 33" stroke="#2c1a0e" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Smile -->
+      <path d="M33 46 Q40 53 47 46" stroke="#c0622a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Cheeks -->
+      <ellipse cx="28" cy="44" rx="5" ry="3" fill="rgba(232,98,10,0.25)"/>
+      <ellipse cx="52" cy="44" rx="5" ry="3" fill="rgba(232,98,10,0.25)"/>
+    </svg>
   </div>
 </div>
 
-<script>
+<!-- ===== WHATSAPP CHATBOT ===== -->
+<button class="wa-chatbot-fab" onclick="toggleWAChat()" title="Chat with us on WhatsApp" aria-label="WhatsApp Chat">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="34" height="34">
+    <circle cx="16" cy="16" r="13" fill="white"/>
+    <path d="M16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.85.5 3.6 1.38 5.1L5.5 26.5l5.56-1.46A10.4 10.4 0 0016 26.5c5.8 0 10.5-4.7 10.5-10.5S21.8 5.5 16 5.5zm5.18 14.4c-.22.62-1.3 1.18-1.78 1.25-.46.07-.98.1-1.58-.1-.37-.12-.84-.28-1.44-.55-2.52-1.1-4.17-3.64-4.3-3.81-.12-.17-.98-1.3-.98-2.48s.62-1.76.84-2c.22-.24.48-.3.64-.3l.46.01c.15 0 .35-.06.54.41.2.5.7 1.7.76 1.82.06.13.1.28.02.45-.08.17-.12.28-.24.43-.12.15-.25.34-.36.45-.12.12-.24.25-.1.49.14.24.62.95 1.33 1.54.92.77 1.7 1.01 1.93 1.12.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.16 1.22z" fill="#25D366"/>
+  </svg>
+</button>
+
+<div class="wa-chatbot-panel" id="wa-panel">
+  <div class="wac-header">
+    <div class="wac-avatar">🤝</div>
+    <div class="wac-header-text">
+      <strong>BiddingSolution LLP</strong>
+      <span><span class="wac-online-dot"></span> Typically replies in minutes</span>
+    </div>
+    <button class="wac-close" onclick="toggleWAChat()">✕</button>
+  </div>
+  <div class="wac-scroll-area">
+  <div class="wac-body">
+    <div class="wac-bubble">
+      <strong>Namaste! 🙏</strong><br>
+      Welcome to BiddingSolution LLP — India's trusted tender &amp; procurement partner.<br><br>
+      How can we help you today? Select a service below to start a WhatsApp conversation instantly.
+      <div class="wac-time">Today</div>
+    </div>
+  </div>
+  <div class="wac-services">
+    <div class="wac-services-label">Choose a Service to Chat About</div>
+    <div class="wac-service-btns">
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20help%20with%20Tender%20Filing%20%26%20Bidding%20Support." target="_blank"><span class="wsb-icon">📋</span> Tender Filing & Bidding</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20know%20about%20ISO%20Certification." target="_blank"><span class="wsb-icon">🏅</span> ISO Certification</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20enrol%20in%20the%20Tender%20Training%20Program." target="_blank"><span class="wsb-icon">🎓</span> Training Programs</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20DPIIT%20Startup%20Recognition%20%26%20GeM%20Registration." target="_blank"><span class="wsb-icon">🚀</span> Startup & GeM Registration</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20want%20to%20apply%20for%20Electrical%20Contractor%20Registration%20in%20Delhi." target="_blank"><span class="wsb-icon">⚡</span> Electrical Contractor Reg.</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20need%20NSIC%20Registration%20for%20my%20business." target="_blank"><span class="wsb-icon">📑</span> NSIC Registration</a>
+      <a class="wac-service-btn" href="https://wa.me/919810690816?text=Namaste!%20I%20have%20a%20general%20query%20about%20your%20services." target="_blank"><span class="wsb-icon">💬</span> General Enquiry</a>
+    </div>
+  </div>
+  </div><!-- end wac-scroll-area -->
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ===== WHATSAPP CHATBOT =====
+  function toggleWAChat() {
+    const panel = document.getElementById('wa-panel');
+    panel.classList.toggle('open');
+  }
+
+  // ===== GUIDE CHARACTER =====
+  const guideMessages = [
+    "Need help? Chat with us! 👋",
+    "Ask about Tender Filing 📋",
+    "ISO Certification queries? 🏅",
+    "GeM Registration help? 💎",
+    "⚡ Electrical Contractor Reg.",
+    "Free consultation! Tap here 🙌",
+    "We reply in minutes! ⚡",
+    "Start your govt journey 🚀",
+  ];
+  let guideMsgIndex = 0;
+  let guideHidden = false;
+
+  function rotateGuideMessage() {
+    if (guideHidden) return;
+    guideMsgIndex = (guideMsgIndex + 1) % guideMessages.length;
+    const el = document.getElementById('guide-bubble-text');
+    const bubble = document.querySelector('.guide-bubble');
+    if (el && bubble) {
+      bubble.style.opacity = '0';
+      bubble.style.transform = 'translateY(-8px) scale(0.95)';
+      bubble.style.transition = 'opacity 0.3s, transform 0.3s';
+      setTimeout(() => {
+        el.textContent = guideMessages[guideMsgIndex];
+        bubble.style.opacity = '1';
+        bubble.style.transform = 'translateY(0) scale(1)';
+      }, 320);
+    }
+  }
+
+  function dismissGuide() {
+    guideHidden = true;
+    const w = document.getElementById('guide-char');
+    if (w) w.classList.add('dismissed');
+    // Re-show after 30 seconds
+    setTimeout(() => {
+      guideHidden = false;
+      if (w) w.classList.remove('dismissed');
+    }, 30000);
+  }
+
+  // Start rotating messages every 3.5 seconds after 3s delay
+  setTimeout(() => {
+    setInterval(rotateGuideMessage, 3500);
+  }, 3000);
+  // Close panel when clicking outside
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('wa-panel');
+    const fab = document.querySelector('.wa-chatbot-fab');
+    if (panel && panel.classList.contains('open')) {
+      if (!panel.contains(e.target) && !fab.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    }
+  });
   // ===== PAGE NAVIGATION =====
   function showPage(id, navEl) {
     // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Remove active from all nav items (sidebar + mobile bottom nav)
-    document.querySelectorAll('.nav-item, .mbn-item, .more-drawer-item').forEach(n => n.classList.remove('active'));
+    // Remove active from all nav items
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
     // Show target page
     const page = document.getElementById('page-' + id);
     if (page) {
       page.classList.add('active');
       page.scrollTop = 0;
-      window.scrollTo(0, 0);
     }
 
-    // Mark nav item active — sidebar
-    const sidebarMatch = document.querySelector('.nav-item[data-page="' + id + '"]');
-    if (sidebarMatch) sidebarMatch.classList.add('active');
-
-    // Mark mobile bottom nav item active
-    const mbnMatch = document.querySelector('.mbn-item[data-page="' + id + '"]');
-    if (mbnMatch) mbnMatch.classList.add('active');
-
-    // Mark drawer item active (if applicable)
-    const drawerMatch = document.querySelector('.more-drawer-item[data-page="' + id + '"]');
-    if (drawerMatch) drawerMatch.classList.add('active');
-
-    // If navEl was passed explicitly
-    if (navEl && !navEl.classList.contains('mbn-item') && !navEl.classList.contains('more-drawer-item')) {
+    // Mark nav item active
+    if (navEl) {
       navEl.classList.add('active');
+    } else {
+      // Find by data-page attribute
+      const navMatch = document.querySelector('[data-page="' + id + '"]');
+      if (navMatch) navMatch.classList.add('active');
     }
   }
 
@@ -2049,8 +2888,10 @@
       company: document.getElementById('cf-company').value,
       service,
       message: document.getElementById('cf-message').value,
+      _replyto: document.getElementById('cf-email').value || 'sales@BiddingSolution.com',
+      _subject: `New Lead from BiddingSolution Website — ${service}`,
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      source: 'Contact Form'
+      source: 'Contact Form — sales@BiddingSolution.com'
     };
 
     const FORMSPREE_ID = 'mqeyybdn';
@@ -2068,12 +2909,13 @@
       btn.style.background = 'var(--green)';
     });
   }
-  // ===== MOBILE MORE DRAWER =====
+
+  // ===== MOBILE DRAWER =====
   function toggleDrawer() {
     const drawer = document.getElementById('more-drawer');
     const btn = document.getElementById('more-btn');
-    drawer.classList.toggle('open');
-    btn.classList.toggle('active');
+    if (drawer) drawer.classList.toggle('open');
+    if (btn) btn.classList.toggle('active');
   }
   function closeDrawer() {
     const drawer = document.getElementById('more-drawer');
@@ -2081,16 +2923,48 @@
     if (drawer) drawer.classList.remove('open');
     if (btn) btn.classList.remove('active');
   }
-  // Close drawer when tapping outside
   document.addEventListener('click', function(e) {
     const drawer = document.getElementById('more-drawer');
     const moreBtn = document.getElementById('more-btn');
     if (drawer && drawer.classList.contains('open')) {
-      if (!drawer.contains(e.target) && e.target !== moreBtn && !moreBtn.contains(e.target)) {
+      if (!drawer.contains(e.target) && moreBtn && !moreBtn.contains(e.target)) {
         closeDrawer();
       }
     }
   });
 </script>
-</body>
-</html>
+
+<!-- ===== MOBILE BOTTOM NAV ===== -->
+<nav class="mobile-bottom-nav">
+  <button class="mbn-item active" data-page="home" onclick="showPage('home',this);closeDrawer()">
+    <span class="mbn-icon">🏠</span>Home
+  </button>
+  <button class="mbn-item" data-page="services" onclick="showPage('services',this);closeDrawer()">
+    <span class="mbn-icon">📋</span>Services
+  </button>
+  <button class="mbn-item" data-page="contact" onclick="showPage('contact',this);closeDrawer()">
+    <span class="mbn-icon">✉️</span>Contact
+  </button>
+  <button class="mbn-item" data-page="payment" onclick="showPage('payment',this);closeDrawer()">
+    <span class="mbn-icon">💳</span>Pay
+  </button>
+  <button class="mbn-item" id="more-btn" onclick="toggleDrawer()">
+    <span class="mbn-icon">☰</span>More
+  </button>
+</nav>
+
+<!-- ===== MORE DRAWER ===== -->
+<div class="more-drawer" id="more-drawer">
+  <div class="more-drawer-item" data-page="about" onclick="showPage('about',this);closeDrawer()">
+    <span class="mdi">🏢</span> About Us
+  </div>
+  <div class="more-drawer-item" data-page="tender" onclick="showPage('tender',this);closeDrawer()">
+    <span class="mdi">🔖</span> Tender Filing
+  </div>
+  <div class="more-drawer-item" data-page="training" onclick="showPage('training',this);closeDrawer()">
+    <span class="mdi">🎓</span> Training
+  </div>
+  <div class="more-drawer-item" data-page="startup" onclick="showPage('startup',this);closeDrawer()">
+    <span class="mdi">🚀</span> Startup & GeM
+  </div>
+  <div class="more-drawer-item" data-page="electrical" onclick="showPage('electrical',this);closeDrawe
