@@ -33,7 +33,12 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden; /* main handles scroll */
+    overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    body { height: auto; min-height: 100vh; overflow: auto; }
+    .main { height: auto !important; overflow: visible !important; }
+    .page { height: auto !important; overflow: visible !important; }
   }
 
   @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
@@ -98,7 +103,7 @@
   /* Rotating ring with text */
   .logo-orbit-ring {
     position: absolute;
-    inset: 0;
+    inset: -5px;
     border-radius: 50%;
     animation: spinRing 7s linear infinite;
   }
@@ -1675,17 +1680,92 @@
     }
     .mobile-topbar-logo {
       font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 15px; color: white;
+      font-weight: 800; font-size: 16px; color: white;
     }
     .mobile-topbar-logo span { color: var(--saffron); }
     .mobile-topbar-cta {
       background: var(--saffron); color: white;
-      padding: 7px 14px; border-radius: 8px;
-      font-size: 12px; font-weight: 700;
+      padding: 9px 16px; border-radius: 10px;
+      font-size: 13px; font-weight: 700;
       border: none; cursor: pointer;
       font-family: 'Syne', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
+
+    /* Hero buttons - actual classes used in HTML */
+    .hero-vibrate-phone {
+      font-size: 18px !important;
+      display: flex; width: 100%;
+      justify-content: center;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      margin-bottom: 0;
+    }
+    .hero-vibrate-consult {
+      font-size: 15px !important;
+      width: 100%;
+      justify-content: center;
+      padding: 14px 20px !important;
+      border-radius: 12px;
+    }
+
+    /* Value / about items */
+    .value-title { font-size: 15px; }
+    .value-desc  { font-size: 14px; line-height: 1.6; }
+    .step-title  { font-size: 15px; }
+    .step-desc   { font-size: 13.5px; }
+
+    /* Package features */
+    .pkg-name    { font-size: 17px; }
+    .pkg-price   { font-size: 30px; }
+    .pkg-feature { font-size: 14px; }
+    .pkg-btn     { font-size: 15px; padding: 12px 18px; }
+
+    /* Contact info */
+    .ci-item  { gap: 14px; padding: 14px 16px; }
+    .ci-icon  { font-size: 22px; width: 40px; height: 40px; }
+    .ci-label { font-size: 12px; }
+    .ci-value { font-size: 15px; }
+
+    /* Course cards */
+    .course-name { font-size: 18px; }
+    .course-desc { font-size: 14px; }
+    .course-enroll { font-size: 15px; padding: 13px 18px; }
+
+    /* Section titles */
+    .section-title { font-size: 24px !important; }
+    .section-sub   { font-size: 15px; }
+
+    /* Bank / payment */
+    .bank-row-label { font-size: 13px; }
+    .bank-row-value { font-size: 15px; }
+    .bank-row-value.accent { font-size: 20px; }
+
+    /* Portal badges */
+    .portal-strip  { flex-direction: column; gap: 10px; padding: 16px 18px; }
+    .portal-badge  { font-size: 13px; padding: 10px 14px; }
+
+    /* IREPS */
+    .ireps-hero h2   { font-size: 24px !important; }
+    .ireps-hero p    { font-size: 15px; }
+    .ireps-tc-title  { font-size: 20px; }
+    .ireps-tc-feat   { font-size: 14px; }
+    .ireps-tc-enroll-btn { font-size: 15px; padding: 13px 18px; }
+
+    /* Startup / GeM */
+    .startup-hero    { padding: 28px 18px; }
+    .startup-cards   { grid-template-columns: 1fr; gap: 12px; }
+    .startup-card    { padding: 18px 16px; }
+
+    /* Electrical */
+    .elec-hero  { padding: 28px 18px; }
+    .elec-step  { padding: 16px 14px; }
+
+    /* CTA strip */
+    .cta-strip-btns .btn-white,
+    .cta-strip-btns .btn-ghost-white { font-size: 15px; padding: 13px 18px; }
   }
 
   .hero-address-block {
@@ -2421,31 +2501,49 @@
 
   /* ===== LANDSCAPE MOBILE (<=900px rotated) ===== */
   @media (max-width: 900px) and (orientation: landscape) {
-    .hero-full  { min-height: auto; padding: 28px 32px 40px; }
-    .hero-title { font-size: 28px !important; }
-    .hero-sub   { font-size: 14px; }
+    body { overflow: auto; height: auto; flex-direction: column; }
+    .topnav { display: none !important; }
+    .main  { height: auto !important; overflow: visible !important; }
+    .page  { height: auto !important; overflow: visible !important; padding-bottom: 56px; }
+    .hero-full  { min-height: auto; height: auto; padding: 28px 32px 36px; }
+    .hero-title { font-size: 28px !important; line-height: 1.1; }
+    .hero-sub   { font-size: 14px; margin-bottom: 18px; }
     .hero-btns  { flex-direction: row; flex-wrap: wrap; gap: 10px; }
     .hero-btns .btn-primary,
-    .hero-btns .btn-outline-white { width: auto; flex: 1; min-width: 160px; }
-    .page-header { padding: 14px 28px 12px; }
-    .page-title  { font-size: 22px !important; }
-    .page-body   { padding: 16px 28px 56px; }
+    .hero-btns .btn-outline-white { width: auto; flex: 1; min-width: 160px; font-size: 14px; padding: 11px 16px; }
+    .hero-stats { margin-top: 18px; padding-top: 18px; gap: 18px; flex-wrap: wrap; }
+    .stat-num   { font-size: 22px; }
+    .page-header { padding: 14px 24px 12px; flex-direction: row; align-items: center; position: sticky; top: 0; z-index: 10; }
+    .page-title  { font-size: 20px !important; }
+    .page-sub    { display: none; }
+    .page-body   { padding: 14px 24px 56px; }
+    .mobile-topbar { padding: 8px 20px; }
     .services-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .packages-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .courses-grid     { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .testo-grid       { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .about-layout     { grid-template-columns: 1fr 1fr; gap: 20px; }
     .contact-layout   { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .payment-layout   { grid-template-columns: 1fr 1fr; gap: 16px; }
     .startup-cards    { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .ireps-cards-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
-    .stats-2x2 { grid-template-columns: repeat(4,1fr); }
-    .info-grid  { grid-template-columns: repeat(4,1fr); }
+    .stats-2x2 { grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .info-grid  { grid-template-columns: repeat(4,1fr); gap: 10px; }
     .form-grid  { grid-template-columns: 1fr 1fr; }
-    .mobile-bottom-nav { height: 52px; }
+    .service-card { padding: 16px 14px; }
+    .service-name { font-size: 15px; }
+    .service-desc { font-size: 13px; }
+    .package-card { padding: 18px 16px; }
+    .course-card  { padding: 16px 14px; }
+    .section-title { font-size: 20px !important; }
+    .mobile-bottom-nav { display: flex; height: 52px; }
     .mbn-item           { font-size: 9px; }
-    .mbn-item .mbn-icon { font-size: 17px; }
-    .wa-chatbot-fab { bottom: 66px; }
-    .page { padding-bottom: 56px; }
+    .mbn-item .mbn-icon { font-size: 16px; }
+    .wa-chatbot-fab { bottom: 62px; right: 14px; width: 46px; height: 46px; }
+    .wa-chatbot-panel { bottom: 118px; }
+    .cta-strip { padding: 18px 16px; }
+    .cta-strip h3 { font-size: 18px; }
+    .map-embed { height: 150px; }
   }
 
 </style>
@@ -2553,6 +2651,12 @@
     ✨ Free Consultation →
   </button>
 </div>
+
+<!-- ===== MOBILE TOP BAR ===== -->
+<nav class="mobile-topbar">
+  <div class="mobile-topbar-logo"><span>Bidding</span> Solution LLP</div>
+  <button class="mobile-topbar-cta" onclick="navGo('contact')">Free Consultation</button>
+</nav>
 
 <!-- ===== MAIN CONTENT ===== -->
 <div class="main">
