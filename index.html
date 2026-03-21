@@ -1445,7 +1445,6 @@
   .ireps-step-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
   /* ===== RESPONSIVE — TABLET ===== */
-  /* ===== RESPONSIVE — TABLET (768px–1100px) ===== */
   @media (max-width: 1100px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .about-layout { grid-template-columns: 1fr; gap: 36px; }
@@ -1454,15 +1453,22 @@
     .page-body { padding: 32px 40px 60px; }
   }
 
-  /* ===== MOBILE BOTTOM NAV — hidden on desktop ===== */
-  .mobile-bottom-nav { display: none; }
-  .more-drawer { display: none !important; }
+  /* ===== MOBILE BOTTOM NAV BAR ===== */
+  .mobile-bottom-nav {
+    display: none;
+  }
 
-  /* ===== RESPONSIVE — MOBILE PORTRAIT & LANDSCAPE (≤768px) ===== */
+  /* More drawer — hidden on desktop always */
+  .more-drawer {
+    display: none !important;
+  }
+
+  /* ===== RESPONSIVE — MOBILE ===== */
   @media (max-width: 768px) {
+    /* Hide horizontal topnav on mobile — use bottom nav instead */
+    .topnav { display: none; }
 
-    /* ── Base ── */
-    html { font-size: 16px; }
+    /* Body becomes scrollable column */
     body {
       flex-direction: column;
       overflow: auto;
@@ -1470,70 +1476,50 @@
       min-height: 100vh;
     }
 
-    /* ── Hide desktop topnav, show mobile topbar ── */
-    .topnav { display: none; }
-    .main { height: auto; overflow: visible; width: 100%; }
-    .page { height: auto; overflow: visible; padding-bottom: 80px; }
-
-    /* ── Mobile topbar ── */
-    .mobile-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--navy);
-      padding: 14px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .mobile-topbar-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 16px; color: white;
-    }
-    .mobile-topbar-logo span { color: var(--saffron); }
-    .mobile-topbar-cta {
-      background: var(--saffron); color: white;
-      padding: 8px 16px; border-radius: 8px;
-      font-size: 13px; font-weight: 700;
-      border: none; cursor: pointer;
-      font-family: 'Syne', sans-serif;
-      -webkit-tap-highlight-color: transparent;
+    /* Main fills full screen */
+    .main {
+      height: auto;
+      overflow: visible;
+      width: 100%;
     }
 
-    /* ── Page header ── */
+    /* Pages scroll naturally */
+    .page {
+      height: auto;
+      overflow: visible;
+      padding-bottom: 80px;
+    }
+
+    /* Page header — compact */
     .page-header {
-      padding: 22px 20px 18px;
-      position: relative;
+      padding: 20px 20px 16px;
+      position: relative; /* not sticky on mobile, saves space */
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
     }
-    .page-eyebrow { font-size: 11px; }
-    .page-title { font-size: clamp(22px, 5.5vw, 30px) !important; line-height: 1.2; }
-    .page-sub { font-size: 14px; line-height: 1.6; max-width: 100%; }
+    .page-eyebrow { font-size: 10px; }
+    .page-title { font-size: clamp(22px, 5.5vw, 30px) !important; }
+    .page-sub { font-size: 13.5px; }
 
-    /* ── Page body ── */
-    .page-body { padding: 22px 18px 50px; }
+    /* Page body — tighter padding */
+    .page-body { padding: 20px 16px 40px; }
 
-    /* ── Hero ── */
-    .hero-full { padding: 36px 22px 52px; min-height: 100svh; }
+    /* Hero — mobile optimised */
+    .hero-full { padding: 32px 20px 48px; min-height: 100svh; }
     .hero-eyebrow { font-size: 11px; padding: 5px 12px; margin-bottom: 20px; }
-    .hero-title { font-size: clamp(28px, 7vw, 38px) !important; margin-bottom: 16px; line-height: 1.15; }
-    .hero-sub { font-size: 15px; margin-bottom: 28px; line-height: 1.6; }
-    .hero-btns { flex-direction: column; gap: 12px; }
+    .hero-title { font-size: 32px !important; margin-bottom: 16px; line-height: 1.15; }
+    .hero-sub { font-size: 15px; margin-bottom: 28px; }
+    .hero-btns { flex-direction: column; gap: 10px; }
     .hero-btns .btn-primary,
-    .hero-btns .btn-outline-white { width: 100%; justify-content: center; padding: 15px 20px; font-size: 15px; border-radius: 12px; }
+    .hero-btns .btn-outline-white { width: 100%; justify-content: center; padding: 14px 20px; font-size: 15px; }
     .hero-stats { gap: 24px; flex-wrap: wrap; margin-top: 32px; padding-top: 32px; }
-    .stat-num { font-size: 28px; }
-    .stat-label { font-size: 12px; }
+    .stat-num { font-size: 26px; }
+    .stat-label { font-size: 11px; }
     .hero-credentials { display: none; }
     .hero-address-mobile { display: flex; }
 
-    /* ── Section titles ── */
-    .section-title { font-size: clamp(20px, 5vw, 26px) !important; }
-    .section-sub { font-size: 14px; line-height: 1.6; }
-
-    /* ── Grids ── */
+    /* Grids → single column on mobile */
     .services-grid { grid-template-columns: 1fr; gap: 14px; }
     .info-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .packages-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1542,126 +1528,66 @@
     .courses-grid { grid-template-columns: 1fr; gap: 14px; }
     .testo-grid { grid-template-columns: 1fr; gap: 14px; }
     .about-layout { grid-template-columns: 1fr; gap: 28px; }
-    .stats-2x2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stats-2x2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    /* cred-cards-grid is already flex column — no change needed on mobile */
+    .cred-card { padding: 10px 12px; gap: 10px; }
+    .cred-card-value { font-size: 12px; }
+    .cred-card-icon { width: 34px; height: 34px; font-size: 18px; }
     .legal-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Service cards */
+    .service-card { padding: 22px 18px; }
+    .service-name { font-size: 15px; }
+    .service-desc { font-size: 13px; }
+
+    /* About page */
+    .about-text p { font-size: 14.5px; }
+    .value-item { padding: 14px 14px; }
+    .stat-block { padding: 18px 14px; }
+    .stat-block-num { font-size: 28px; }
+
+    /* Process steps */
+    .process-step { padding: 16px 14px; gap: 14px; }
+    .step-node { width: 38px; height: 38px; font-size: 14px; }
+
+    /* Package cards */
+    .package-card { padding: 24px 20px; }
+
+    /* Contact form */
     .form-grid { grid-template-columns: 1fr; }
     .form-field.full { grid-column: span 1; }
     .form-submit { grid-column: span 1; }
+    .contact-form-wrap { padding: 22px 18px; }
+    .cf-title { font-size: 18px; }
 
-    /* ── Cards ── */
-    .service-card { padding: 22px 18px; border-radius: 16px; }
-    .service-icon { font-size: 30px; margin-bottom: 10px; }
-    .service-name { font-size: 16px; }
-    .service-desc { font-size: 14px; line-height: 1.55; }
-    .package-card { padding: 24px 20px; }
-    .pkg-name { font-size: 17px; }
-    .pkg-price { font-size: 30px; }
-    .pkg-feature { font-size: 14px; }
-    .pkg-btn { padding: 12px 18px; font-size: 14px; }
-    .testo-card { padding: 20px 18px; }
-    .testo-quote { font-size: 14px; line-height: 1.65; }
-    .testo-name { font-size: 15px; }
-    .course-card { padding: 20px 16px; }
-    .course-name { font-size: 18px; }
-    .course-desc { font-size: 14px; }
-    .course-price-tag .price-val { font-size: 24px; }
-    .course-topics li { font-size: 13.5px; }
-    .course-enroll { padding: 13px 18px; font-size: 15px; }
-
-    /* ── Stat blocks ── */
-    .info-card { padding: 16px 14px; border-radius: 14px; }
-    .info-card-value { font-size: 24px; }
-    .info-card-label { font-size: 11px; }
-    .stat-block { padding: 18px 14px; }
-    .stat-block-num { font-size: 30px; }
-    .stat-block-label { font-size: 12px; }
-
-    /* ── About ── */
-    .about-text p { font-size: 15px; line-height: 1.7; }
-    .value-item { padding: 14px 14px; gap: 12px; }
-    .value-title { font-size: 15px; }
-    .value-desc { font-size: 13.5px; }
-    .cred-card { padding: 10px 12px; gap: 10px; }
-    .cred-card-value { font-size: 12px; }
-
-    /* ── Process steps ── */
-    .process-steps { gap: 12px; }
-    .process-step { padding: 16px 14px; gap: 14px; }
-    .step-node { width: 40px; height: 40px; font-size: 15px; flex-shrink: 0; }
-    .step-title { font-size: 15px; }
-    .step-desc { font-size: 13.5px; }
-
-    /* ── Contact ── */
-    .contact-form-wrap { padding: 22px 18px; border-radius: 16px; }
-    .cf-title { font-size: 19px; }
-    .cf-sub { font-size: 14px; }
-    .form-field input,
-    .form-field select,
-    .form-field textarea { font-size: 15px; padding: 12px 14px; }
-    .form-submit { padding: 14px 18px; font-size: 15px; border-radius: 12px; }
-    .ci-item { gap: 12px; padding: 14px 16px; }
-    .ci-icon { font-size: 22px; width: 40px; height: 40px; }
-    .ci-label { font-size: 12px; }
-    .ci-value { font-size: 15px; }
-    .wa-quick { flex-direction: column; gap: 12px; text-align: center; padding: 18px 16px; }
-    .wa-quick-btn { width: 100%; justify-content: center; font-size: 15px; padding: 13px; }
-
-    /* ── Payment ── */
+    /* Bank card */
     .bank-card-header { padding: 18px 20px; }
-    .bank-details { padding: 20px; gap: 14px; }
-    .bank-row-label { font-size: 12px; }
-    .bank-row-value { font-size: 14px; }
-    .bank-row-value.accent { font-size: 19px; letter-spacing: 0.06em; }
+    .bank-details { padding: 20px; }
+    .bank-row-value.accent { font-size: 18px; letter-spacing: 0.06em; }
     .after-payment-note { margin: 0 20px 20px; }
-    .upi-title { font-size: 16px; }
-    .upi-sub { font-size: 13px; }
 
-    /* ── CTA strip ── */
-    .cta-strip { padding: 24px 20px; flex-direction: column; text-align: center; gap: 18px; border-radius: 18px; }
-    .cta-strip h3 { font-size: 21px; line-height: 1.3; }
-    .cta-strip p { font-size: 14px; }
-    .cta-strip-btns { flex-direction: column; width: 100%; gap: 10px; }
+    /* CTA strip */
+    .cta-strip { padding: 24px 20px; flex-direction: column; text-align: center; gap: 18px; }
+    .cta-strip h3 { font-size: 20px; }
+    .cta-strip-btns { flex-direction: column; width: 100%; }
     .cta-strip-btns .btn-white,
-    .cta-strip-btns .btn-ghost-white { width: 100%; justify-content: center; font-size: 15px; padding: 13px; }
+    .cta-strip-btns .btn-ghost-white { width: 100%; justify-content: center; }
 
-    /* ── Portal strip ── */
-    .portal-strip { padding: 18px 16px; flex-direction: column; gap: 12px; border-radius: 14px; }
-    .portal-badge { padding: 10px 12px; font-size: 13px; }
+    /* WhatsApp quick */
+    .wa-quick { flex-direction: column; gap: 12px; text-align: center; }
+    .wa-quick-btn { width: 100%; justify-content: center; }
 
-    /* ── IREPS ── */
-    .ireps-hero { padding: 28px 18px; }
-    .ireps-hero h2 { font-size: clamp(20px, 5vw, 26px) !important; }
-    .ireps-hero p { font-size: 14px; line-height: 1.6; }
-    .ireps-cards-grid { grid-template-columns: 1fr; gap: 12px; }
-    .ireps-card { padding: 18px 16px; }
-    .ireps-tc { padding: 22px 16px; }
-    .ireps-tc-title { font-size: 20px; }
-    .ireps-tc-feat { font-size: 13.5px; }
-    .ireps-tc-enroll-btn { font-size: 15px; padding: 13px 18px; }
-    .ireps-tc-wa-btn { font-size: 14px; padding: 11px 16px; }
+    /* Testimonials */
+    .testo-card { padding: 20px 18px; }
+    .testo-quote { font-size: 13.5px; }
 
-    /* ── Startup / GeM ── */
-    .startup-hero { padding: 28px 18px; }
-    .startup-cards { grid-template-columns: 1fr; gap: 12px; }
-    .startup-card { padding: 18px 16px; }
+    /* Training courses */
+    .course-card { padding: 20px 16px; }
 
-    /* ── Electrical ── */
-    .elec-hero { padding: 28px 18px; }
-    .elec-steps { gap: 12px; }
-    .elec-step { padding: 16px 14px; }
+    /* Map */
+    .map-embed { height: 140px; }
 
-    /* ── Map ── */
-    .map-embed { height: 160px; border-radius: 14px; }
-
-    /* ── WA chatbot ── */
-    .wa-chatbot-fab { bottom: 80px; right: 16px; width: 54px; height: 54px; }
-    .wa-chatbot-panel {
-      bottom: 148px; right: 12px;
-      width: calc(100vw - 24px); max-width: 360px;
-      max-height: calc(100vh - 200px);
-    }
-
-    /* ── Show mobile bottom nav ── */
+    /* Show mobile bottom nav */
     .mobile-bottom-nav {
       display: flex;
       position: fixed;
@@ -1682,7 +1608,7 @@
       cursor: pointer;
       padding: 8px 4px;
       transition: all 0.2s;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.45);
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -1694,20 +1620,20 @@
     .mbn-item.active { color: var(--saffron); }
     .mbn-item .mbn-icon { font-size: 20px; line-height: 1; }
 
-    /* ── More drawer ── */
+    /* "More" drawer overlay */
     .more-drawer {
-      display: none !important;
+      display: none !important; /* hidden by default on mobile too */
       position: fixed;
       bottom: 64px; left: 0; right: 0;
       background: var(--navy);
       border-top: 1px solid rgba(255,255,255,0.1);
       z-index: 999;
-      padding: 14px 16px 18px;
+      padding: 12px 16px 16px;
       flex-wrap: wrap;
       gap: 8px;
       animation: slideUp 0.25s ease both;
     }
-    .more-drawer.open { display: flex !important; }
+    .more-drawer.open { display: flex !important; } /* only show when JS adds .open */
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -1717,43 +1643,50 @@
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
-      padding: 11px 14px;
+      padding: 10px 14px;
       cursor: pointer;
-      color: rgba(255,255,255,0.8);
-      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      font-size: 13px; font-weight: 500;
       flex: 1; min-width: calc(50% - 4px);
       transition: all 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
     .more-drawer-item:hover,
     .more-drawer-item.active { background: var(--saffron); color: white; border-color: var(--saffron); }
-    .more-drawer-item .mdi { font-size: 18px; }
-  }
+    .more-drawer-item .mdi { font-size: 17px; }
 
-  /* ===== LANDSCAPE MOBILE (phone rotated) ===== */
-  @media (max-width: 900px) and (orientation: landscape) {
-    .hero-full { min-height: auto; padding: 28px 32px 40px; }
-    .hero-title { font-size: clamp(24px, 4vw, 34px) !important; }
-    .hero-sub { font-size: 14px; }
-    .hero-stats { margin-top: 20px; padding-top: 20px; gap: 20px; }
-    .page-header { padding: 16px 28px 14px; }
-    .page-title { font-size: clamp(20px, 3.5vw, 28px) !important; }
-    .page-body { padding: 18px 28px 50px; }
-    .mobile-topbar { padding: 10px 20px; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .packages-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .courses-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .testo-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .contact-layout { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .about-layout { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .stats-2x2 { grid-template-columns: repeat(4, 1fr); }
-    .info-grid { grid-template-columns: repeat(4, 1fr); }
-    .form-grid { grid-template-columns: 1fr 1fr; }
-    .mobile-bottom-nav { height: 56px; }
-    .mbn-item { font-size: 9px; }
-    .mbn-item .mbn-icon { font-size: 17px; }
-    .wa-chatbot-fab { bottom: 70px; }
-    .page { padding-bottom: 60px; }
+    /* Move WA chatbot fab above bottom nav on mobile */
+    .wa-chatbot-fab { bottom: 80px; right: 16px; width: 52px; height: 52px; }
+    .wa-chatbot-panel {
+      bottom: 148px; right: 12px;
+      width: calc(100vw - 24px); max-width: 360px;
+      max-height: calc(100vh - 200px); /* tighter on mobile */
+    }
+
+    /* Mobile top bar */
+    .mobile-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .mobile-topbar-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 15px; color: white;
+    }
+    .mobile-topbar-logo span { color: var(--saffron); }
+    .mobile-topbar-cta {
+      background: var(--saffron); color: white;
+      padding: 7px 14px; border-radius: 8px;
+      font-size: 12px; font-weight: 700;
+      border: none; cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 
   .hero-address-block {
@@ -2234,10 +2167,10 @@
     pointer-events: none;
     z-index: 9100;
     transform: translate(200px, 200px);
-    filter: drop-shadow(0 4px 10px rgba(232,98,10,0.45)) drop-shadow(0 0 18px rgba(240,180,41,0.25));
+    filter: drop-shadow(0 4px 10px rgba(232,98,10,0.45)) drop-shadow(0 0 18px rgba(240,180,41,0.2));
     transition: filter 0.3s;
     overflow: visible;
-    opacity: 0;
+    opacity: 0;         /* hidden until JS starts flight */
   }
   #butterfly.landing {
     filter: drop-shadow(0 2px 16px rgba(37,211,102,0.7));
@@ -2247,7 +2180,7 @@
 
   /* Wing flap animations */
   .bf-wing-left {
-    transform-origin: 70px 54px;
+    transform-origin: 70px 52px;
     animation: flapL 0.72s ease-in-out infinite alternate;
   }
   .bf-wing-right {
@@ -2262,14 +2195,8 @@
     transform-origin: 70px 66px;
     animation: flapR 0.72s ease-in-out 0.12s infinite alternate;
   }
-  @keyframes flapL { 
-    from { transform: scaleX(1) rotate(0deg); } 
-    to   { transform: scaleX(0.12) rotate(4deg); } 
-  }
-  @keyframes flapR { 
-    from { transform: scaleX(1) scaleX(-1) rotate(0deg); } 
-    to   { transform: scaleX(-0.12) rotate(-4deg); } 
-  }
+  @keyframes flapL { from { transform: scaleX(1) rotate(0deg); } to { transform: scaleX(0.14) rotate(4deg); } }
+  @keyframes flapR { from { transform: scaleX(-1) rotate(0deg); } to { transform: scaleX(-0.14) rotate(-4deg); } }
 
   /* Wings fold slowly when landed */
   #butterfly.landing .bf-wing-left,
@@ -2321,68 +2248,207 @@
      MOBILE PORTRAIT — COMPREHENSIVE FIX
      Targets phones in vertical orientation (≤480px wide)
      =================================================== */
-  /* ===== SMALL PHONES (≤480px) ===== */
   @media (max-width: 480px) {
-    .page-body { padding: 18px 14px 80px; }
-    .page-header { padding: 18px 14px 14px; }
-    .page-title { font-size: clamp(20px, 5.5vw, 26px) !important; }
-    .page-sub { font-size: 13.5px; }
 
-    .hero-full { padding: 28px 16px 44px; }
-    .hero-title { font-size: clamp(24px, 7vw, 32px) !important; }
-    .hero-sub { font-size: 14.5px; }
-    .stat-num { font-size: 24px; }
-    .stat-label { font-size: 11px; }
+    /* === BASE === */
+    body { font-size: 16px; }
+    .page-body { padding: 16px 14px 100px; }
 
+    /* === TOP BAR === */
+    .mobile-topbar { padding: 12px 14px; }
+    .mobile-topbar-logo { font-size: 14px; }
+    .mobile-topbar-cta { padding: 6px 11px; font-size: 11px; }
+
+    /* === PAGE HEADER === */
+    .page-header { padding: 16px 14px 14px; gap: 8px; }
+    .page-title { font-size: clamp(20px, 5.5vw, 26px) !important; line-height: 1.2; }
+    .page-sub { font-size: 13px; }
+
+    /* === HERO === */
+    .hero-full { padding: 24px 16px 40px; min-height: auto; }
+    .hero-eyebrow { font-size: 10px; padding: 4px 10px; margin-bottom: 16px; }
+    .hero-title { font-size: clamp(24px, 7.5vw, 32px) !important; line-height: 1.15; margin-bottom: 14px; }
+    .hero-sub { font-size: 14px; margin-bottom: 22px; line-height: 1.5; }
+    .hero-btns { flex-direction: column; gap: 10px; }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline-white { width: 100%; font-size: 14px; padding: 13px 16px; border-radius: 10px; }
+    .hero-stats { gap: 16px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; }
+    .stat-num { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+
+    /* === SERVICES === */
     .services-grid { grid-template-columns: 1fr; gap: 12px; }
-    .service-card { padding: 18px 14px; }
+    .service-card { padding: 18px 14px; border-radius: 14px; }
+    .service-icon { font-size: 28px; margin-bottom: 10px; }
     .service-name { font-size: 15px; }
-    .service-desc { font-size: 13.5px; }
+    .service-desc { font-size: 14px; line-height: 1.55; }
 
+    /* === INFO / STATS GRID === */
     .info-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .info-card { padding: 14px 12px; border-radius: 12px; }
     .info-card-value { font-size: 22px; }
+    .info-card-label { font-size: 10px; }
     .stats-2x2 { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .stat-block-num { font-size: 26px; }
+    .stat-block { padding: 14px 12px; }
+    .stat-block-num { font-size: 24px; }
+    .stat-block-label { font-size: 11px; }
 
+    /* === PACKAGES === */
     .packages-grid { grid-template-columns: 1fr; gap: 14px; }
+    .package-card { padding: 20px 16px; }
     .pkg-name { font-size: 16px; }
-    .pkg-price { font-size: 28px; }
-    .pkg-feature { font-size: 13.5px; }
+    .pkg-price { font-size: 26px; }
+    .pkg-feature { font-size: 13px; }
+    .pkg-btn { padding: 11px 16px; font-size: 13px; }
 
-    .contact-form-wrap { padding: 18px 14px; }
+    /* === CONTACT === */
+    .contact-layout { grid-template-columns: 1fr; gap: 20px; }
+    .contact-form-wrap { padding: 18px 14px; border-radius: 14px; }
     .cf-title { font-size: 17px; }
+    .cf-sub { font-size: 13px; }
+    .form-grid { grid-template-columns: 1fr; gap: 10px; }
     .form-field input,
     .form-field select,
     .form-field textarea { font-size: 15px; padding: 11px 12px; }
-    .ci-item { padding: 12px 14px; }
+    .form-submit { padding: 13px 16px; font-size: 14px; border-radius: 10px; }
+    .ci-item { gap: 10px; padding: 12px 14px; }
+    .ci-icon { font-size: 20px; width: 36px; height: 36px; }
+    .ci-label { font-size: 11px; }
     .ci-value { font-size: 14px; }
+    .wa-quick { flex-direction: column; gap: 10px; text-align: center; padding: 18px 14px; }
+    .wa-quick-btn { width: 100%; justify-content: center; font-size: 14px; padding: 12px; }
 
-    .section-title { font-size: clamp(18px, 5vw, 22px) !important; }
-    .section-sub { font-size: 13.5px; }
+    /* === PAYMENT === */
+    .payment-layout { grid-template-columns: 1fr; gap: 16px; }
+    .bank-card-header { padding: 16px; }
+    .bank-details { padding: 16px; gap: 12px; }
+    .bank-row-label { font-size: 11px; }
+    .bank-row-value { font-size: 13px; }
+    .bank-row-value.accent { font-size: 16px; }
+    .upi-title { font-size: 15px; }
+    .upi-sub { font-size: 12px; }
 
-    .ireps-hero h2 { font-size: clamp(18px, 5.5vw, 24px) !important; }
-    .ireps-tc-title { font-size: 18px; }
+    /* === ABOUT === */
+    .about-layout { grid-template-columns: 1fr; gap: 20px; }
+    .about-text p { font-size: 14px; line-height: 1.6; }
+    .value-item { padding: 12px 12px; gap: 10px; }
+    .value-title { font-size: 14px; }
+    .value-desc { font-size: 12.5px; }
+    .legal-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* === TRAINING / COURSES === */
+    .courses-grid { grid-template-columns: 1fr; gap: 14px; }
+    .course-card { padding: 18px 14px; }
     .course-name { font-size: 17px; }
-    .testo-quote { font-size: 13.5px; }
+    .course-desc { font-size: 13px; }
+    .course-price-tag .price-val { font-size: 22px; }
+    .course-topics li { font-size: 12.5px; }
+    .course-feature-chip { font-size: 11px; padding: 5px 10px; }
+    .course-enroll { padding: 12px 16px; font-size: 14px; }
 
-    .cta-strip h3 { font-size: 19px; }
-    .portal-badge { font-size: 12px; }
-    .map-embed { height: 160px; }
+    /* === TESTIMONIALS === */
+    .testo-grid { grid-template-columns: 1fr; gap: 12px; }
+    .testo-card { padding: 18px 14px; }
+    .testo-quote { font-size: 13px; line-height: 1.6; }
+    .testo-name { font-size: 14px; }
+
+    /* === IREPS === */
+    .ireps-hero { padding: 24px 16px; }
+    .ireps-hero h2 { font-size: 22px !important; }
+    .ireps-hero p { font-size: 13.5px; }
+    .ireps-cards-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ireps-card { padding: 16px 14px; }
+    .ireps-tc { padding: 20px 14px; }
+    .ireps-tc-title { font-size: 18px; }
+    .ireps-tc-feat { font-size: 12.5px; }
+    .ireps-tc-enroll-btn { font-size: 14px; padding: 12px 16px; }
+    .ireps-tc-wa-btn { font-size: 13px; padding: 10px 14px; }
+
+    /* === STARTUP / GEM === */
+    .startup-hero { padding: 24px 16px; }
+    .startup-cards { grid-template-columns: 1fr; gap: 12px; }
+    .startup-card { padding: 16px 14px; }
+
+    /* === ELECTRICAL === */
+    .elec-hero { padding: 24px 16px; }
+    .elec-steps { gap: 12px; }
+    .elec-step { padding: 14px 12px; }
+
+    /* === PROCESS STEPS === */
+    .process-steps { gap: 10px; }
+    .process-step { padding: 14px 12px; gap: 12px; }
+    .step-node { width: 34px; height: 34px; font-size: 13px; flex-shrink: 0; }
+    .step-title { font-size: 14px; }
+    .step-desc { font-size: 12.5px; }
+
+    /* === CTA STRIP === */
+    .cta-strip { padding: 20px 16px; flex-direction: column; text-align: center; gap: 14px; border-radius: 16px; }
+    .cta-strip h3 { font-size: 18px; line-height: 1.3; }
+    .cta-strip p { font-size: 13px; }
+    .cta-strip-btns { flex-direction: column; width: 100%; gap: 10px; }
+    .cta-strip-btns .btn-white,
+    .cta-strip-btns .btn-ghost-white { width: 100%; justify-content: center; font-size: 14px; padding: 12px; }
+
+    /* === WA CHATBOT === */
+    .wa-chatbot-fab { width: 48px; height: 48px; bottom: 74px; right: 12px; }
+    .wa-chatbot-panel { width: calc(100vw - 20px); right: 10px; bottom: 130px; }
+
+    /* === BOTTOM NAV === */
+    .mobile-bottom-nav { height: 60px; }
     .mbn-item { font-size: 9px; }
     .mbn-item .mbn-icon { font-size: 18px; }
+
+    /* === MAP === */
+    .map-embed { height: 180px; border-radius: 12px; }
+
+    /* === SECTION TITLES === */
+    .section-title { font-size: 20px !important; }
+    .section-sub { font-size: 13px; }
+
+    /* === PORTAL STRIP === */
+    .portal-strip { padding: 16px 14px; flex-direction: column; gap: 12px; border-radius: 14px; }
+    .portal-badge { padding: 10px 12px; font-size: 12px; }
   }
 
-  /* ===== EXTRA SMALL PHONES (≤360px) ===== */
+  /* Extra small phones (≤360px) */
   @media (max-width: 360px) {
-    .page-body { padding: 14px 12px 80px; }
     .hero-title { font-size: 22px !important; }
     .page-title { font-size: 19px !important; }
-    .info-grid { grid-template-columns: 1fr 1fr; }
-    .stats-2x2 { grid-template-columns: 1fr 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .stats-2x2 { grid-template-columns: 1fr; }
     .legal-grid { grid-template-columns: 1fr; }
     .mbn-item { font-size: 8px; }
-    .mbn-item .mbn-icon { font-size: 16px; }
-    .section-title { font-size: 17px !important; }
+  }
+
+  /* ===== LANDSCAPE MOBILE (≤900px rotated) ===== */
+  @media (max-width: 900px) and (orientation: landscape) {
+    .hero-full  { min-height: auto; padding: 28px 32px 40px; }
+    .hero-title { font-size: 28px !important; }
+    .hero-sub   { font-size: 14px; }
+    .hero-stats { margin-top: 18px; padding-top: 18px; gap: 18px; }
+    .hero-btns  { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline-white { width: auto; flex: 1; min-width: 160px; }
+    .page-header { padding: 14px 28px 12px; }
+    .page-title  { font-size: 22px !important; }
+    .page-body   { padding: 16px 28px 56px; }
+    .mobile-topbar { padding: 8px 20px; }
+    .services-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .packages-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .courses-grid     { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .testo-grid       { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .about-layout     { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-layout   { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .startup-cards    { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .ireps-cards-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .stats-2x2 { grid-template-columns: repeat(4,1fr); }
+    .info-grid  { grid-template-columns: repeat(4,1fr); }
+    .form-grid  { grid-template-columns: 1fr 1fr; }
+    .mobile-bottom-nav { height: 52px; }
+    .mbn-item           { font-size: 9px; }
+    .mbn-item .mbn-icon { font-size: 17px; }
+    .wa-chatbot-fab { bottom: 66px; }
+    .page { padding-bottom: 56px; }
   }
 
 </style>
@@ -3244,7 +3310,7 @@
               <div class="ci-icon">📍</div>
               <div>
                 <div class="ci-label">Corporate Office</div>
-                <div class="ci-value">309/4, 2nd Floor, Govindpuri<br>Kalkaji, New Delhi – 110019<br><span style="font-size:12px;color:var(--muted);">Onsite & Offsite service delivery across India</span></div>
+                <div class="ci-value">309/4, 2nd Floor<br>Govindpuri, Kalkaji, New Delhi – 110019<br><span style="font-size:12px;color:var(--muted);">Onsite & Offsite service delivery across India</span></div>
               </div>
             </div>
             <div class="ci-item">
@@ -3882,12 +3948,7 @@
   <defs>
     <radialGradient id="wgL" cx="35%" cy="40%" r="65%">
       <stop offset="0%" stop-color="#fde68a" stop-opacity="0.95"/>
-      <stop offset="45%" stop-color="#f0b429" stop-opacity="0.88"/>
-      <stop offset="100%" stop-color="#e8620a" stop-opacity="0.82"/>
-    </radialGradient>
-    <radialGradient id="wgR" cx="65%" cy="40%" r="65%">
-      <stop offset="0%" stop-color="#fde68a" stop-opacity="0.95"/>
-      <stop offset="45%" stop-color="#f0b429" stop-opacity="0.88"/>
+      <stop offset="50%" stop-color="#f0b429" stop-opacity="0.88"/>
       <stop offset="100%" stop-color="#e8620a" stop-opacity="0.82"/>
     </radialGradient>
     <radialGradient id="wgLlo" cx="35%" cy="55%" r="65%">
@@ -3895,89 +3956,51 @@
       <stop offset="55%" stop-color="#f5832a" stop-opacity="0.82"/>
       <stop offset="100%" stop-color="#c2410c" stop-opacity="0.75"/>
     </radialGradient>
-    <radialGradient id="wgRlo" cx="65%" cy="55%" r="65%">
-      <stop offset="0%" stop-color="#fed7aa" stop-opacity="0.9"/>
-      <stop offset="55%" stop-color="#f5832a" stop-opacity="0.82"/>
-      <stop offset="100%" stop-color="#c2410c" stop-opacity="0.75"/>
-    </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="bodyglow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
-
-  <!-- LEFT upper wing -->
-  <g class="bf-wing-left" filter="url(#glow)">
+  <g class="bf-wing-left">
     <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="url(#wgL)"/>
     <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5"/>
-    <!-- veins -->
     <path d="M70,54 Q46,38 20,28" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
     <path d="M70,54 Q44,50 14,54" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <path d="M70,54 Q50,44 30,22" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.35"/>
-    <!-- eye spots -->
     <circle cx="26" cy="32" r="8" fill="#fef3c7" opacity="0.6"/>
     <circle cx="26" cy="32" r="5" fill="#f0b429" opacity="0.85"/>
     <circle cx="26" cy="32" r="2.5" fill="#1a0a00" opacity="0.7"/>
     <circle cx="24" cy="30" r="1" fill="white" opacity="0.8"/>
-    <!-- shimmer dots -->
     <circle cx="46" cy="20" r="3" fill="white" opacity="0.45"/>
-    <circle cx="12" cy="48" r="2.5" fill="white" opacity="0.35"/>
   </g>
-
-  <!-- RIGHT upper wing (mirror) -->
-  <g class="bf-wing-right" style="transform:scaleX(-1);transform-origin:70px 54px" filter="url(#glow)">
-    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="url(#wgR)"/>
+  <g class="bf-wing-right" style="transform:scaleX(-1);transform-origin:70px 54px">
+    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="url(#wgL)"/>
     <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5"/>
     <path d="M70,54 Q46,38 20,28" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <path d="M70,54 Q44,50 14,54" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
     <circle cx="26" cy="32" r="8" fill="#fef3c7" opacity="0.6"/>
     <circle cx="26" cy="32" r="5" fill="#f0b429" opacity="0.85"/>
     <circle cx="26" cy="32" r="2.5" fill="#1a0a00" opacity="0.7"/>
     <circle cx="24" cy="30" r="1" fill="white" opacity="0.8"/>
-    <circle cx="46" cy="20" r="3" fill="white" opacity="0.45"/>
   </g>
-
-  <!-- LEFT lower wing -->
-  <g class="bf-wing-lower-left" filter="url(#glow)">
+  <g class="bf-wing-lower-left">
     <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="url(#wgLlo)"/>
     <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.45"/>
-    <path d="M70,66 Q44,72 20,68" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.35"/>
     <circle cx="30" cy="80" r="6" fill="#fef3c7" opacity="0.55"/>
     <circle cx="30" cy="80" r="3.5" fill="#f0b429" opacity="0.75"/>
     <circle cx="30" cy="80" r="1.5" fill="#1a0a00" opacity="0.6"/>
   </g>
-
-  <!-- RIGHT lower wing (mirror) -->
-  <g class="bf-wing-lower-right" style="transform:scaleX(-1);transform-origin:70px 66px" filter="url(#glow)">
-    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="url(#wgRlo)"/>
+  <g class="bf-wing-lower-right" style="transform:scaleX(-1);transform-origin:70px 66px">
+    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="url(#wgLlo)"/>
     <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.45"/>
-    <path d="M70,66 Q44,72 20,68" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.35"/>
     <circle cx="30" cy="80" r="6" fill="#fef3c7" opacity="0.55"/>
     <circle cx="30" cy="80" r="3.5" fill="#f0b429" opacity="0.75"/>
-    <circle cx="30" cy="80" r="1.5" fill="#1a0a00" opacity="0.6"/>
   </g>
-
-  <!-- Body (elegant tapered) -->
-  <ellipse cx="70" cy="66" rx="3.5" ry="18" fill="#2d1200" filter="url(#bodyglow)"/>
+  <ellipse cx="70" cy="66" rx="3.5" ry="18" fill="#2d1200"/>
   <ellipse cx="70" cy="66" rx="2" ry="16" fill="#5c2500" opacity="0.6"/>
-  <!-- Head -->
-  <circle cx="70" cy="46" r="6.5" fill="#1a0800" filter="url(#bodyglow)"/>
-  <circle cx="70" cy="46" r="4" fill="#3d1500" opacity="0.8"/>
-  <!-- Eyes (golden) -->
+  <circle cx="70" cy="46" r="6.5" fill="#1a0800"/>
   <circle cx="66.5" cy="44.5" r="2.2" fill="#f0b429"/>
   <circle cx="73.5" cy="44.5" r="2.2" fill="#f0b429"/>
   <circle cx="66.5" cy="44.5" r="1" fill="white" opacity="0.9"/>
   <circle cx="73.5" cy="44.5" r="1" fill="white" opacity="0.9"/>
-  <!-- Antennae (curved, elegant) -->
   <path d="M68,41 Q60,28 56,18" stroke="#2d1200" stroke-width="1.4" fill="none" stroke-linecap="round"/>
   <path d="M72,41 Q80,28 84,18" stroke="#2d1200" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-  <!-- Antennae tips (glowing) -->
-  <circle cx="55" cy="17" r="3.5" fill="#f0b429" filter="url(#glow)"/>
-  <circle cx="85" cy="17" r="3.5" fill="#f0b429" filter="url(#glow)"/>
+  <circle cx="55" cy="17" r="3.5" fill="#f0b429"/>
+  <circle cx="85" cy="17" r="3.5" fill="#f0b429"/>
   <circle cx="55" cy="17" r="1.5" fill="white" opacity="0.7"/>
   <circle cx="85" cy="17" r="1.5" fill="white" opacity="0.7"/>
 </svg>
@@ -4044,7 +4067,7 @@
   <div class="more-drawer-item" data-page="testimonials" onclick="showPage('testimonials',this);closeDrawer()"><span class="mdi">⭐</span> Testimonials</div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ===== NAVIGATION — bulletproof =====
 
   var SERVICE_PAGES = ['tender','training','startup','electrical','ireps','services'];
@@ -4242,36 +4265,6 @@
       bubble.classList.add('show');
     }
 
-    var firstLand = true;
-
-    function landOnWA() {
-      if (isLanded) return;
-      isLanding = true;
-      cancelAnimationFrame(frameId);
-      const wa = getWACenter();
-      const start = { x: bx, y: by };
-      const end   = { x: wa.x, y: wa.y - 28 };
-      const c1 = ctrl(start, end, 120), c2 = ctrl(end, start, 80);
-      let t = 0;
-      function flyIn() {
-        t += 0.018; if (t > 1) t = 1;
-        const pt = bezier(start, c1, c2, end, t);
-        angle = Math.atan2(pt.y - by, pt.x - bx);
-        bx = pt.x; by = pt.y; place(bx, by, angle);
-        if (t < 1) { frameId = requestAnimationFrame(flyIn); return; }
-        isLanded = true; isLanding = false;
-        bf.classList.add('landing');
-        const fab = document.querySelector('.wa-chatbot-fab');
-        if (fab) fab.style.boxShadow = '0 0 0 8px rgba(37,211,102,0.3),0 6px 24px rgba(37,211,102,0.6)';
-        showBubble();
-        bf.onclick = () => { toggleWAChat(); takeOff(); };
-        var sitTime = firstLand ? 30000 : 30000;
-        firstLand = false;
-        landTimer = setTimeout(takeOff, sitTime);
-      }
-      frameId = requestAnimationFrame(flyIn);
-    }
-
     function takeOff() {
       clearTimeout(landTimer);
       bf.classList.remove('landing'); bf.onclick = null;
@@ -4323,7 +4316,37 @@
       frameId = requestAnimationFrame(roamLoop);
     }
 
-    // Appear and immediately land on WhatsApp — sit for 30s so user can read
+    var firstLand = true;
+
+    function landOnWA() {
+      if (isLanded) return;
+      isLanding = true;
+      cancelAnimationFrame(frameId);
+      const wa = getWACenter();
+      const start = { x: bx, y: by };
+      const end   = { x: wa.x, y: wa.y - 28 };
+      const c1 = ctrl(start, end, 120), c2 = ctrl(end, start, 80);
+      let t = 0;
+      function flyIn() {
+        t += 0.018; if (t > 1) t = 1;
+        const pt = bezier(start, c1, c2, end, t);
+        angle = Math.atan2(pt.y - by, pt.x - bx);
+        bx = pt.x; by = pt.y; place(bx, by, angle);
+        if (t < 1) { frameId = requestAnimationFrame(flyIn); return; }
+        isLanded = true; isLanding = false;
+        bf.classList.add('landing');
+        const fab = document.querySelector('.wa-chatbot-fab');
+        if (fab) fab.style.boxShadow = '0 0 0 8px rgba(37,211,102,0.3),0 6px 24px rgba(37,211,102,0.6)';
+        showBubble();
+        bf.onclick = () => { toggleWAChat(); takeOff(); };
+        var sitTime = firstLand ? 30000 : 30000;
+        firstLand = false;
+        landTimer = setTimeout(takeOff, sitTime);
+      }
+      frameId = requestAnimationFrame(flyIn);
+    }
+
+    // Appear immediately on WA button, sit for 30s, then start flying
     setTimeout(() => {
       bf.style.opacity = '1';
       const wa = getWACenter();
