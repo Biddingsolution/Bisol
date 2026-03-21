@@ -98,7 +98,7 @@
   /* Rotating ring with text */
   .logo-orbit-ring {
     position: absolute;
-    inset: -5px;
+    inset: 0;
     border-radius: 50%;
     animation: spinRing 7s linear infinite;
   }
@@ -107,8 +107,7 @@
     to   { transform: rotate(360deg); }
   }
   .logo-orbit-ring svg {
-    width: 100%; height: 100%;
-    overflow: visible;
+    width: 100%; height: 100%; overflow: visible;
   }
   .logo-orbit-ring textPath {
     font-family: 'Syne', sans-serif;
@@ -1492,30 +1491,30 @@
 
     /* Page header — compact */
     .page-header {
-      padding: 20px 20px 16px;
-      position: relative; /* not sticky on mobile, saves space */
+      padding: 24px 20px 18px;
+      position: relative;
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
     }
-    .page-eyebrow { font-size: 10px; }
-    .page-title { font-size: clamp(22px, 5.5vw, 30px) !important; }
-    .page-sub { font-size: 13.5px; }
+    .page-eyebrow { font-size: 12px; }
+    .page-title { font-size: 26px !important; }
+    .page-sub { font-size: 15px; }
 
     /* Page body — tighter padding */
-    .page-body { padding: 20px 16px 40px; }
+    .page-body { padding: 22px 18px 44px; }
 
     /* Hero — mobile optimised */
-    .hero-full { padding: 32px 20px 48px; min-height: 100svh; }
+    .hero-full { padding: 36px 20px 52px; min-height: unset; height: auto; }
     .hero-eyebrow { font-size: 11px; padding: 5px 12px; margin-bottom: 20px; }
-    .hero-title { font-size: 32px !important; margin-bottom: 16px; line-height: 1.15; }
-    .hero-sub { font-size: 15px; margin-bottom: 28px; }
+    .hero-title { font-size: 34px !important; margin-bottom: 18px; line-height: 1.15; }
+    .hero-sub { font-size: 16px; margin-bottom: 28px; }
     .hero-btns { flex-direction: column; gap: 10px; }
     .hero-btns .btn-primary,
-    .hero-btns .btn-outline-white { width: 100%; justify-content: center; padding: 14px 20px; font-size: 15px; }
+    .hero-btns .btn-outline-white { width: 100%; justify-content: center; padding: 15px 22px; font-size: 16px; border-radius: 12px; }
     .hero-stats { gap: 24px; flex-wrap: wrap; margin-top: 32px; padding-top: 32px; }
-    .stat-num { font-size: 26px; }
-    .stat-label { font-size: 11px; }
+    .stat-num { font-size: 28px; }
+    .stat-label { font-size: 13px; }
     .hero-credentials { display: none; }
     .hero-address-mobile { display: flex; }
 
@@ -1536,12 +1535,12 @@
     .legal-grid { grid-template-columns: 1fr 1fr; }
 
     /* Service cards */
-    .service-card { padding: 22px 18px; }
-    .service-name { font-size: 15px; }
-    .service-desc { font-size: 13px; }
+    .service-card { padding: 24px 20px; border-radius: 18px; }
+    .service-name { font-size: 17px; }
+    .service-desc { font-size: 15px; }
 
     /* About page */
-    .about-text p { font-size: 14.5px; }
+    .about-text p { font-size: 16px; }
     .value-item { padding: 14px 14px; }
     .stat-block { padding: 18px 14px; }
     .stat-block-num { font-size: 28px; }
@@ -1558,7 +1557,7 @@
     .form-field.full { grid-column: span 1; }
     .form-submit { grid-column: span 1; }
     .contact-form-wrap { padding: 22px 18px; }
-    .cf-title { font-size: 18px; }
+    .cf-title { font-size: 20px; }
 
     /* Bank card */
     .bank-card-header { padding: 18px 20px; }
@@ -1579,13 +1578,13 @@
 
     /* Testimonials */
     .testo-card { padding: 20px 18px; }
-    .testo-quote { font-size: 13.5px; }
+    .testo-quote { font-size: 15px; }
 
     /* Training courses */
     .course-card { padding: 20px 16px; }
 
     /* Map */
-    .map-embed { height: 140px; }
+    .map-embed { height: 180px; border-radius: 14px; }
 
     /* Show mobile bottom nav */
     .mobile-bottom-nav {
@@ -1618,7 +1617,7 @@
       -webkit-tap-highlight-color: transparent;
     }
     .mbn-item.active { color: var(--saffron); }
-    .mbn-item .mbn-icon { font-size: 20px; line-height: 1; }
+    .mbn-item .mbn-icon { font-size: 22px; line-height: 1; }
 
     /* "More" drawer overlay */
     .more-drawer {
@@ -2162,12 +2161,12 @@
   #butterfly {
     position: fixed;
     top: 0; left: 0;
-    width: 92px;
-    height: 84px;
+    width: 80px;        /* wider, more visible */
+    height: 72px;
     pointer-events: none;
     z-index: 9100;
     transform: translate(200px, 200px);
-    filter: drop-shadow(0 4px 10px rgba(232,98,10,0.45)) drop-shadow(0 0 18px rgba(240,180,41,0.2));
+    filter: drop-shadow(0 3px 8px rgba(232,98,10,0.3));
     transition: filter 0.3s;
     overflow: visible;
     opacity: 0;         /* hidden until JS starts flight */
@@ -2181,22 +2180,22 @@
   /* Wing flap animations */
   .bf-wing-left {
     transform-origin: 70px 52px;
-    animation: flapL 0.72s ease-in-out infinite alternate;
+    animation: flapL 0.52s ease-in-out infinite alternate;
   }
   .bf-wing-right {
-    transform-origin: 70px 54px;
-    animation: flapR 0.72s ease-in-out infinite alternate;
+    transform-origin: 70px 52px;
+    animation: flapR 0.52s ease-in-out infinite alternate;
   }
   .bf-wing-lower-left {
-    transform-origin: 70px 66px;
-    animation: flapL 0.72s ease-in-out 0.12s infinite alternate;
+    transform-origin: 70px 64px;
+    animation: flapL 0.52s ease-in-out 0.1s infinite alternate;
   }
   .bf-wing-lower-right {
-    transform-origin: 70px 66px;
-    animation: flapR 0.72s ease-in-out 0.12s infinite alternate;
+    transform-origin: 70px 64px;
+    animation: flapR 0.52s ease-in-out 0.1s infinite alternate;
   }
-  @keyframes flapL { from { transform: scaleX(1) rotate(0deg); } to { transform: scaleX(0.14) rotate(4deg); } }
-  @keyframes flapR { from { transform: scaleX(-1) rotate(0deg); } to { transform: scaleX(-0.14) rotate(-4deg); } }
+  @keyframes flapL { from { transform: scaleX(1); } to { transform: scaleX(0.18); } }
+  @keyframes flapR { from { transform: scaleX(1) scaleX(-1); } to { transform: scaleX(-0.18); } }
 
   /* Wings fold slowly when landed */
   #butterfly.landing .bf-wing-left,
@@ -2252,7 +2251,7 @@
 
     /* === BASE === */
     body { font-size: 16px; }
-    .page-body { padding: 16px 14px 100px; }
+    .page-body { padding: 18px 15px 80px; }
 
     /* === TOP BAR === */
     .mobile-topbar { padding: 12px 14px; }
@@ -2261,26 +2260,26 @@
 
     /* === PAGE HEADER === */
     .page-header { padding: 16px 14px 14px; gap: 8px; }
-    .page-title { font-size: clamp(20px, 5.5vw, 26px) !important; line-height: 1.2; }
+    .page-title { font-size: 24px !important; line-height: 1.2; }
     .page-sub { font-size: 13px; }
 
     /* === HERO === */
-    .hero-full { padding: 24px 16px 40px; min-height: auto; }
+    .hero-full { padding: 28px 16px 44px; min-height: unset; height: auto; }
     .hero-eyebrow { font-size: 10px; padding: 4px 10px; margin-bottom: 16px; }
-    .hero-title { font-size: clamp(24px, 7.5vw, 32px) !important; line-height: 1.15; margin-bottom: 14px; }
-    .hero-sub { font-size: 14px; margin-bottom: 22px; line-height: 1.5; }
+    .hero-title { font-size: 28px !important; line-height: 1.15; margin-bottom: 14px; }
+    .hero-sub { font-size: 15px; margin-bottom: 22px; line-height: 1.6; }
     .hero-btns { flex-direction: column; gap: 10px; }
     .hero-btns .btn-primary,
     .hero-btns .btn-outline-white { width: 100%; font-size: 14px; padding: 13px 16px; border-radius: 10px; }
     .hero-stats { gap: 16px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; }
-    .stat-num { font-size: 22px; }
+    .stat-num { font-size: 25px; }
     .stat-label { font-size: 10px; }
 
     /* === SERVICES === */
     .services-grid { grid-template-columns: 1fr; gap: 12px; }
     .service-card { padding: 18px 14px; border-radius: 14px; }
     .service-icon { font-size: 28px; margin-bottom: 10px; }
-    .service-name { font-size: 15px; }
+    .service-name { font-size: 16px; }
     .service-desc { font-size: 14px; line-height: 1.55; }
 
     /* === INFO / STATS GRID === */
@@ -2296,15 +2295,15 @@
     /* === PACKAGES === */
     .packages-grid { grid-template-columns: 1fr; gap: 14px; }
     .package-card { padding: 20px 16px; }
-    .pkg-name { font-size: 16px; }
-    .pkg-price { font-size: 26px; }
+    .pkg-name { font-size: 17px; }
+    .pkg-price { font-size: 28px; }
     .pkg-feature { font-size: 13px; }
     .pkg-btn { padding: 11px 16px; font-size: 13px; }
 
     /* === CONTACT === */
     .contact-layout { grid-template-columns: 1fr; gap: 20px; }
     .contact-form-wrap { padding: 18px 14px; border-radius: 14px; }
-    .cf-title { font-size: 17px; }
+    .cf-title { font-size: 19px; }
     .cf-sub { font-size: 13px; }
     .form-grid { grid-template-columns: 1fr; gap: 10px; }
     .form-field input,
@@ -2314,7 +2313,7 @@
     .ci-item { gap: 10px; padding: 12px 14px; }
     .ci-icon { font-size: 20px; width: 36px; height: 36px; }
     .ci-label { font-size: 11px; }
-    .ci-value { font-size: 14px; }
+    .ci-value { font-size: 15px; }
     .wa-quick { flex-direction: column; gap: 10px; text-align: center; padding: 18px 14px; }
     .wa-quick-btn { width: 100%; justify-content: center; font-size: 14px; padding: 12px; }
 
@@ -2339,7 +2338,7 @@
     /* === TRAINING / COURSES === */
     .courses-grid { grid-template-columns: 1fr; gap: 14px; }
     .course-card { padding: 18px 14px; }
-    .course-name { font-size: 17px; }
+    .course-name { font-size: 18px; }
     .course-desc { font-size: 13px; }
     .course-price-tag .price-val { font-size: 22px; }
     .course-topics li { font-size: 12.5px; }
@@ -2349,7 +2348,7 @@
     /* === TESTIMONIALS === */
     .testo-grid { grid-template-columns: 1fr; gap: 12px; }
     .testo-card { padding: 18px 14px; }
-    .testo-quote { font-size: 13px; line-height: 1.6; }
+    .testo-quote { font-size: 14px; line-height: 1.65; }
     .testo-name { font-size: 14px; }
 
     /* === IREPS === */
@@ -2383,7 +2382,7 @@
 
     /* === CTA STRIP === */
     .cta-strip { padding: 20px 16px; flex-direction: column; text-align: center; gap: 14px; border-radius: 16px; }
-    .cta-strip h3 { font-size: 18px; line-height: 1.3; }
+    .cta-strip h3 { font-size: 20px; line-height: 1.3; }
     .cta-strip p { font-size: 13px; }
     .cta-strip-btns { flex-direction: column; width: 100%; gap: 10px; }
     .cta-strip-btns .btn-white,
@@ -2402,8 +2401,8 @@
     .map-embed { height: 180px; border-radius: 12px; }
 
     /* === SECTION TITLES === */
-    .section-title { font-size: 20px !important; }
-    .section-sub { font-size: 13px; }
+    .section-title { font-size: 22px !important; }
+    .section-sub { font-size: 15px; }
 
     /* === PORTAL STRIP === */
     .portal-strip { padding: 16px 14px; flex-direction: column; gap: 12px; border-radius: 14px; }
@@ -2420,19 +2419,17 @@
     .mbn-item { font-size: 8px; }
   }
 
-  /* ===== LANDSCAPE MOBILE (≤900px rotated) ===== */
+  /* ===== LANDSCAPE MOBILE (<=900px rotated) ===== */
   @media (max-width: 900px) and (orientation: landscape) {
     .hero-full  { min-height: auto; padding: 28px 32px 40px; }
     .hero-title { font-size: 28px !important; }
     .hero-sub   { font-size: 14px; }
-    .hero-stats { margin-top: 18px; padding-top: 18px; gap: 18px; }
     .hero-btns  { flex-direction: row; flex-wrap: wrap; gap: 10px; }
     .hero-btns .btn-primary,
     .hero-btns .btn-outline-white { width: auto; flex: 1; min-width: 160px; }
     .page-header { padding: 14px 28px 12px; }
     .page-title  { font-size: 22px !important; }
     .page-body   { padding: 16px 28px 56px; }
-    .mobile-topbar { padding: 8px 20px; }
     .services-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .packages-grid    { grid-template-columns: repeat(2,1fr); gap: 12px; }
     .courses-grid     { grid-template-columns: repeat(2,1fr); gap: 12px; }
@@ -3944,65 +3941,50 @@
 <!-- ===== 🦋 BUTTERFLY ===== -->
 <div id="bf-bubble">💬 Chat with us on WhatsApp!</div>
 
-<svg id="butterfly" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" title="Click to chat on WhatsApp">
-  <defs>
-    <radialGradient id="wgL" cx="35%" cy="40%" r="65%">
-      <stop offset="0%" stop-color="#fde68a" stop-opacity="0.95"/>
-      <stop offset="50%" stop-color="#f0b429" stop-opacity="0.88"/>
-      <stop offset="100%" stop-color="#e8620a" stop-opacity="0.82"/>
-    </radialGradient>
-    <radialGradient id="wgLlo" cx="35%" cy="55%" r="65%">
-      <stop offset="0%" stop-color="#fed7aa" stop-opacity="0.9"/>
-      <stop offset="55%" stop-color="#f5832a" stop-opacity="0.82"/>
-      <stop offset="100%" stop-color="#c2410c" stop-opacity="0.75"/>
-    </radialGradient>
-  </defs>
+<svg id="butterfly" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg" title="Click to chat on WhatsApp">
+  <!-- LEFT upper wing: anchored at body centre (70,52), spreads LEFT -->
   <g class="bf-wing-left">
-    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="url(#wgL)"/>
-    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5"/>
-    <path d="M70,54 Q46,38 20,28" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <path d="M70,54 Q44,50 14,54" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <circle cx="26" cy="32" r="8" fill="#fef3c7" opacity="0.6"/>
-    <circle cx="26" cy="32" r="5" fill="#f0b429" opacity="0.85"/>
-    <circle cx="26" cy="32" r="2.5" fill="#1a0a00" opacity="0.7"/>
-    <circle cx="24" cy="30" r="1" fill="white" opacity="0.8"/>
-    <circle cx="46" cy="20" r="3" fill="white" opacity="0.45"/>
+    <path d="M70,52 C65,30 38,14 16,22 C4,28 4,50 16,60 C32,72 60,64 70,52Z" fill="#e8620a" opacity="0.95"/>
+    <path d="M70,52 C65,30 38,14 16,22 C4,28 4,50 16,60 C32,72 60,64 70,52Z" fill="none" stroke="#7c2d05" stroke-width="1.2"/>
+    <circle cx="28" cy="30" r="7" fill="#f0b429" opacity="0.85"/>
+    <circle cx="14" cy="46" r="5" fill="white" opacity="0.55"/>
+    <circle cx="46" cy="22" r="5" fill="#fef3c7" opacity="0.75"/>
+    <path d="M22,54 Q40,42 62,50" stroke="#7c2d05" stroke-width="1" fill="none" opacity="0.5"/>
+    <path d="M24,28 Q40,20 54,30" stroke="#7c2d05" stroke-width="1" fill="none" opacity="0.5"/>
   </g>
-  <g class="bf-wing-right" style="transform:scaleX(-1);transform-origin:70px 54px">
-    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="url(#wgL)"/>
-    <path d="M70,54 C64,28 34,10 12,20 C0,28 2,52 16,62 C34,74 62,66 70,54Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5"/>
-    <path d="M70,54 Q46,38 20,28" stroke="#7c2d05" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <circle cx="26" cy="32" r="8" fill="#fef3c7" opacity="0.6"/>
-    <circle cx="26" cy="32" r="5" fill="#f0b429" opacity="0.85"/>
-    <circle cx="26" cy="32" r="2.5" fill="#1a0a00" opacity="0.7"/>
-    <circle cx="24" cy="30" r="1" fill="white" opacity="0.8"/>
+  <!-- RIGHT upper wing: mirror of left around x=70 -->
+  <g class="bf-wing-right" style="transform:scaleX(-1);transform-origin:70px 52px">
+    <path d="M70,52 C65,30 38,14 16,22 C4,28 4,50 16,60 C32,72 60,64 70,52Z" fill="#e8620a" opacity="0.95"/>
+    <path d="M70,52 C65,30 38,14 16,22 C4,28 4,50 16,60 C32,72 60,64 70,52Z" fill="none" stroke="#7c2d05" stroke-width="1.2"/>
+    <circle cx="28" cy="30" r="7" fill="#f0b429" opacity="0.85"/>
+    <circle cx="14" cy="46" r="5" fill="white" opacity="0.55"/>
+    <circle cx="46" cy="22" r="5" fill="#fef3c7" opacity="0.75"/>
   </g>
+  <!-- LEFT lower wing -->
   <g class="bf-wing-lower-left">
-    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="url(#wgLlo)"/>
-    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.45"/>
-    <circle cx="30" cy="80" r="6" fill="#fef3c7" opacity="0.55"/>
-    <circle cx="30" cy="80" r="3.5" fill="#f0b429" opacity="0.75"/>
-    <circle cx="30" cy="80" r="1.5" fill="#1a0a00" opacity="0.6"/>
+    <path d="M70,64 C62,80 36,96 20,88 C8,82 10,66 24,60 C40,54 62,60 70,64Z" fill="#f5832a" opacity="0.92"/>
+    <path d="M70,64 C62,80 36,96 20,88 C8,82 10,66 24,60 C40,54 62,60 70,64Z" fill="none" stroke="#7c2d05" stroke-width="1.2"/>
+    <circle cx="32" cy="78" r="5.5" fill="#fef3c7" opacity="0.7"/>
+    <circle cx="20" cy="68" r="4" fill="#f0b429" opacity="0.75"/>
   </g>
-  <g class="bf-wing-lower-right" style="transform:scaleX(-1);transform-origin:70px 66px">
-    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="url(#wgLlo)"/>
-    <path d="M70,66 C60,84 32,100 16,90 C4,82 6,66 22,60 C40,54 64,60 70,66Z" fill="none" stroke="#c2410c" stroke-width="1" opacity="0.45"/>
-    <circle cx="30" cy="80" r="6" fill="#fef3c7" opacity="0.55"/>
-    <circle cx="30" cy="80" r="3.5" fill="#f0b429" opacity="0.75"/>
+  <!-- RIGHT lower wing -->
+  <g class="bf-wing-lower-right" style="transform:scaleX(-1);transform-origin:70px 64px">
+    <path d="M70,64 C62,80 36,96 20,88 C8,82 10,66 24,60 C40,54 62,60 70,64Z" fill="#f5832a" opacity="0.92"/>
+    <path d="M70,64 C62,80 36,96 20,88 C8,82 10,66 24,60 C40,54 62,60 70,64Z" fill="none" stroke="#7c2d05" stroke-width="1.2"/>
+    <circle cx="32" cy="78" r="5.5" fill="#fef3c7" opacity="0.7"/>
+    <circle cx="20" cy="68" r="4" fill="#f0b429" opacity="0.75"/>
   </g>
-  <ellipse cx="70" cy="66" rx="3.5" ry="18" fill="#2d1200"/>
-  <ellipse cx="70" cy="66" rx="2" ry="16" fill="#5c2500" opacity="0.6"/>
-  <circle cx="70" cy="46" r="6.5" fill="#1a0800"/>
-  <circle cx="66.5" cy="44.5" r="2.2" fill="#f0b429"/>
-  <circle cx="73.5" cy="44.5" r="2.2" fill="#f0b429"/>
-  <circle cx="66.5" cy="44.5" r="1" fill="white" opacity="0.9"/>
-  <circle cx="73.5" cy="44.5" r="1" fill="white" opacity="0.9"/>
-  <path d="M68,41 Q60,28 56,18" stroke="#2d1200" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-  <path d="M72,41 Q80,28 84,18" stroke="#2d1200" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-  <circle cx="55" cy="17" r="3.5" fill="#f0b429"/>
-  <circle cx="85" cy="17" r="3.5" fill="#f0b429"/>
-  <circle cx="55" cy="17" r="1.5" fill="white" opacity="0.7"/>
-  <circle cx="85" cy="17" r="1.5" fill="white" opacity="0.7"/>
+  <!-- Body -->
+  <ellipse cx="70" cy="62" rx="4.5" ry="20" fill="#1a0a00"/>
+  <circle cx="70" cy="40" r="7" fill="#1a0a00"/>
+  <!-- Antennae -->
+  <line x1="70" y1="35" x2="58" y2="18" stroke="#1a0a00" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="70" y1="35" x2="82" y2="18" stroke="#1a0a00" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="57" cy="16" r="3.2" fill="#e8620a"/>
+  <circle cx="83" cy="16" r="3.2" fill="#e8620a"/>
+  <!-- Eyes -->
+  <circle cx="66" cy="39" r="2" fill="#f0b429"/>
+  <circle cx="74" cy="39" r="2" fill="#f0b429"/>
 </svg>
 
 <!-- ===== WHATSAPP CHATBOT ===== -->
@@ -4339,14 +4321,11 @@
         if (fab) fab.style.boxShadow = '0 0 0 8px rgba(37,211,102,0.3),0 6px 24px rgba(37,211,102,0.6)';
         showBubble();
         bf.onclick = () => { toggleWAChat(); takeOff(); };
-        var sitTime = firstLand ? 30000 : 30000;
-        firstLand = false;
-        landTimer = setTimeout(takeOff, sitTime);
+        landTimer = setTimeout(takeOff, 30000);
       }
       frameId = requestAnimationFrame(flyIn);
     }
 
-    // Appear immediately on WA button, sit for 30s, then start flying
     setTimeout(() => {
       bf.style.opacity = '1';
       const wa = getWACenter();
