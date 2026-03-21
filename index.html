@@ -1696,92 +1696,17 @@
     }
     .mobile-topbar-logo {
       font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 16px; color: white;
+      font-weight: 800; font-size: 15px; color: white;
     }
     .mobile-topbar-logo span { color: var(--saffron); }
     .mobile-topbar-cta {
       background: var(--saffron); color: white;
-      padding: 9px 16px; border-radius: 10px;
-      font-size: 13px; font-weight: 700;
+      padding: 7px 14px; border-radius: 8px;
+      font-size: 12px; font-weight: 700;
       border: none; cursor: pointer;
       font-family: 'Syne', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-
-    /* Hero buttons - actual classes used in HTML */
-    .hero-vibrate-phone {
-      font-size: 18px !important;
-      display: flex; width: 100%;
-      justify-content: center;
-      padding: 14px 20px;
-      background: rgba(255,255,255,0.08);
-      border: 1.5px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      margin-bottom: 0;
-    }
-    .hero-vibrate-consult {
-      font-size: 15px !important;
-      width: 100%;
-      justify-content: center;
-      padding: 14px 20px !important;
-      border-radius: 12px;
-    }
-
-    /* Value / about items */
-    .value-title { font-size: 15px; }
-    .value-desc  { font-size: 14px; line-height: 1.6; }
-    .step-title  { font-size: 15px; }
-    .step-desc   { font-size: 13.5px; }
-
-    /* Package features */
-    .pkg-name    { font-size: 17px; }
-    .pkg-price   { font-size: 30px; }
-    .pkg-feature { font-size: 14px; }
-    .pkg-btn     { font-size: 15px; padding: 12px 18px; }
-
-    /* Contact info */
-    .ci-item  { gap: 14px; padding: 14px 16px; }
-    .ci-icon  { font-size: 22px; width: 40px; height: 40px; }
-    .ci-label { font-size: 12px; }
-    .ci-value { font-size: 15px; }
-
-    /* Course cards */
-    .course-name { font-size: 18px; }
-    .course-desc { font-size: 14px; }
-    .course-enroll { font-size: 15px; padding: 13px 18px; }
-
-    /* Section titles */
-    .section-title { font-size: 24px !important; }
-    .section-sub   { font-size: 15px; }
-
-    /* Bank / payment */
-    .bank-row-label { font-size: 13px; }
-    .bank-row-value { font-size: 15px; }
-    .bank-row-value.accent { font-size: 20px; }
-
-    /* Portal badges */
-    .portal-strip  { flex-direction: column; gap: 10px; padding: 16px 18px; }
-    .portal-badge  { font-size: 13px; padding: 10px 14px; }
-
-    /* IREPS */
-    .ireps-hero h2   { font-size: 24px !important; }
-    .ireps-hero p    { font-size: 15px; }
-    .ireps-tc-title  { font-size: 20px; }
-    .ireps-tc-feat   { font-size: 14px; }
-    .ireps-tc-enroll-btn { font-size: 15px; padding: 13px 18px; }
-
-    /* Startup / GeM */
-    .startup-hero    { padding: 28px 18px; }
-    .startup-cards   { grid-template-columns: 1fr; gap: 12px; }
-    .startup-card    { padding: 18px 16px; }
-
-    /* Electrical */
-    .elec-hero  { padding: 28px 18px; }
-    .elec-step  { padding: 16px 14px; }
-
-    /* CTA strip */
-    .cta-strip-btns .btn-white,
-    .cta-strip-btns .btn-ghost-white { font-size: 15px; padding: 13px 18px; }
   }
 
   .hero-address-block {
@@ -4203,6 +4128,8 @@
     // 8. Close mobile drawer
     closeDrawer();
     window.scrollTo(0,0);
+    // Update URL hash — enables bookmarking & sharing direct links
+    try { history.replaceState(null, '', '#' + id); } catch(e){}
   };
 
   // Keep showPage as alias so any old inline calls still work
@@ -4324,6 +4251,26 @@
     var moreBtn = document.getElementById('more-btn');
     if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && moreBtn && !moreBtn.contains(e.target)) closeDrawer();
   });
+
+  // ===== DEEP LINK via URL HASH =====
+  // Share direct links to any page e.g:
+  //   yoursite.com#payment   → opens Make Payment directly
+  //   yoursite.com#contact   → opens Contact Us directly
+  //   yoursite.com#tender    → opens Tender Filing directly
+  var VALID_PAGES = ['home','about','services','tender','training','startup','gem','nsic','electrical','ireps','testimonials','contact','payment'];
+
+  function loadFromHash() {
+    var hash = (window.location.hash || '').replace('#','').toLowerCase().trim();
+    if (hash && VALID_PAGES.indexOf(hash) !== -1) {
+      navGo(hash);
+    }
+  }
+
+  // Auto-navigate on page load if URL contains a hash
+  window.addEventListener('load', function() { loadFromHash(); });
+
+  // Handle browser back / forward navigation
+  window.addEventListener('hashchange', function() { loadFromHash(); });
 
   // ===== 🦋 BUTTERFLY FLIGHT ENGINE =====
   (function() {
