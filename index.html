@@ -24,7 +24,8 @@
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { height: 100%; }
+  html { height: 100%; overflow-x: hidden; }
+  body { overflow-x: hidden; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -64,6 +65,7 @@
     gap: 0;
     padding: 0 28px;
     height: 62px;
+    overflow-x: hidden;
   }
 
   /* ===== SPINNING LOGO ===== */
@@ -574,7 +576,7 @@
     background: white;
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 20;
   }
   .page-header-left {}
   .page-eyebrow {
@@ -661,7 +663,7 @@
 
   .hero-sub {
     font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.6);
-    max-width: 600px;
+    max-width: min(600px, 100%);
     margin-bottom: 44px;
     animation: fadeUp 0.8s ease 0.2s both;
   }
@@ -1186,7 +1188,7 @@
     font-family: 'DM Serif Display', serif; font-size: 24px; color: white; margin-bottom: 6px;
   }
   .cta-strip h3 em { font-style: italic; color: var(--gold-light); }
-  .cta-strip p { font-size: 14px; color: rgba(255,255,255,0.55); max-width: 420px; line-height: 1.6; }
+  .cta-strip p { font-size: 14px; color: rgba(255,255,255,0.55); max-width: 420px; line-height: 1.6; width: 100%; }
   .cta-strip-btns { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
   .btn-white {
     background: white; color: var(--navy);
@@ -1429,6 +1431,8 @@
 
   /* IREPS process steps */
   .ireps-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  @media (max-width: 768px) { .ireps-process { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+  @media (max-width: 480px) { .ireps-process { grid-template-columns: 1fr; gap: 8px; } }
   .ireps-step {
     background: white; border: 1.5px solid var(--border); border-radius: 16px;
     padding: 20px 16px; text-align: center; transition: all 0.25s;
@@ -1450,11 +1454,17 @@
 
   /* ===== RESPONSIVE — TABLET ===== */
   @media (max-width: 1100px) {
+    .topnav-inner { padding: 0 16px; }
+    .nav-item { padding: 7px 10px; font-size: 12px; }
+    .topnav-logo-name { font-size: 13px; }
+    .topnav-logo-tag { font-size: 8px; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .courses-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .packages-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .about-layout { grid-template-columns: 1fr; gap: 36px; }
     .testo-grid { grid-template-columns: 1fr; }
-    .page-header { padding: 32px 40px 24px; }
-    .page-body { padding: 32px 40px 60px; }
+    .page-header { padding: 28px 36px 20px; }
+    .page-body { padding: 28px 36px 56px; }
   }
 
   /* ===== MOBILE BOTTOM NAV BAR ===== */
@@ -1491,16 +1501,17 @@
     .page {
       height: auto;
       overflow: visible;
-      padding-bottom: 80px;
+      padding-bottom: 90px;
     }
 
     /* Page header — compact */
     .page-header {
-      padding: 24px 20px 18px;
+      padding: 20px 18px 16px;
       position: relative;
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
     }
     .page-eyebrow { font-size: 12px; }
     .page-title { font-size: 26px !important; }
@@ -1563,6 +1574,7 @@
     .form-submit { grid-column: span 1; }
     .contact-form-wrap { padding: 22px 18px; }
     .cf-title { font-size: 20px; }
+    .form-field input, .form-field select, .form-field textarea { font-size: 16px; padding: 12px 14px; }
 
     /* Bank card */
     .bank-card-header { padding: 18px 20px; }
@@ -1612,14 +1624,18 @@
       cursor: pointer;
       padding: 8px 4px;
       transition: all 0.2s;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.55);
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       border: none;
       background: none;
       font-family: 'DM Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
     .mbn-item.active { color: var(--saffron); }
     .mbn-item .mbn-icon { font-size: 22px; line-height: 1; }
@@ -1663,8 +1679,8 @@
     .wa-chatbot-fab { bottom: 80px; right: 16px; width: 52px; height: 52px; }
     .wa-chatbot-panel {
       bottom: 148px; right: 12px;
-      width: calc(100vw - 24px); max-width: 360px;
-      max-height: calc(100vh - 200px); /* tighter on mobile */
+      width: calc(100vw - 20px); max-width: 340px;
+      max-height: calc(100vh - 200px);
     }
 
     /* Mobile top bar */
@@ -2244,7 +2260,7 @@
     width: 80px;        /* wider, more visible */
     height: 72px;
     pointer-events: none;
-    z-index: 9100;
+    z-index: 8500;
     transform: translate(200px, 200px);
     filter: drop-shadow(0 3px 8px rgba(232,98,10,0.3));
     transition: filter 0.3s;
@@ -2335,8 +2351,8 @@
 
     /* === TOP BAR === */
     .mobile-topbar { padding: 12px 14px; }
-    .mobile-topbar-logo { font-size: 14px; }
-    .mobile-topbar-cta { padding: 6px 11px; font-size: 11px; }
+    .mobile-topbar-logo { font-size: 13px; }
+    .mobile-topbar-cta { padding: 7px 10px; font-size: 11px; }
 
     /* === PAGE HEADER === */
     .page-header { padding: 16px 14px 14px; gap: 8px; }
@@ -2492,17 +2508,22 @@
   /* Extra small phones (≤360px) */
   @media (max-width: 360px) {
     .hero-title { font-size: 22px !important; }
-    .page-title { font-size: 19px !important; }
-    .info-grid { grid-template-columns: 1fr; }
-    .stats-2x2 { grid-template-columns: 1fr; }
+    .page-title { font-size: 20px !important; }
+    .page-body { padding: 16px 14px 90px; }
+    .page-header { padding: 16px 14px 12px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .stats-2x2 { grid-template-columns: 1fr 1fr; }
     .legal-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 20px !important; }
     .mbn-item { font-size: 8px; }
+    .mbn-item .mbn-icon { font-size: 17px; }
   }
 
   /* ===== LANDSCAPE MOBILE (<=900px rotated) ===== */
   @media (max-width: 900px) and (orientation: landscape) {
     body { overflow: auto; height: auto; flex-direction: column; }
     .topnav { display: none !important; }
+    .hero-address-mobile { display: none !important; }
     .main  { height: auto !important; overflow: visible !important; }
     .page  { height: auto !important; overflow: visible !important; padding-bottom: 56px; }
     .hero-full  { min-height: auto; height: auto; padding: 28px 32px 36px; }
@@ -3571,12 +3592,12 @@
             <div class="upi-title">📱 UPI / QR Payment</div>
             <div class="upi-sub">Scan using GPay, PhonePe, Paytm, BHIM or any UPI app</div>
             <!-- Real QR Code using UPI link — generates actual scannable QR -->
-            <div class="qr-box" style="width:190px;height:190px;padding:8px;background:white;border:3px solid #eab308;border-radius:16px;">
+            <div class="qr-box" style="width:min(190px,100%);height:auto;padding:8px;background:white;border:3px solid #eab308;border-radius:16px;">
               <img
                 src="data:image/png;base64,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"
                 alt="UPI QR Code — Scan to Pay BiddingSolution LLP"
                 width="174" height="174"
-                style="border-radius:8px;display:block;"
+                style="border-radius:8px;display:block;max-width:100%;height:auto;"
                 onerror="this.style.display='none';document.getElementById('qr-fallback').style.display='flex';"
               />
               <div id="qr-fallback" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:160px;color:var(--muted);font-size:13px;text-align:center;gap:8px;">
@@ -4163,7 +4184,7 @@
     document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
     // 2. Show target page
     var pg = document.getElementById('page-' + id);
-    if (pg) { pg.classList.add('active'); pg.scrollTop = 0; }
+    if (pg) { pg.classList.add('active'); pg.scrollTop = 0; var m = document.querySelector('.main'); if(m) m.scrollTop = 0; }
     // 3. Clear all nav highlights
     document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
     document.querySelectorAll('.mbn-item,.more-drawer-item').forEach(function(n){ n.classList.remove('active'); });
